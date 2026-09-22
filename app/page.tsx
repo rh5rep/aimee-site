@@ -4,7 +4,7 @@ const maxRole = process.env.NEXT_PUBLIC_AIMEE_MAX_ROLE?.trim();
 const ramiRole = process.env.NEXT_PUBLIC_AIMEE_RAMI_ROLE?.trim();
 
 const mailto = email
-  ? `mailto:${email}?subject=${encodeURIComponent("A task to discuss with AImee")}&body=${encodeURIComponent("Hi Max and Rami,\n\nThe recurring work I'd like to discuss is:\n\nWhat makes it difficult today:\n\n")}`
+  ? `mailto:${email}?subject=${encodeURIComponent("A task to discuss with AImee")}&body=${encodeURIComponent("Hi Max and Rami,\n\nThe recurring work I'd like to discuss is:\n\nWhat makes it difficult today:\n\nPlease keep the first email free of confidential material.\n")}`
   : "#contact";
 
 const steps = [
@@ -116,7 +116,7 @@ export default function Home() {
         <section className="section-pad first-step-section" id="first-step" aria-labelledby="first-step-title">
           <div className="container first-step-layout">
             <div><p className="eyebrow">A possible first step</p><h2 id="first-step-title">Bring one task. We&apos;ll find a useful place to begin.</h2></div>
-            <div className="first-step-copy"><p>In a first conversation, we would ask what the work involves, what is difficult about it now, and what information or tools are appropriate to use. From there, we can decide together whether a task-focused working session makes sense.</p><p>That session would be shaped around the task and your starting point. We are developing this approach with early conversations, so the format and next step are discussed rather than assumed.</p><a className="inline-link" href={mailto}>{email ? "Email us about your task" : "Get in touch"}<ArrowIcon diagonal /></a></div>
+            <div className="first-step-copy"><p>Tell us about a recurring task or an AI result that has been hard to trust or repeat. A first conversation helps us understand the work before suggesting a format.</p><ul className="first-step-points"><li><strong>Bring</strong><span>A short description of the task and who does it.</span></li><li><strong>Discuss</strong><span>What would be useful, what needs review, and what information is appropriate to use.</span></li><li><strong>Decide</strong><span>Whether a task-focused working session is a sensible next step.</span></li></ul><a className="inline-link" href={mailto}>{email ? "Email us about your task" : "Get in touch"}<ArrowIcon diagonal /></a></div>
           </div>
         </section>
 
@@ -128,7 +128,7 @@ export default function Home() {
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="container contact-layout"><div><p className="eyebrow">Start a conversation</p><h2 id="contact-title">What piece of work would you bring?</h2><p>Tell us what you do repeatedly, what feels frustrating or inconsistent, and what a useful improvement might look like. You do not need to have the solution worked out.</p></div><div className="contact-actions">{email ? <><a className="button button-light" href={mailto}>Email us about a task <ArrowIcon diagonal /></a><a className="email-link" href={`mailto:${email}`}>{email}</a></> : <p className="review-note">Public contact details are pending founder review. This draft is not ready to share.</p>}{bookingUrl && <a className="booking-link" href={bookingUrl} target="_blank" rel="noopener noreferrer">Book a conversation <ArrowIcon diagonal /></a>}</div></div>
+          <div className="container contact-layout"><div><p className="eyebrow">Start a conversation</p><h2 id="contact-title">What piece of work would you bring?</h2><p>Tell us what you do repeatedly, what feels frustrating or inconsistent, and what a useful improvement might look like. You do not need to have the solution worked out.</p><p className="contact-privacy-note">A short description is enough. Please do not send confidential material in a first email.</p></div><div className="contact-actions">{email ? <><a className="button button-light" href={mailto}>Email us about a task <ArrowIcon diagonal /></a><a className="email-link" href={`mailto:${email}`}>{email}</a></> : <p className="review-note">Public contact details are pending founder review. This draft is not ready to share.</p>}{bookingUrl && <a className="booking-link" href={bookingUrl} target="_blank" rel="noopener noreferrer">Book a conversation <ArrowIcon diagonal /></a>}</div></div>
         </section>
       </main>
       <footer className="site-footer"><div className="container footer-inner"><Brand /><p>Practical AI for the work you already do.</p><a href="#top">Back to top ↑</a></div></footer>

@@ -100,6 +100,10 @@ h1,h2,h3{letter-spacing:-.055em}
 .first-step-copy{padding-top:45px}
 .first-step-copy p{color:#4d4866;font-size:17px;line-height:1.68}
 .first-step-copy p+p{margin-top:20px}
+.first-step-points{display:grid;gap:0;margin:26px 0 8px;padding:0;list-style:none;border-top:1px solid rgba(39,38,80,.25)}
+.first-step-points li{display:grid;grid-template-columns:75px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid rgba(39,38,80,.25);font-size:14px;line-height:1.5}
+.first-step-points strong{font-weight:800}
+.first-step-points span{color:#514c68}
 .inline-link{display:inline-flex;align-items:center;gap:14px;margin-top:20px;padding-bottom:7px;border-bottom:2px solid var(--ink);font-size:15px;font-weight:800}
 .inline-link:hover{color:#654d9f;border-color:#654d9f}
 .about-section{padding-block:95px;background:#f7f5ef}
@@ -115,6 +119,7 @@ h1,h2,h3{letter-spacing:-.055em}
 .contact-layout .eyebrow{color:#cbb8ef}
 .contact-layout h2{max-width:650px;margin-bottom:23px}
 .contact-layout p:not(.eyebrow){max-width:580px;margin-bottom:0;color:#cbc9da;font-size:17px;line-height:1.65}
+.contact-layout .contact-privacy-note{margin-top:20px!important;color:#aaa7bf!important;font-size:13px!important}
 .contact-actions{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 .button-light{width:min(100%,330px);background:#e4d4a4;color:var(--ink);border-color:#e4d4a4}
 .button-light:hover{background:#f0e0ad}
