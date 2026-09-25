@@ -22,8 +22,12 @@ function ArrowIcon({ diagonal = false }: { diagonal?: boolean }) {
   );
 }
 
+function BrandMark() {
+  return <span className="brand-symbol" aria-hidden="true"><span /><span /><span /></span>;
+}
+
 function Brand() {
-  return <a className="brand" href="#top" aria-label="AImee, back to top"><span className="brand-symbol" aria-hidden="true"><span /><span /><span /></span><span>AImee<span className="brand-period">.</span></span></a>;
+  return <a className="brand" href="#top" aria-label="AImee, back to top"><BrandMark /><span>AImee<span className="brand-period">.</span></span></a>;
 }
 
 export default function Home() {
@@ -58,7 +62,7 @@ export default function Home() {
             <div className="hero-visual" aria-label="An illustration of a recurring task becoming a reviewed, reusable way of working">
               <div className="visual-orbit visual-orbit-one" /><div className="visual-orbit visual-orbit-two" />
               <div className="work-card">
-                <div className="work-card-top"><span className="work-card-label">A working starting point</span><span className="work-card-mark" aria-hidden="true">✳</span></div>
+                <div className="work-card-top"><span className="work-card-label">A working starting point</span><span className="work-card-mark"><BrandMark /></span></div>
                 <div className="work-card-title">One real task.</div>
                 <p>Something your team does often, or something you want to do better.</p>
                 <div className="work-card-flow">
@@ -66,9 +70,9 @@ export default function Home() {
                   <div><span className="flow-dot">2</span><span>Review it with human judgment</span></div>
                   <div><span className="flow-dot">3</span><span>Save and test the method again</span></div>
                 </div>
-                <div className="work-card-bottom"><span>LEARN BY DOING</span><span aria-hidden="true">↗</span></div>
+                <div className="work-card-bottom"><span>LEARN BY DOING</span><ArrowIcon diagonal /></div>
               </div>
-              <span className="visual-stamp">WORK → METHOD → REUSE</span>
+              <span className="visual-stamp">WORK / METHOD / REUSE</span>
             </div>
           </div>
         </section>
@@ -105,10 +109,10 @@ export default function Home() {
               <p className="eyebrow">How we approach AI</p>
               <h2 id="method-title">A useful result is a start. Understanding it makes it yours.</h2>
               <p>We teach through practical work. The aim is to make the choices behind a result visible, check its limits, and leave you with a method you can try again.</p>
-              <div className="method-note"><span aria-hidden="true">✳</span><p>Human judgment belongs throughout the process, especially when the work has real consequences.</p></div>
+              <div className="method-note"><BrandMark /><p>Human judgment belongs throughout the process, especially when the work has real consequences.</p></div>
             </div>
             <ol className="steps-list">
-              {steps.map((step) => <li key={step.number}><span className="step-number">{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div><span className="step-arrow" aria-hidden="true">↗</span></li>)}
+              {steps.map((step) => <li key={step.number}><span className="step-number">{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}
             </ol>
           </div>
         </section>
@@ -131,7 +135,7 @@ export default function Home() {
           <div className="container contact-layout"><div><p className="eyebrow">Start a conversation</p><h2 id="contact-title">What piece of work would you bring?</h2><p>Tell us what you do repeatedly, what feels frustrating or inconsistent, and what a useful improvement might look like. You do not need to have the solution worked out.</p><p className="contact-privacy-note">A short description is enough. Please do not send confidential material in a first email.</p></div><div className="contact-actions">{email ? <><a className="button button-light" href={mailto}>Email us about a task <ArrowIcon diagonal /></a><a className="email-link" href={`mailto:${email}`}>{email}</a></> : <p className="review-note">Public contact details are pending founder review. This draft is not ready to share.</p>}{bookingUrl && <a className="booking-link" href={bookingUrl} target="_blank" rel="noopener noreferrer">Book a conversation <ArrowIcon diagonal /></a>}</div></div>
         </section>
       </main>
-      <footer className="site-footer"><div className="container footer-inner"><Brand /><p>Practical AI for the work you already do.</p><a href="#top">Back to top ↑</a></div></footer>
+      <footer className="site-footer"><div className="container footer-inner"><Brand /><p>Practical AI for the work you already do.</p><a href="#top">Back to top</a></div></footer>
     </>
   );
 }
