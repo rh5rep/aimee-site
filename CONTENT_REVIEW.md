@@ -12,5 +12,6 @@ Complete this with Max and Rami before publishing or widening outreach.
 - [ ] No private notes, participant information, workshop materials, or third-party assets are included.
 - [ ] Links, mobile layout, keyboard navigation, contrast, and page metadata have been reviewed.
 - [ ] Decide whether the review URL remains `noindex` or indexing can be enabled.
+- [ ] Check the `/milestones` page's public-safe wording, reported date, and any new `reachedOn` dates against the private goal and decision records before each update.
 
 Record copy changes and new market or offer decisions in the private AImee strategy documents; keep this repository limited to approved public material.
