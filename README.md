@@ -13,13 +13,13 @@ Open `http://localhost:3000`. Run `npm run lint`, `npm run typecheck`, and `npm 
 
 ## Content and launch review
 
-Page copy is in `app/page.tsx`; title and description are in `app/layout.tsx`. This is a local boilerplate until Max and Rami review the copy together. Review [CONTENT_REVIEW.md](CONTENT_REVIEW.md) before publishing. The approved contact address is `aimee_workflows@proton.me`. Founder roles and a booking URL are omitted until confirmed.
+Page copy is in `app/page.tsx`; title and description are in `app/layout.tsx`. The November redesign includes founder bios, portraits, a teaching photo, and the December research workshops. Max and Rami should review the wording and image use together before wider promotion. Review [CONTENT_REVIEW.md](CONTENT_REVIEW.md) before publishing. The approved contact address is `aimee_workflows@proton.me`. A booking URL is omitted until confirmed.
 
-`app/layout.tsx` currently sets `robots` to `noindex, nofollow` for review. Switch it to indexing only after the final public copy and contact review. Add an approved booking URL by setting `NEXT_PUBLIC_AIMEE_BOOKING_URL` in the deployment environment. Founder role labels, if approved, use `NEXT_PUBLIC_AIMEE_MAX_ROLE` and `NEXT_PUBLIC_AIMEE_RAMI_ROLE`.
+`app/layout.tsx` currently sets `robots` to `noindex, nofollow` for review. Switch it to indexing only after the final public copy and contact review. There is no booking link yet; the approved contact route is email.
 
 The unlinked `/milestones` page is a public founder snapshot. Its three proposed goals are summarized in `app/milestones/data.ts`, without private source files. A slider lets visitors explore them; the dated progress line is derived only from `reachedOn` values. The first goal currently shows “reported Oct 20” and no confirmed completion date. Update the private goal or decision record first, then edit the public dates and copy here. This route has `noindex`, but anyone with the URL can view it.
 
-The `/workshop` route is a stable destination for a flyer or QR code. It uses neutral Max + Rami wording while the business name is unsettled. Dates, venue, audience, prerequisites, and registration remain unpublished until confirmed. When an organizer approves a registration link, set `NEXT_PUBLIC_WORKSHOP_REGISTRATION_URL` in Netlify and trigger a new build. Keep this route unchanged after printing a QR code.
+The `/workshop` route is the stable destination for the flyer or QR code. It uses neutral Max + Rami wording while the business name is unsettled. Its dates, times, topics, audience, and Einstein campus location come from the supplied version 13 flyer. The room and registration link remain pending. When the organizer approves a registration link, set `NEXT_PUBLIC_WORKSHOP_REGISTRATION_URL` in Netlify and trigger a new build. Preserve this route after printing a QR code.
 
 ## Visual identity
 

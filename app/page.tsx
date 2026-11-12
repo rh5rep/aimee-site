@@ -1,141 +1,35 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const email = "aimee_workflows@proton.me";
-const bookingUrl = process.env.NEXT_PUBLIC_AIMEE_BOOKING_URL?.trim();
-const maxRole = process.env.NEXT_PUBLIC_AIMEE_MAX_ROLE?.trim();
-const ramiRole = process.env.NEXT_PUBLIC_AIMEE_RAMI_ROLE?.trim();
-
-const mailto = email
-  ? `mailto:${email}?subject=${encodeURIComponent("A task to discuss with AImee")}&body=${encodeURIComponent("Hi Max and Rami,\n\nThe recurring work I'd like to discuss is:\n\nWhat makes it difficult today:\n\nPlease keep the first email free of confidential material.\n")}`
-  : "#contact";
-
-const steps = [
-  { number: "01", title: "Start with the work", text: "Choose a real task and agree on what a useful result would look like." },
-  { number: "02", title: "Make a first pass", text: "Try an AI-supported approach with the right context and a manageable example." },
-  { number: "03", title: "Look closely", text: "Review the output, check what matters, and name where judgment is still needed." },
-  { number: "04", title: "Make it reusable", text: "Capture the useful steps and try them on a fresh example." },
+const taskEmail = `mailto:${email}?subject=${encodeURIComponent("A task to discuss")}&body=${encodeURIComponent("Hi Max and Rami,\n\nThe work I would like to discuss is:\n\nWhat makes it difficult today:\n\n")}`;
+const examples = [
+  ["01", "RESEARCH", "Make the next question clearer.", "Explore an experimental plan, a troubleshooting question, or a body of literature. Surface assumptions before deciding what to try."],
+  ["02", "WRITING", "Revise without losing your meaning.", "Use AI to examine structure and clarity in a draft, then decide which suggestions actually improve it."],
+  ["03", "RECURRING WORK", "Turn a good first pass into a method.", "Document the context, checks, and decisions that make a useful approach easier to repeat."],
 ];
-
-function ArrowIcon({ diagonal = false }: { diagonal?: boolean }) {
-  return diagonal ? (
-    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4 16 16 4M6 4h10v10" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-  ) : (
-    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-  );
-}
-
-function BrandMark() {
-  return <span className="brand-symbol" aria-hidden="true"><span /><span /><span /></span>;
-}
-
-function Brand() {
-  return <a className="brand" href="#top" aria-label="AImee, back to top"><BrandMark /><span>AImee<span className="brand-period">.</span></span></a>;
-}
+const steps = [
+  ["01", "Start with real work", "Choose a task you recognize and define what a useful result would look like."],
+  ["02", "Try an approach", "Build a first pass with AI. Make the inputs and decisions visible."],
+  ["03", "Review the result", "Check the important details, limitations, and places where your judgment matters."],
+  ["04", "Keep what works", "Save the method and try it again on a fresh example."],
+];
+function Arrow({ down = false }: { down?: boolean }) { return <svg aria-hidden="true" className="arrow" viewBox="0 0 20 20" fill="none"><path d={down ? "M10 3v13m-5-5 5 5 5-5" : "M4 16 16 4M6 4h10v10"} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>; }
+function Wordmark() { return <Link className="wordmark" href="/" aria-label="AImee home"><span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span>AImee<span className="wordmark-dot">.</span></Link>; }
 
 export default function Home() {
-  return (
-    <>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header" id="top">
-        <div className="container header-inner">
-          <Brand />
-          <nav className="main-nav" aria-label="Main navigation">
-            <a href="#where">Where it helps</a>
-            <a href="#method">Our approach</a>
-            <a href="#first-step">First step</a>
-            <a className="nav-contact" href="#contact">Contact <ArrowIcon diagonal /></a>
-          </nav>
-        </div>
-      </header>
-
-      <main id="main">
-        <section className="hero section-pad" aria-labelledby="hero-title">
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <p className="eyebrow"><span className="eyebrow-line" /> Practical AI for real work</p>
-              <h1 id="hero-title">Make AI useful in the work you <em>already do.</em></h1>
-              <p className="hero-lede">AImee helps small teams and professionals explore AI through a real task—then understand the method, check the result, and make what works easier to use again.</p>
-              <div className="hero-actions">
-                <a className="button button-primary" href={mailto}>{email ? "Email us about a task" : "Start a conversation"}<ArrowIcon diagonal /></a>
-                <a className="button button-text" href="#method">See our approach <ArrowIcon /></a>
-              </div>
-              <p className="hero-footnote">Start with one piece of work, not a list of tools.</p>
-            </div>
-            <div className="hero-visual" aria-label="An illustration of a recurring task becoming a reviewed, reusable way of working">
-              <div className="visual-orbit visual-orbit-one" /><div className="visual-orbit visual-orbit-two" />
-              <div className="work-card">
-                <div className="work-card-top"><span className="work-card-label">A working starting point</span><span className="work-card-mark"><BrandMark /></span></div>
-                <div className="work-card-title">One real task.</div>
-                <p>Something your team does often, or something you want to do better.</p>
-                <div className="work-card-flow">
-                  <div><span className="flow-dot">1</span><span>Try a useful first approach</span></div>
-                  <div><span className="flow-dot">2</span><span>Review it with human judgment</span></div>
-                  <div><span className="flow-dot">3</span><span>Save and test the method again</span></div>
-                </div>
-                <div className="work-card-bottom"><span>LEARN BY DOING</span><ArrowIcon diagonal /></div>
-              </div>
-              <span className="visual-stamp">WORK / METHOD / REUSE</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-pad where-section" id="where" aria-labelledby="where-title">
-          <div className="container">
-            <div className="section-intro">
-              <p className="eyebrow">Where we can help</p>
-              <h2 id="where-title">Begin with work that already matters.</h2>
-              <p>You do not need a perfect AI use case. A recurring task, an inconsistent result, or a process your team keeps rebuilding is enough to start a conversation.</p>
-            </div>
-            <div className="audience-grid">
-              <article className="audience-card">
-                <span className="card-index">01 / SMALL TEAMS</span>
-                <div className="card-glyph" aria-hidden="true"><span /><span /><span /></div>
-                <h3>Make a shared task easier to repeat.</h3>
-                <p>Explore how a team might use AI to support a piece of work while keeping the people who know the work involved in reviewing it.</p>
-                <span className="card-example">For example: drafting from meeting notes, organizing recurring research, or shaping a first version of a document.</span>
-              </article>
-              <article className="audience-card audience-card-alt">
-                <span className="card-index">02 / INDIVIDUAL PROFESSIONALS</span>
-                <div className="card-glyph card-glyph-single" aria-hidden="true"><span /></div>
-                <h3>Get more from the work in front of you.</h3>
-                <p>Bring a task you already own. We can work through an approach that fits your starting point and make the useful parts easier to return to.</p>
-                <span className="card-example">For example: preparing a draft, comparing ideas, or creating a checklist for a task you do often.</span>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-pad method-section" id="method" aria-labelledby="method-title">
-          <div className="container method-layout">
-            <div className="method-heading">
-              <p className="eyebrow">How we approach AI</p>
-              <h2 id="method-title">A useful result is a start. Understanding it makes it yours.</h2>
-              <p>We teach through practical work. The aim is to make the choices behind a result visible, check its limits, and leave you with a method you can try again.</p>
-              <div className="method-note"><BrandMark /><p>Human judgment belongs throughout the process, especially when the work has real consequences.</p></div>
-            </div>
-            <ol className="steps-list">
-              {steps.map((step) => <li key={step.number}><span className="step-number">{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}
-            </ol>
-          </div>
-        </section>
-
-        <section className="section-pad first-step-section" id="first-step" aria-labelledby="first-step-title">
-          <div className="container first-step-layout">
-            <div><p className="eyebrow">A possible first step</p><h2 id="first-step-title">Bring one task. We&apos;ll find a useful place to begin.</h2></div>
-            <div className="first-step-copy"><p>Tell us about a recurring task or an AI result that has been hard to trust or repeat. A first conversation helps us understand the work before suggesting a format.</p><ul className="first-step-points"><li><strong>Bring</strong><span>A short description of the task and who does it.</span></li><li><strong>Discuss</strong><span>What would be useful, what needs review, and what information is appropriate to use.</span></li><li><strong>Decide</strong><span>Whether a task-focused working session is a sensible next step.</span></li></ul><a className="inline-link" href={mailto}>{email ? "Email us about your task" : "Get in touch"}<ArrowIcon diagonal /></a></div>
-          </div>
-        </section>
-
-        <section className="section-pad about-section" id="about" aria-labelledby="about-title">
-          <div className="container about-layout">
-            <div><p className="eyebrow">The people behind AImee</p><h2 id="about-title">Practical teaching, with people at the center.</h2></div>
-            <div><p>AImee is being built by Max and Rami. We are exploring how approachable AI education can help people do meaningful work with more confidence and care.</p><div className="founder-row"><div><strong>Max</strong>{maxRole && <span>{maxRole}</span>}</div><div><strong>Rami</strong>{ramiRole && <span>{ramiRole}</span>}</div></div></div>
-          </div>
-        </section>
-
-        <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="container contact-layout"><div><p className="eyebrow">Start a conversation</p><h2 id="contact-title">What piece of work would you bring?</h2><p>Tell us what you do repeatedly, what feels frustrating or inconsistent, and what a useful improvement might look like. You do not need to have the solution worked out.</p><p className="contact-privacy-note">A short description is enough. Please do not send confidential material in a first email.</p></div><div className="contact-actions">{email ? <><a className="button button-light" href={mailto}>Email us about a task <ArrowIcon diagonal /></a><a className="email-link" href={`mailto:${email}`}>{email}</a></> : <p className="review-note">Public contact details are pending founder review. This draft is not ready to share.</p>}{bookingUrl && <a className="booking-link" href={bookingUrl} target="_blank" rel="noopener noreferrer">Book a conversation <ArrowIcon diagonal /></a>}</div></div>
-        </section>
-      </main>
-      <footer className="site-footer"><div className="container footer-inner"><Brand /><p>Practical AI for the work you already do.</p><a href="#top">Back to top</a></div></footer>
-    </>
-  );
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <header className="site-header" id="top"><div className="container header-inner"><Wordmark /><a className="mobile-contact" href="#contact">Contact <Arrow /></a><nav aria-label="Main navigation" className="main-nav"><a href="#work">What we do</a><a href="#approach">Our approach</a><a href="#about">About us</a><Link href="/workshop">Workshop</Link><a className="nav-contact" href="#contact">Get in touch <Arrow /></a></nav></div></header>
+    <main id="main">
+      <section className="hero" aria-labelledby="hero-title"><div className="container hero-content"><div className="hero-main"><p className="eyebrow"><span className="eyebrow-line" /> PRACTICAL AI EDUCATION</p><h1 id="hero-title">Learn AI through the work <em>in front of you.</em></h1><p className="hero-lede">We help researchers, professionals, and teams get more capable with AI by working through real tasks together. The goal is to understand the choices behind a result, not just hold an output.</p><div className="hero-actions"><Link className="button button-primary" href="/workshop">Explore our research workshops <Arrow /></Link><a className="button button-secondary" href="#work">See what we do <Arrow down /></a></div></div><div className="hero-aside" aria-label="Our working method"><div className="hero-aside-top"><span>OUR STARTING POINT</span><span>01 / 04</span></div><p>Bring a real question.<br /><em>Work on it together.</em></p><div className="hero-aside-bottom"><span>TRY</span><span>REVIEW</span><span>REUSE</span></div></div></div><div className="container hero-bottom"><span>BUILT AROUND THE PERSON DOING THE WORK</span><a href="#work">Scroll to explore <Arrow down /></a></div></section>
+      <section className="work-section section-pad" id="work" aria-labelledby="work-title"><div className="container"><div className="section-top"><p className="eyebrow">WHAT WE DO</p><span className="section-count">01 / PRACTICAL TEACHING</span></div><div className="work-intro"><h2 id="work-title">Less talk about AI.<br /><em>More work with it.</em></h2><div><p>Our workshops and working sessions start with a question someone actually cares about. We teach the process as we go: how to set context, inspect a result, and decide what is worth keeping.</p><p className="small-note">These are examples of work we can explore, not claims about completed client projects.</p></div></div><div className="work-grid">{examples.map(([number,type,title,body]) => <article className="work-card" key={number}><div className="work-card-top"><span>{number}</span><span>{type}</span></div><h3>{title}</h3><p>{body}</p><span className="work-card-rule" /></article>)}</div></div></section>
+      <section className="photo-section" aria-label="Max presenting research at Einstein"><div className="container photo-layout"><div className="photo-frame"><Image src="/images/max-presenting.webp" alt="Max Horton presenting research on liver aging in a classroom" fill sizes="(max-width: 800px) 100vw, 60vw" /></div><div className="photo-caption"><span>IN THE ROOM</span><p>Teaching works best when there is room to ask, try, question, and try again.</p><small>Max presenting his liver aging research at Einstein.</small></div></div></section>
+      <section className="method-section section-pad" id="approach" aria-labelledby="method-title"><div className="container method-layout"><div className="method-intro"><p className="eyebrow">OUR APPROACH</p><h2 id="method-title">A useful answer is only <em>the beginning.</em></h2><p>We want people to know how they got a result, when to trust it, and how to adapt the method for the next task. Human judgment runs through every step.</p><a className="text-link" href={taskEmail}>Talk through a task with us <Arrow /></a></div><ol className="method-list">{steps.map(([number,title,body]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{body}</p></div></li>)}</ol></div></section>
+      <section className="workshop-section section-pad" id="workshops" aria-labelledby="workshop-title"><div className="container"><div className="section-top"><p className="eyebrow">COMING UP AT EINSTEIN</p><span className="section-count">02 / HANDS-ON WORKSHOPS</span></div><div className="workshop-head"><div><h2 id="workshop-title">Practical AI for <em>research.</em></h2><p>Two in-person sessions built around experimental planning and scientific writing. Work through an example, evaluate what AI produces, and practice a method you can use again.</p></div><Link className="button button-dark-outline" href="/workshop">Workshop details <Arrow /></Link></div><div className="workshop-list"><div><span>MON · DEC 7</span><strong>Experimental planning</strong><p>For graduate students and postdocs</p></div><div><span>TUE · DEC 8</span><strong>Writing &amp; revision</strong><p>For faculty and trainees</p></div></div><p className="workshop-footnote">Einstein campus · 9 AM–noon each day · Room and registration details to come</p></div></section>
+      <section className="about-section section-pad" id="about" aria-labelledby="about-title"><div className="container"><div className="section-top"><p className="eyebrow">THE PEOPLE BEHIND THE WORK</p><span className="section-count">03 / ABOUT US</span></div><div className="about-head"><h2 id="about-title">We teach from what we <em>practice.</em></h2><p>AImee brings a research perspective and an engineering perspective to the same table. We care about making AI useful, understandable, and worth using again.</p></div><div className="founder-grid"><article className="founder"><div className="founder-image"><Image src="/images/max-portrait.webp" alt="Portrait of Max Horton" fill sizes="(max-width: 700px) 100vw, 280px" /></div><div className="founder-copy"><span className="founder-label">RESEARCH + TEACHING</span><h3>Max Horton</h3><p>Max is a graduate student at Albert Einstein College of Medicine studying liver aging. He has used AI in his academic work since late 2022 and has given lectures, led workshops, and worked one-on-one with researchers on practical AI use. He also writes on Substack about AI in knowledge work.</p></div></article><article className="founder"><div className="founder-image"><Image src="/images/rami-portrait.webp" alt="Portrait of Rami Hanna" fill sizes="(max-width: 700px) 100vw, 280px" /></div><div className="founder-copy"><span className="founder-label">ENGINEERING + SYSTEMS</span><h3>Rami Hanna</h3><p>Rami is a robotics engineer with a master&apos;s degree in autonomous systems engineering. His hands-on work spans sensing, computer vision, systems integration, and ML-based tools. He brings an engineer&apos;s habit of making an approach observable, testing it, and improving what does not hold up.</p></div></article></div></div></section>
+      <section className="contact-section section-pad" id="contact" aria-labelledby="contact-title"><div className="container contact-layout"><div><p className="eyebrow">START A CONVERSATION</p><h2 id="contact-title">What would you like to <em>work through?</em></h2></div><div><p>Tell us about a recurring task, a research question, or a result you have found hard to trust or repeat. A short description is plenty; please leave confidential material out of the first email.</p><a className="button button-light" href={taskEmail}>Email Max and Rami <Arrow /></a><a className="contact-email" href={`mailto:${email}`}>{email}</a></div></div></section>
+    </main>
+    <footer className="site-footer"><div className="container footer-inner"><Wordmark /><span>Practical AI for real work.</span><div><Link href="/workshop">Workshop</Link><a href="#top">Back to top ↑</a></div></div></footer>
+  </>;
 }
