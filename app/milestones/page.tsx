@@ -4,7 +4,7 @@ import { MilestoneTimeline } from "./timeline";
 import styles from "./milestones.module.css";
 
 export const metadata: Metadata = {
-  title: "Milestones | AImee",
+  title: "Milestones | Max + Rami",
   description: "A small founder timeline for AImee's proposed goals.",
   robots: { index: false, follow: false },
 };
@@ -14,7 +14,7 @@ export default function MilestonesPage() {
     <main className={styles.page}>
       <div className={styles.shell}>
         <header className={styles.header}>
-          <Link href="/" className={styles.brand} aria-label="AImee home">AImee<span>.</span></Link>
+          <Link href="/" className={styles.brand} aria-label="Max and Rami home">Max <span>+</span> Rami</Link>
           <span className={styles.headerLabel}>A little founder corner</span>
         </header>
 
@@ -28,7 +28,7 @@ export default function MilestonesPage() {
 
         <footer className={styles.footer}>
           <p>This is a public working snapshot, shared for fun. Dates and goals may change as Max and Rami learn.</p>
-          <Link href="/">Back to AImee <span aria-hidden="true">↗</span></Link>
+          <Link href="/">Back to Max + Rami <span aria-hidden="true">→</span></Link>
         </footer>
       </div>
     </main>

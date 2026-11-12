@@ -2,7 +2,7 @@
 
 Complete this with Max and Rami before publishing or widening outreach.
 
-- [ ] The opening accurately describes who AImee can help now.
+- [ ] The opening accurately describes who Max and Rami can help now.
 - [ ] The task examples are plausible invitations, not representations of completed client work.
 - [ ] The task-focused session description matches what Max and Rami can currently deliver.
 - [ ] Every outcome or capability claim has a source or is clearly phrased as an aim or approach.
@@ -11,6 +11,7 @@ Complete this with Max and Rami before publishing or widening outreach.
 - [ ] Max approves his bio, Substack mention, portrait, and research presentation photo for public use; Rami approves his bio and portrait.
 - [ ] The December workshop dates, times, audiences, campus wording, and organizer relationship match the final approved flyer. Add a registration link only after the organizer provides it.
 - [ ] The shared email address and any booking URL work and are approved for public use.
+- [ ] All public navigation links lead to the intended distinct pages; the current email remains usable until a professional address is ready.
 - [ ] No private notes, participant information, workshop materials, or third-party assets are included.
 - [ ] Links, mobile layout, keyboard navigation, contrast, and page metadata have been reviewed.
 - [ ] Decide whether the review URL remains `noindex` or indexing can be enabled.

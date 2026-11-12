@@ -11,9 +11,9 @@ const brandColors = Object.fromEntries(
 ) as CSSProperties;
 
 export const metadata: Metadata = {
-  title: "AImee | Learn AI through real work",
+  title: "Max + Rami | Practical AI for real work",
   description:
-    "Hands-on AI education for researchers, professionals, and teams. Learn through real tasks, review the results, and keep what works.",
+    "Max and Rami teach practical AI through real tasks, human review, and reusable methods.",
   robots: { index: false, follow: false },
 };
 

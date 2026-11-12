@@ -1,6 +1,6 @@
-# AImee website
+# Max + Rami website
 
-Public-facing site with a primary AImee landing page, an unlinked milestone page, and a workshop information page. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
+Public-facing site for Max and Rami's practical AI teaching, with separate pages for the work, approach, founders, contact, and research workshops. The unlinked milestone page remains a public founder corner. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
 
 ## Local development
 
@@ -13,7 +13,7 @@ Open `http://localhost:3000`. Run `npm run lint`, `npm run typecheck`, and `npm 
 
 ## Content and launch review
 
-Page copy is in `app/page.tsx`; title and description are in `app/layout.tsx`. The November redesign includes founder bios, portraits, a teaching photo, and the December research workshops. Max and Rami should review the wording and image use together before wider promotion. Review [CONTENT_REVIEW.md](CONTENT_REVIEW.md) before publishing. The approved contact address is `aimee_workflows@proton.me`. A booking URL is omitted until confirmed.
+Public page copy lives in `app/`; the shared navigation, footer, and current contact address live in `components/site-shell.tsx`. The November redesign includes founder bios, portraits, a teaching photo, and the December research workshops. Max and Rami should review the wording and image use together before wider promotion. Review [CONTENT_REVIEW.md](CONTENT_REVIEW.md) before publishing. The current contact address is `aimee_workflows@proton.me`; a professional address can replace it later without changing the page structure.
 
 `app/layout.tsx` currently sets `robots` to `noindex, nofollow` for review. Switch it to indexing only after the final public copy and contact review. There is no booking link yet; the approved contact route is email.
 
@@ -23,7 +23,7 @@ The `/workshop` route is the stable destination for the flyer or QR code. It use
 
 ## Visual identity
 
-The working color schema is in [`brand/palette.json`](brand/palette.json), with usage notes in [`brand/README.md`](brand/README.md). The website reads its core CSS variables from that palette. Use the same values as a starting point for AImee document and presentation templates; the wordmark and favicon are still provisional.
+The working color schema is in [`brand/palette.json`](brand/palette.json), with usage notes in [`brand/README.md`](brand/README.md). The website reads its core CSS variables from that palette. The public identity now reads Max + Rami; the palette is still the starting point for AImee document and presentation templates. The wordmark and favicon remain provisional.
 
 ## Netlify
 
