@@ -1,6 +1,6 @@
 # AImee website
 
-Public-facing AImee site with one primary landing page and an unlinked milestone page. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
+Public-facing site with a primary AImee landing page, an unlinked milestone page, and a workshop information page. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
 
 ## Local development
 
@@ -18,6 +18,8 @@ Page copy is in `app/page.tsx`; title and description are in `app/layout.tsx`. T
 `app/layout.tsx` currently sets `robots` to `noindex, nofollow` for review. Switch it to indexing only after the final public copy and contact review. Add an approved booking URL by setting `NEXT_PUBLIC_AIMEE_BOOKING_URL` in the deployment environment. Founder role labels, if approved, use `NEXT_PUBLIC_AIMEE_MAX_ROLE` and `NEXT_PUBLIC_AIMEE_RAMI_ROLE`.
 
 The unlinked `/milestones` page is a public founder snapshot. Its three proposed goals are summarized in `app/milestones/data.ts`, without private source files. A slider lets visitors explore them; the dated progress line is derived only from `reachedOn` values. The first goal currently shows “reported Oct 20” and no confirmed completion date. Update the private goal or decision record first, then edit the public dates and copy here. This route has `noindex`, but anyone with the URL can view it.
+
+The `/workshop` route is a stable destination for a flyer or QR code. It uses neutral Max + Rami wording while the business name is unsettled. Dates, venue, audience, prerequisites, and registration remain unpublished until confirmed. When an organizer approves a registration link, set `NEXT_PUBLIC_WORKSHOP_REGISTRATION_URL` in Netlify and trigger a new build. Keep this route unchanged after printing a QR code.
 
 ## Visual identity
 
