@@ -17,9 +17,9 @@ export default function Home() {
           <div className={styles.heroCopy}>
             <h1 id="hero-title">Practical AI help <em>for your team</em></h1>
             <p>
-              We’re Max and Rami. We help teams use AI to review drafts, make sense of source
-              material, and take some of the grind out of recurring work. We teach and build
-              alongside the people who do the work.
+              We’re Max and Rami. We help teams get comfortable with today’s AI tools and put
+              them to work. We run hands-on workshops and build repeatable workflows that make
+              everyday work easier.
             </p>
             <div className="actions">
               <Link className="button" href="#services">See how we can help</Link>
@@ -42,6 +42,35 @@ export default function Home() {
           <div className={styles.serviceLinks}>
             <Link className="text-link" href="/work#examples">Examples from our work</Link>
             <Link className="text-link" href="/work#one-on-one">Looking for one-on-one help?</Link>
+          </div>
+        </section>
+
+        <section className={`container ${styles.draftReview}`} id="draft-review" aria-labelledby="draft-review-title">
+          <header className={styles.exampleIntro}>
+            <p className={styles.reviewLabel}>Sample draft review</p>
+            <h2 id="draft-review-title">Make a claim you can back up</h2>
+          </header>
+          <div className={styles.reviewComparison}>
+            <div className={styles.reviewPage}>
+              <h3>Before</h3>
+              <blockquote>
+                “The new guide helped people finish faster and <mark>make fewer mistakes</mark>.”
+              </blockquote>
+              <p>
+                <strong>What we’d flag</strong>
+                The pilot timed the task. A claim about mistakes would need an error count.
+              </p>
+            </div>
+            <div className={styles.reviewPage}>
+              <h3>After</h3>
+              <blockquote>
+                “In the pilot, median completion time fell from 12 to 8 minutes with the new guide.”
+              </blockquote>
+              <p>
+                <strong>Why it helps</strong>
+                The reader can see what improved and by how much.
+              </p>
+            </div>
           </div>
         </section>
 

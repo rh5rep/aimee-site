@@ -36,6 +36,7 @@
 }
 
 .services h2,
+.draftReview h2,
 .example h2,
 .people h2 {
   font-family: var(--font-display);
@@ -80,6 +81,74 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0 22px;
+}
+
+.draftReview {
+  padding-block: clamp(28px, 4.4vw, 58px);
+  border-top: 1px solid var(--line);
+}
+
+.draftReview .reviewLabel {
+  margin: 0 0 7px;
+  color: var(--accent);
+  font-size: .8125rem;
+  font-weight: 680;
+}
+
+.reviewComparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+}
+
+.reviewPage {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  padding: clamp(17px, 3vw, 34px);
+}
+
+.reviewPage + .reviewPage {
+  border-inline-start: 1px solid var(--line);
+  border-radius: 0 5px 5px 0;
+  background: var(--accent-tint);
+}
+
+.reviewPage h3 {
+  color: var(--accent);
+  font-size: .875rem;
+  letter-spacing: 0;
+}
+
+.reviewPage blockquote {
+  max-width: 37ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  line-height: 1.33;
+}
+
+.reviewPage mark {
+  background: var(--accent-tint);
+  color: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.reviewPage p {
+  min-height: 6.4em;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: .9375rem;
+}
+
+.reviewPage strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
 }
 
 .example {
@@ -150,7 +219,13 @@
 .event h2 { margin-top: 3px; font-size: clamp(1.25rem, 2vw, 1.7rem); }
 
 @media (max-width: 720px) {
-  .hero, .people { grid-template-columns: 1fr; }
+  .hero, .people, .reviewComparison { grid-template-columns: 1fr; }
+  .reviewPage + .reviewPage {
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0 0 5px 5px;
+  }
+  .reviewPage p { min-height: 0; }
   .hero h1 { max-width: 15ch; }
   .serviceList { grid-template-columns: 1fr; }
   .serviceList li { padding: 13px 0; }

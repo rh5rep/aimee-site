@@ -34,8 +34,8 @@ export default function WorkPage() {
           <header className="page-intro">
             <h1>Services</h1>
             <p className="lede">
-              Bring a draft, a pile of source material, or a task your team does often.
-              We’ll talk through where the work gets stuck and what would make it easier.
+              Bring a skill your team wants to learn or a task you want to make easier.
+              We’ll talk through what would help and where to start.
             </p>
             <p className="scope-note">
               The task, your tools, and the people doing the work shape the format and timing.
