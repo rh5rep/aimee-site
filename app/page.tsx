@@ -3,10 +3,8 @@ import Link from "next/link";
 import { ReportWalkthrough } from "../components/report-walkthrough";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { WorkflowStory } from "../components/workflow-story";
+import { FirstProject } from "./first-project";
 import styles from "./home.module.css";
-import { services } from "./work/services";
-
-const teamServices = services.filter((service) => service.id !== "one-on-one");
 
 export default function Home() {
   return (
@@ -29,21 +27,7 @@ export default function Home() {
           <WorkflowStory />
         </section>
 
-        <section className={`container ${styles.services}`} id="services" aria-labelledby="services-title">
-          <h2 id="services-title">Ways to work together</h2>
-          <ul className={styles.serviceList}>
-            {teamServices.map((service) => (
-              <li key={service.id}>
-                <h3><Link href={`/work#${service.id}`}>{service.title}</Link></h3>
-                <p>{service.summary}</p>
-              </li>
-            ))}
-          </ul>
-          <div className={styles.serviceLinks}>
-            <Link className="text-link" href="/work#examples">Examples from our work</Link>
-            <Link className="text-link" href="/work#one-on-one">Looking for one-on-one help?</Link>
-          </div>
-        </section>
+        <FirstProject />
 
         <section className={`container ${styles.draftReview}`} id="draft-review" aria-labelledby="draft-review-title">
           <header className={styles.exampleIntro}>

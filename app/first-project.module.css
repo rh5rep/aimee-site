@@ -1,0 +1,123 @@
+.section { padding-bottom: clamp(28px, 4.4vw, 50px); }
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 66px);
+  padding: clamp(18px, 4.8vw, 54px);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--linen);
+}
+
+.board h2,
+.board h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -.038em;
+  text-wrap: initial;
+}
+
+.board h2 {
+  max-width: 15ch;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.board h2 em {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.choices {
+  display: grid;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.choices button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 9px 11px;
+  border: 1px solid transparent;
+  border-bottom-color: var(--line);
+  border-radius: 3px;
+  color: var(--ink);
+  font: inherit;
+  font-size: .9375rem;
+  font-weight: 630;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.choices button:hover,
+.choices button[aria-pressed="true"] { border-color: var(--accent); }
+
+.choices button[aria-pressed="true"] { background: var(--accent-tint); }
+
+.choices button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.arrow { color: var(--accent); }
+
+.note {
+  min-width: 0;
+  padding: clamp(15px, 2.65vw, 28px) clamp(15px, 2.65vw, 28px) 7px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+  background: var(--white);
+  box-shadow: 3px 4px 0 var(--line);
+}
+
+.type {
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-size: .8125rem;
+  font-weight: 680;
+}
+
+.board h3 { font-size: clamp(1.375rem, 2.8vw, 2.125rem); }
+
+.note dl { margin: 16px 0 0; }
+
+.note dl > div {
+  padding-block: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.note dt { font-size: .8125rem; font-weight: 680; }
+
+.note dd {
+  margin-top: 3px;
+  color: var(--ink-soft);
+  font-size: .9375rem;
+  line-height: 1.45;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+  margin-top: 6px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .noteContent { animation: set-note 220ms ease-out; }
+}
+
+@keyframes set-note {
+  from { opacity: .65; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .board { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); }
+}
