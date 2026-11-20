@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReportWalkthrough } from "../components/report-walkthrough";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
+import { WorkflowStory } from "../components/workflow-story";
 import styles from "./home.module.css";
 import { services } from "./work/services";
 
@@ -24,15 +25,7 @@ export default function Home() {
               <Link className="text-link" href="/contact">Talk with us</Link>
             </div>
           </div>
-          <Image
-            className={styles.heroPhoto}
-            src="/images/worktable.jpg"
-            alt="Illustration of a sunlit worktable with an open notebook, pencil, and laptop"
-            width={1440}
-            height={960}
-            priority
-            sizes="(max-width: 720px) 92vw, (max-width: 1250px) 46vw, 610px"
-          />
+          <WorkflowStory />
         </section>
 
         <section className={`container ${styles.services}`} id="services" aria-labelledby="services-title">

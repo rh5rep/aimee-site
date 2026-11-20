@@ -30,14 +30,6 @@
   line-height: 1.62;
 }
 
-.heroPhoto {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  background: var(--linen);
-}
-
 .services {
   padding-block: clamp(28px, 4.4vw, 58px) clamp(32px, 4.4vw, 58px);
   border-top: 1px solid var(--line);
@@ -154,7 +146,6 @@
 @media (max-width: 720px) {
   .hero, .people { grid-template-columns: 1fr; }
   .hero h1 { max-width: 15ch; }
-  .heroPhoto { max-height: 370px; object-fit: cover; }
   .serviceList { grid-template-columns: 1fr; }
   .serviceList li { padding: 13px 0; }
   .serviceList li + li { border-inline-start: 0; border-top: 1px solid var(--line); }

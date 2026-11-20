@@ -1,0 +1,230 @@
+.story {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--white);
+  box-shadow: 0 16px 38px -28px rgb(32 34 30 / 38%);
+}
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+  aspect-ratio: 16 / 9;
+  background: var(--linen);
+}
+
+.photo { object-fit: cover; object-position: center 59%; }
+
+.stage:not([data-scene="notes"]) .photo {
+  filter: saturate(.6) brightness(.8);
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.note {
+  position: absolute;
+  right: 7%;
+  bottom: 11%;
+  width: clamp(126px, 42%, 194px);
+  padding: 12px 15px 14px;
+  transform: rotate(-6deg);
+  background: var(--accent-tint);
+  color: var(--ink);
+  box-shadow: 1px 5px 12px rgb(32 34 30 / 24%);
+}
+
+.note p:first-child,
+.documentLabel {
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.note p + p {
+  margin-top: 5px;
+  font-family: var(--font-display);
+  font-size: clamp(.9375rem, 2vw, 1.1875rem);
+  line-height: 1.16;
+}
+
+.sheet {
+  width: min(82%, 354px);
+  padding: clamp(13px, 3vw, 28px);
+  transform: rotate(-3deg);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 10px 24px rgb(32 34 30 / 26%);
+}
+
+.documentLine {
+  margin-top: 9px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.875rem);
+  line-height: 1.13;
+  letter-spacing: -.025em;
+}
+
+.sourceLabel {
+  width: fit-content;
+  margin-top: 12px;
+  padding: 4px 7px;
+  background: var(--accent-tint);
+  color: var(--accent-hover);
+  font-size: .75rem;
+  font-weight: 620;
+}
+
+.review { transform: rotate(2deg); }
+
+.checks {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0 0;
+  font-size: clamp(.75rem, 1.35vw, .9375rem);
+}
+
+.checks div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+}
+
+.checks dt { font-weight: 650; }
+.checks dd { color: var(--accent-hover); }
+.checks dd span { margin-inline-end: 2px; }
+
+.caption {
+  display: grid;
+  gap: 8px;
+  min-height: 116px;
+  padding: 15px clamp(13px, 2vw, 22px) 12px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 680;
+  line-height: 1.35;
+}
+
+.eyebrow span { padding-inline: 2px; }
+
+.caption h2 {
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.15vw, 1.625rem);
+  font-weight: 400;
+  letter-spacing: -.028em;
+  text-wrap: initial;
+}
+
+.caption h2 + p {
+  max-width: 51ch;
+  color: var(--ink-soft);
+  font-size: .875rem;
+  line-height: 1.45;
+}
+
+.controls,
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.controls {
+  justify-content: space-between;
+  gap: 6px 10px;
+  border-top: 1px solid var(--line);
+  padding: 6px clamp(13px, 2vw, 22px);
+}
+
+.navigation { gap: 5px; }
+
+.controls button,
+.tryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  white-space: nowrap;
+  font-size: .8125rem;
+  font-weight: 680;
+}
+
+.controls button {
+  min-width: 44px;
+  gap: 5px;
+  padding-inline: 9px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.controls .next {
+  min-width: 78px;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--white);
+}
+
+.controls .next:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+}
+
+.controls .previous:not([aria-disabled="true"]):hover { border-color: var(--accent); }
+
+.controls .previous[aria-disabled="true"] {
+  color: var(--ink-soft);
+  opacity: .55;
+  cursor: default;
+}
+
+.position {
+  min-width: 34px;
+  color: var(--ink-soft);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tryLink {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage:not([data-scene="notes"]) .art { animation: reveal 300ms ease-out both; }
+}
+
+@keyframes reveal {
+  from { transform: translateY(6px); opacity: .45; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 380px) {
+  .navigation { gap: 3px; }
+  .position { min-width: 27px; }
+  .controls .next { min-width: 65px; }
+}
