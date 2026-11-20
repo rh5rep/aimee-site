@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <>
       <SiteHeader activePath="/about" />
-      <main className="container interior" id="main">
+      <main className="container interior" id="main" tabIndex={-1}>
         <header className="page-intro">
           <h1>About <em>Max and Rami</em></h1>
           <p className="lede">Max teaches people to use AI in their work. Rami builds and integrates technical systems.</p>

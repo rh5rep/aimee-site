@@ -84,9 +84,19 @@
 .serviceList a:hover { text-decoration-color: currentColor; }
 .serviceList p { max-width: 31ch; color: var(--ink-soft); }
 
-.example { background: var(--linen); }
+.example {
+  background: var(--linen);
+  padding-block: clamp(35px, 6vw, 78px);
+}
 
-.exampleLayout,
+.exampleIntro { margin-bottom: clamp(20px, 3.5vw, 32px); }
+
+.exampleIntro p {
+  max-width: 54ch;
+  margin-top: 12px;
+  color: var(--ink-soft);
+}
+
 .people {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -95,16 +105,14 @@
   padding-block: clamp(35px, 6vw, 78px);
 }
 
-.exampleLayout > div > p,
 .people > div:first-child > p {
   max-width: 43ch;
   margin-top: 13px;
   color: var(--ink-soft);
 }
 
-.exampleLayout :global(.text-link),
+.example :global(.text-link),
 .people :global(.text-link) { margin-top: 8px; }
-.exampleLayout :global(.sample-figure) { border: 0; padding: 0; background: transparent; }
 
 .peoplePhotos {
   display: flex;
@@ -144,7 +152,7 @@
 .event h2 { margin-top: 3px; font-size: clamp(1.25rem, 2vw, 1.7rem); }
 
 @media (max-width: 720px) {
-  .hero, .exampleLayout, .people { grid-template-columns: 1fr; }
+  .hero, .people { grid-template-columns: 1fr; }
   .hero h1 { max-width: 15ch; }
   .heroPhoto { max-height: 370px; object-fit: cover; }
   .serviceList { grid-template-columns: 1fr; }

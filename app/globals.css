@@ -52,16 +52,28 @@ p + p { margin-top: 12px; }
 
 .skip-link {
   position: absolute;
-  top: 12px;
-  left: 20px;
+  inset-block-start: 4px;
+  inset-inline-start: max(clamp(20px, 5vw, 64px), calc((100% - 1200px) / 2));
   z-index: 10;
-  padding: 9px 16px;
-  transform: translateY(-160%);
-  background: var(--ink);
-  color: var(--white);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-.skip-link:focus { transform: none; }
+.skip-link:focus-visible {
+  width: max-content;
+  height: auto;
+  clip-path: none;
+  padding-inline: 3px;
+  background: var(--paper);
+  color: var(--accent);
+  font-size: .8125rem;
+  line-height: 1.35;
+  text-decoration: underline;
+  outline-offset: 1px;
+}
 
 .site-header { border-bottom: 1px solid var(--line); }
 

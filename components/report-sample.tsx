@@ -1,3 +1,5 @@
+import { reportFollowUp, reportStatus } from "./report-example";
+
 export function ReportSample() {
   return (
     <figure className="sample-figure">
@@ -7,15 +9,15 @@ export function ReportSample() {
           <strong>Weekly operations report</strong>
           <span>Draft</span>
         </div>
-        <p>18 of 20 requests closed this week. Two remain open.</p>
+        <p>{reportStatus.line}</p>
         <dl className="sample-rows">
           <div>
             <dt>Source</dt>
-            <dd>Request tracker, Friday export</dd>
+            <dd>{reportStatus.source}</dd>
           </div>
           <div>
             <dt>Follow-up</dt>
-            <dd><mark>Confirm an owner for request 42.</mark></dd>
+            <dd><mark>{reportFollowUp.line}</mark></dd>
           </div>
         </dl>
       </div>

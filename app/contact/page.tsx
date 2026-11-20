@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <>
       <SiteHeader activePath="/contact" />
-      <main className="container interior" id="main">
+      <main className="container interior" id="main" tabIndex={-1}>
         <header className="page-intro contact-intro">
           <h1>Contact <em>Max and Rami</em></h1>
           <p className="lede">Tell us what you’d like to learn, improve, or build with AI.</p>

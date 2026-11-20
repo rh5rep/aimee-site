@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { reportFollowUp, reportStatus } from "../../components/report-example";
 import { ReportSample } from "../../components/report-sample";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 import { services } from "./services";
@@ -13,7 +14,7 @@ export default function WorkPage() {
   return (
     <>
       <SiteHeader activePath="/work" />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <div className="container">
           <header className="page-intro">
             <h1>Services</h1>
@@ -37,8 +38,8 @@ export default function WorkPage() {
                 <h3>Before</h3>
                 <p>Every Friday, someone starts a new report using a spreadsheet and notes from the team.</p>
                 <dl className="example-inputs">
-                  <div><dt>Request tracker</dt><dd>20 requests, 18 closed.</dd></div>
-                  <div><dt>Team notes</dt><dd>Request 42 still needs an owner.</dd></div>
+                  <div><dt>Request tracker</dt><dd>{reportStatus.excerpt}</dd></div>
+                  <div><dt>Team notes</dt><dd>{reportFollowUp.excerpt}</dd></div>
                 </dl>
               </div>
               <div>

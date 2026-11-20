@@ -1,0 +1,123 @@
+.notebook {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 12px 24px -22px rgb(32 34 30 / 42%);
+}
+
+.draft,
+.review {
+  padding: clamp(18px, 3.5vw, 42px);
+}
+
+.draft h3 {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  font-weight: 400;
+  text-wrap: initial;
+}
+
+.eyebrow,
+.lineLabel {
+  color: var(--accent);
+  font-size: .8125rem;
+  font-weight: 680;
+  line-height: 1.4;
+}
+
+.instruction {
+  margin-top: 8px;
+  color: var(--ink-soft);
+  font-size: .9375rem;
+}
+
+.lines {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.line {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  padding: 10px 40px 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: .9375rem;
+  line-height: 1.38;
+  text-align: left;
+  cursor: pointer;
+}
+
+.line:hover {
+  border-color: var(--accent);
+}
+
+.line[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  box-shadow: inset 3px 0 var(--accent);
+}
+
+.line:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  color: var(--accent);
+  font-size: 1.125rem;
+  transform: translateY(-50%);
+}
+
+.review {
+  border-inline-start: 1px solid var(--line);
+  border-radius: 0 5px 5px 0;
+  background: var(--paper);
+}
+
+.review h3 {
+  margin-top: 9px;
+  font-size: clamp(1.125rem, 1.7vw, 1.375rem);
+  line-height: 1.25;
+  letter-spacing: -.028em;
+  text-wrap: initial;
+}
+
+.excerpt {
+  margin: 13px 0 22px;
+  padding: 5px 0 6px 12px;
+  border-inline-start: 2px solid var(--accent);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.check {
+  max-width: 38ch;
+  margin-top: 7px;
+  color: var(--ink-soft);
+  font-size: .9375rem;
+}
+
+@media (max-width: 680px) {
+  .notebook { grid-template-columns: 1fr; }
+  .review {
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0 0 5px 5px;
+  }
+  .arrow { transform: translateY(-50%) rotate(90deg); }
+}

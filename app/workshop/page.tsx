@@ -33,7 +33,7 @@ export default function WorkshopPage() {
   return (
     <>
       <SiteHeader activePath="/workshop" />
-      <main className="container interior" id="main">
+      <main className="container interior" id="main" tabIndex={-1}>
         <header className={styles.intro}>
           <div>
             <h1>Practical AI <em>for Research</em></h1>

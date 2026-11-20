@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReportSample } from "../components/report-sample";
+import { ReportWalkthrough } from "../components/report-walkthrough";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import styles from "./home.module.css";
 import { services } from "./work/services";
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <section className={`container ${styles.hero}`} aria-labelledby="hero-title">
           <div className={styles.heroCopy}>
             <h1 id="hero-title">Practical AI help <em>for your team</em></h1>
@@ -48,17 +48,17 @@ export default function Home() {
           <Link className="text-link" href="/work#one-on-one">Looking for one-on-one help?</Link>
         </section>
 
-        <section className={styles.example} aria-labelledby="example-title">
-          <div className={`container ${styles.exampleLayout}`}>
-            <div>
-              <h2 id="example-title">What a workflow looks like</h2>
+        <section className={styles.example} id="workflow-example" aria-labelledby="example-title">
+          <div className="container">
+            <header className={styles.exampleIntro}>
+              <h2 id="example-title">Take a report apart</h2>
               <p>
-                A weekly report starts with scattered updates. See how a team can turn those
-                inputs into a draft with source notes and a question to resolve before sending.
+                A request tracker and a few team notes go into this AI-assisted draft.
+                The draft keeps its sources close so your team can check it before sending.
               </p>
-              <Link className="text-link" href="/work#example">See the reporting example</Link>
-            </div>
-            <ReportSample />
+            </header>
+            <ReportWalkthrough />
+            <Link className="text-link" href="/work#example">See how the draft came together</Link>
           </div>
         </section>
 
