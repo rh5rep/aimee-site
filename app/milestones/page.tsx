@@ -5,7 +5,7 @@ import styles from "./milestones.module.css";
 
 export const metadata: Metadata = {
   title: "Milestones | Max + Rami",
-  description: "A small founder timeline for AImee's proposed goals.",
+  description: "A small founder timeline for Max and Rami’s proposed goals.",
   robots: { index: false, follow: false },
 };
 
@@ -21,7 +21,7 @@ export default function MilestonesPage() {
         <section className={styles.hero} aria-labelledby="milestones-title">
           <p className={styles.eyebrow}>THE ROAD WE ARE ON · UPDATED OCTOBER 20, 2026</p>
           <h1 id="milestones-title">A few big steps.<br /><em>Still taking them.</em></h1>
-          <p>Three proposed markers for AImee, from useful early work to the first dollar and beyond. Drag the marker to explore the path. The dated progress below reflects only what has been recorded.</p>
+          <p>Three proposed milestones for Max and Rami, from useful early work to the first dollar and beyond. Drag the marker to explore the path. The dated progress below reflects only what has been recorded.</p>
         </section>
 
         <MilestoneTimeline />

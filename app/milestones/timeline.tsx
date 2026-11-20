@@ -26,7 +26,7 @@ export function MilestoneTimeline() {
         : "Further ahead";
 
   return (
-    <section className={styles.timeline} aria-label="AImee milestone timeline">
+    <section className={styles.timeline} aria-label="Max and Rami milestone timeline">
       <div className={styles.timelineHeader}>
         <div>
           <p className={styles.eyebrow}>MILESTONE TRAIL</p>
@@ -49,7 +49,7 @@ export function MilestoneTimeline() {
           step="1"
           value={selected}
           onChange={(event) => setSelected(Number(event.target.value))}
-          aria-label="Explore AImee milestones"
+          aria-label="Explore Max and Rami’s milestones"
           aria-valuetext={selected === 0 ? "Starting point" : `Milestone ${selected}: ${milestones[selected - 1].shortTitle}`}
         />
         <div className={styles.trackLabels} aria-hidden="true">

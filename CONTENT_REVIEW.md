@@ -18,4 +18,4 @@ Complete this with Max and Rami before publishing or widening outreach.
 - [ ] Check the `/milestones` page's public-safe wording, reported date, and any new `reachedOn` dates against the private goal and decision records before each update.
 - [ ] Check `/workshop` against the approved flyer and organizer details before sharing a QR code. Confirm date, location, audience, prerequisites, registration destination, and any institution name or logo before publishing them.
 
-Record copy changes and new market or offer decisions in the private AImee strategy documents; keep this repository limited to approved public material.
+Use Max + Rami in public copy. The private strategy documents live under the internal AImee project path. Keep this repository limited to approved public material.

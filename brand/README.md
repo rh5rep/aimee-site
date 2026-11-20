@@ -1,6 +1,6 @@
-# AImee working visual identity
+# Max + Rami brand notes
 
-This folder is the shared source for AImee colors across the website, editable documents, presentations, images, and future logo work. Rami liked the first website palette on September 24, 2026. The values are a **working system**, not a final logo or full brand approval from both founders.
+Max + Rami is the public name. AImee remains the familiar internal project reference and the name on the original brand samples. The preview colors and logo studies are provisional.
 
 ## Original AImee palette
 
