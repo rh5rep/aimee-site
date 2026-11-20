@@ -11,7 +11,7 @@ const brandColors = Object.fromEntries(
 ) as CSSProperties;
 
 export const metadata: Metadata = {
-  title: "Max + Rami | Practical AI for real work",
+  title: "Max + Rami | AI training and implementation",
   description:
     "Max and Rami help individuals and teams learn, design, and implement AI workflows they can review and reuse.",
   robots: { index: false, follow: false },

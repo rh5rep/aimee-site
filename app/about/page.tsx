@@ -1,13 +1,45 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Arrow, SiteFooter, SiteHeader } from "../../components/site-shell";
+import { SiteFooter, SiteHeader } from "../../components/site-shell";
 
-export const metadata: Metadata = { title: "About us | Max + Rami" };
+export const metadata: Metadata = { title: "About | Max + Rami" };
+
 export default function AboutPage() {
-  return <><SiteHeader /><main id="main"><section className="page-hero" aria-labelledby="title"><div className="container page-hero-grid"><div><p className="eyebrow">ABOUT US</p><h1 id="title">Research and engineering, <em>side by side.</em></h1></div><p>Max brings experience using and teaching AI in research. Rami brings experience building and integrating technical systems. We use both perspectives to teach, design, and build workflows people can use in their own work.</p></div></section>
-    <section className="about-section section-pad" aria-labelledby="people-title"><div className="container"><div className="section-top"><p className="eyebrow">THE PEOPLE BEHIND THE WORK</p><span className="section-count">MAX + RAMI</span></div><h2 className="section-lead" id="people-title">Two perspectives. <em>One shared curiosity.</em></h2><div className="founder-grid"><article className="founder"><div className="founder-image"><Image src="/images/max-portrait.webp" alt="Portrait of Max Horton" fill sizes="(max-width: 700px) 100vw, 280px" /></div><div className="founder-copy"><span className="founder-label">RESEARCH + TEACHING</span><h3>Max Horton</h3><p>Max is a graduate student at Albert Einstein College of Medicine studying liver aging. He has used AI in his academic work since late 2022 and has given lectures, led workshops, and worked one-on-one with researchers on practical AI use. He also writes on Substack about AI in knowledge work.</p></div></article><article className="founder"><div className="founder-image"><Image src="/images/rami-portrait.webp" alt="Portrait of Rami Hanna" fill sizes="(max-width: 700px) 100vw, 280px" /></div><div className="founder-copy"><span className="founder-label">ENGINEERING + SYSTEMS</span><h3>Rami Hanna</h3><p>Rami is a robotics engineer with a master&apos;s degree in autonomous systems engineering. His hands-on work spans sensing, computer vision, systems integration, and ML-based tools. He brings an engineer&apos;s habit of making an approach observable, testing it, and improving what does not hold up.</p></div></article></div></div></section>
-    <section className="photo-section" aria-label="Max presenting research at Einstein"><div className="container photo-layout"><div className="photo-frame"><Image src="/images/max-presenting.webp" alt="Max Horton presenting research on liver aging in a classroom" fill sizes="(max-width: 800px) 100vw, 60vw" /></div><div className="photo-caption"><span>IN THE ROOM</span><p>Teaching works best when there is room to ask, try, question, and try again.</p><small>Max presenting his liver aging research at Einstein.</small></div></div></section>
-    <section className="next-section section-pad"><div className="container next-layout"><div><p className="eyebrow">WORK WITH US</p><h2>Tell us what <em>you are exploring.</em></h2></div><div><p>Tell us what you’d like to learn, improve, or build.</p><Link className="button button-primary" href="/contact">Start a conversation <Arrow /></Link></div></div></section>
-  </main><SiteFooter /></>;
+  return (
+    <>
+      <SiteHeader activePath="/about" />
+      <main className="container interior" id="main">
+        <header className="page-intro">
+          <h1>About Max and Rami</h1>
+          <p className="lede">Max teaches people to use AI in their work. Rami builds and integrates technical systems.</p>
+        </header>
+        <div className="bio-list">
+          <article>
+            <Image src="/images/max-portrait.webp" alt="Max Horton" width={160} height={160} />
+            <div>
+              <h2>Max Horton</h2>
+              <p>Max is a graduate student at Albert Einstein College of Medicine studying liver aging. He has used AI in his academic work since late 2022 and has given lectures, led workshops, and worked one-on-one with researchers. He writes on Substack about AI in knowledge work.</p>
+            </div>
+          </article>
+          <article>
+            <Image src="/images/rami-portrait.webp" alt="Rami Hanna" width={160} height={160} />
+            <div>
+              <h2>Rami Hanna</h2>
+              <p>Rami is a robotics engineer with a master’s degree in autonomous systems engineering. His work spans sensing, computer vision, systems integration, and ML-based tools.</p>
+            </div>
+          </article>
+        </div>
+        <figure className="teaching-photo">
+          <Image src="/images/max-presenting.webp" alt="Max Horton at the front of a classroom with a research slide on screen" width={1200} height={1600} />
+          <figcaption>Max presenting his liver aging research at Einstein.</figcaption>
+        </figure>
+        <div className="contact-strip">
+          <Link className="text-link" href="/work">View services</Link>
+          <Link className="button" href="/contact">Discuss a project</Link>
+        </div>
+      </main>
+      <SiteFooter />
+    </>
+  );
 }

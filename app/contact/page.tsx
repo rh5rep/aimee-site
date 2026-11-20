@@ -1,11 +1,38 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Arrow, email, SiteFooter, SiteHeader, taskEmail } from "../../components/site-shell";
+import { email, SiteFooter, SiteHeader, taskEmail } from "../../components/site-shell";
 
 export const metadata: Metadata = { title: "Contact | Max + Rami" };
+
 export default function ContactPage() {
-  return <><SiteHeader /><main id="main"><section className="page-hero contact-hero" aria-labelledby="title"><div className="container page-hero-grid"><div><p className="eyebrow">START A CONVERSATION</p><h1 id="title">What would you like to <em>learn or build?</em></h1></div><div><p>Tell us what you or your team want to do with AI. A task you’d like to improve, an idea for a workshop, or a workflow you want to build is enough to start.</p><a className="button button-primary" href={taskEmail}>Email Max and Rami <Arrow /></a><a className="plain-email" href={`mailto:${email}`}>{email}</a></div></div></section>
-    <section className="contact-guide section-pad" aria-labelledby="guide-title"><div className="container"><div className="section-top"><p className="eyebrow">A USEFUL FIRST NOTE</p><span className="section-count">NO FORM REQUIRED</span></div><h2 id="guide-title">A few details help us <em>start well.</em></h2><div className="guide-grid"><article><span>01</span><h3>The task</h3><p>What would you like to learn, improve, or build?</p></article><article><span>02</span><h3>The sticking point</h3><p>Where does the current process feel slow, inconsistent, or hard to check?</p></article><article><span>03</span><h3>Your starting point</h3><p>Who does the work, and what have you already tried with AI?</p></article></div><p className="privacy-note">Please leave confidential work, personal information, and private files out of the first email. We can discuss appropriate information boundaries together.</p></div></section>
-    <section className="next-section section-pad"><div className="container next-layout"><div><p className="eyebrow">LOOKING FOR THE EINSTEIN SESSIONS?</p><h2>The research workshops <em>have their own page.</em></h2></div><div><p>See the two December workshops and their practical details.</p><Link className="button button-primary" href="/workshop">View workshop details <Arrow /></Link></div></div></section>
-  </main><SiteFooter /></>;
+  return (
+    <>
+      <SiteHeader activePath="/contact" />
+      <main className="container interior" id="main">
+        <header className="page-intro contact-intro">
+          <h1>Contact Max and Rami</h1>
+          <p className="lede">Tell us what you’d like to learn, improve, or build with AI.</p>
+          <div className="actions">
+            <a className="button" href={taskEmail}>Write an email</a>
+            <a className="text-link" href={`mailto:${email}`}>{email}</a>
+          </div>
+        </header>
+        <section className="contact-guidance" aria-labelledby="email-title">
+          <h2 id="email-title">What to include</h2>
+          <div>
+            <ul>
+              <li>The task you’d like help with</li>
+              <li>Who does it today and where they get stuck</li>
+              <li>What you’ve already tried, if anything</li>
+            </ul>
+            <p>Please keep confidential files and personal information out of your first email.</p>
+          </div>
+        </section>
+        <div className="contact-strip">
+          <Link className="text-link" href="/workshop">Looking for the Einstein workshops?</Link>
+        </div>
+      </main>
+      <SiteFooter />
+    </>
+  );
 }

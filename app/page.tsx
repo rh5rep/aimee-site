@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ReportSample } from "../components/report-sample";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { services } from "./work/services";
 
@@ -7,37 +9,33 @@ export default function Home() {
     <>
       <SiteHeader />
       <main id="main">
-        <section className="hero home-hero" aria-labelledby="hero-title">
-          <div className="container hero-content">
-            <div className="hero-main">
-              <h1 id="hero-title">Make AI useful in the work <em>you already do.</em></h1>
-              <p className="hero-lede">
-                We help individuals and teams learn to use AI, improve recurring tasks,
-                and build workflows they can run and review.
-              </p>
-              <div className="hero-actions">
-                <Link className="button button-primary" href="/contact">Tell us about your work</Link>
-                <Link className="button button-secondary" href="/work">Explore services</Link>
-              </div>
+        <section className="container home-hero" aria-labelledby="hero-title">
+          <div>
+            <h1 id="hero-title">AI training and implementation</h1>
+            <p className="lede">
+              We teach people to use AI on their own work and help teams build workflows they can run,
+              review, and maintain.
+            </p>
+            <div className="actions">
+              <Link className="button" href="/contact">Discuss a project</Link>
+              <Link className="text-link" href="/work">View services</Link>
             </div>
-            <aside className="hero-aside hero-example" aria-labelledby="hero-example-title">
-              <span className="eyebrow">ILLUSTRATIVE EXAMPLE</span>
-              <h2 id="hero-example-title">A better way to prepare a weekly report.</h2>
-              <p>Turn team notes and a spreadsheet into a draft with checks your team can repeat.</p>
-              <Link className="text-link" href="/work#example">See the before and after</Link>
-            </aside>
+          </div>
+          <div className="hero-sample">
+            <ReportSample />
+            <Link className="text-link" href="/work#example">See how the report was made</Link>
           </div>
         </section>
 
-        <section className="home-links section-pad" aria-labelledby="services-title">
-          <div className="container">
-            <h2 id="services-title">How we can <em>help.</em></h2>
-            <ul className="service-links">
+        <section className="section-rule" aria-labelledby="services-title">
+          <div className="container split-section">
+            <h2 id="services-title">Services</h2>
+            <ul className="service-index">
               {services.map((service) => (
                 <li key={service.id}>
                   <Link href={`/work#${service.id}`}>
-                    <h3>{service.title}</h3>
-                    <p>{service.summary}</p>
+                    <strong>{service.title}</strong>
+                    <span>{service.summary}</span>
                   </Link>
                 </li>
               ))}
@@ -45,22 +43,31 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="home-event" aria-labelledby="event-title">
-          <div className="container home-event-inner">
+        <section className="founder-band" aria-labelledby="founders-title">
+          <div className="container split-section">
             <div>
-              <p className="eyebrow">DECEMBER 7–8, 2026 · EINSTEIN CAMPUS</p>
-              <h2 id="event-title">Practical AI for Research</h2>
-              <p>Two hands-on sessions on experimental planning and scientific writing.</p>
+              <h2 id="founders-title">Max and Rami</h2>
+              <Link className="text-link" href="/about">Meet the founders</Link>
             </div>
-            <Link className="button button-secondary" href="/workshop">See workshop details</Link>
+            <div className="founder-pair">
+              <div>
+                <Image src="/images/max-portrait.webp" alt="" width={64} height={64} />
+                <div><h3>Max Horton</h3><p>Research and teaching</p></div>
+              </div>
+              <div>
+                <Image src="/images/rami-portrait.webp" alt="" width={64} height={64} />
+                <div><h3>Rami Hanna</h3><p>Engineering and systems integration</p></div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="home-contact section-pad" aria-labelledby="contact-title">
-          <div className="container home-contact-row">
-            <h2 id="contact-title">What would you like to <em>make easier?</em></h2>
-            <Link className="button button-light" href="/contact">Start a conversation</Link>
+        <section className="container event-strip" aria-labelledby="event-title">
+          <div>
+            <p className="meta">December 7–8, 2026 · Einstein campus</p>
+            <h2 id="event-title">Practical AI for Research</h2>
           </div>
+          <Link className="text-link" href="/workshop">Workshop details</Link>
         </section>
       </main>
       <SiteFooter />
