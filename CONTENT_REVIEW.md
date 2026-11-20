@@ -3,8 +3,8 @@
 Complete this with Max and Rami before publishing or widening outreach.
 
 - [ ] The opening accurately describes who Max and Rami can help now.
-- [ ] The task examples are plausible invitations, not representations of completed client work.
-- [ ] The task-focused session description matches what Max and Rami can currently deliver.
+- [ ] Illustrative examples are labeled, and any real examples have permission and evidence for the claims shown.
+- [ ] The workshop, one-on-one, workflow design, and implementation descriptions match what Max and Rami can currently deliver.
 - [ ] Every outcome or capability claim has a source or is clearly phrased as an aim or approach.
 - [ ] No client names, testimonials, measured results, prices, duration, credentials, or specialist assurances have been added without approval and evidence.
 - [ ] Max and Rami approve their names and any role labels shown publicly.

@@ -1,6 +1,6 @@
 # Max + Rami website
 
-Public-facing site for Max and Rami's practical AI teaching, with separate pages for the work, approach, founders, contact, and research workshops. The unlinked milestone page remains a public founder corner. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
+Public-facing site for Max and Rami’s AI training, workflow design, and implementation. The site has separate pages for services, approach, founders, contact, and the Einstein workshops. The unlinked milestone page remains a public founder corner. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
 
 ## Local development
 
@@ -19,7 +19,7 @@ Public page copy lives in `app/`; the shared navigation, footer, and current con
 
 The unlinked `/milestones` page is a public founder snapshot. Its three proposed goals are summarized in `app/milestones/data.ts`, without private source files. A slider lets visitors explore them; the dated progress line is derived only from `reachedOn` values. The first goal currently shows “reported Oct 20” and no confirmed completion date. Update the private goal or decision record first, then edit the public dates and copy here. This route has `noindex`, but anyone with the URL can view it.
 
-The `/workshop` route is the stable destination for the flyer or QR code. It uses neutral Max + Rami wording while the business name is unsettled. Its dates, times, topics, audience, and Einstein campus location come from the supplied version 13 flyer. The room and registration link remain pending. When the organizer approves a registration link, set `NEXT_PUBLIC_WORKSHOP_REGISTRATION_URL` in Netlify and trigger a new build. Preserve this route after printing a QR code.
+The `/workshop` route is the stable destination for the flyer or QR code. It uses neutral Max + Rami wording while the business name is unsettled. Its dates, times, and topics follow the current workshop flyer. Confirm the rooms with the organizer before adding them. Registration remains pending until the organizer provides a link. When the organizer approves a registration link, set `NEXT_PUBLIC_WORKSHOP_REGISTRATION_URL` in Netlify and trigger a new build. Preserve this route after printing a QR code.
 
 ## Visual identity
 

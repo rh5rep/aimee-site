@@ -13,7 +13,7 @@ const brandColors = Object.fromEntries(
 export const metadata: Metadata = {
   title: "Max + Rami | Practical AI for real work",
   description:
-    "Max and Rami teach practical AI through real tasks, human review, and reusable methods.",
+    "Max and Rami help individuals and teams learn, design, and implement AI workflows they can review and reuse.",
   robots: { index: false, follow: false },
 };
 

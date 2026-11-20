@@ -1,17 +1,88 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Arrow, SiteFooter, SiteHeader } from "../../components/site-shell";
+import { SiteFooter, SiteHeader } from "../../components/site-shell";
+import { services } from "./services";
 
-export const metadata: Metadata = { title: "What we do | Max + Rami" };
-const examples = [
-  { number: "01", type: "RESEARCH", title: "Make the next question clearer.", body: "Explore an experimental plan, a troubleshooting question, or a body of literature. Surface assumptions before deciding what to try." },
-  { number: "02", type: "WRITING", title: "Revise without losing your meaning.", body: "Use AI to examine structure and clarity in a draft, then decide which suggestions actually improve it." },
-  { number: "03", type: "RECURRING WORK", title: "Turn a good first pass into a method.", body: "Document the context, checks, and decisions that make a useful approach easier to repeat." },
-];
+export const metadata: Metadata = {
+  title: "What we do | Max + Rami",
+  description: "Hands-on AI workshops, one-on-one sessions, team workflow design, and implementation.",
+};
+
 export default function WorkPage() {
-  return <><SiteHeader /><main id="main"><section className="page-hero" aria-labelledby="title"><div className="container page-hero-grid"><div><p className="eyebrow">WHAT WE DO</p><h1 id="title">Practical AI starts with <em>a real task.</em></h1></div><p>We create space to work with AI, not just hear about it. The task gives the teaching its shape: what context matters, what a useful first result looks like, and how to check it.</p></div></section>
-    <section className="work-section section-pad" aria-labelledby="examples-title"><div className="container"><div className="section-top"><p className="eyebrow">EXAMPLES OF WORK</p><span className="section-count">POSSIBLE STARTING POINTS</span></div><div className="work-intro"><h2 id="examples-title">Work worth <em>thinking through.</em></h2><div><p>There is no need to arrive with a perfect AI use case. A question you already face is enough to begin.</p><p className="small-note">These examples are invitations, not representations of completed client projects.</p></div></div><div className="work-grid">{examples.map((item) => <article className="work-card" key={item.number}><div className="work-card-top"><span>{item.number}</span><span>{item.type}</span></div><h3>{item.title}</h3><p>{item.body}</p><span className="work-card-rule" /></article>)}</div></div></section>
-    <section className="format-section section-pad" aria-labelledby="format-title"><div className="container"><div className="section-top"><p className="eyebrow">HOW WE CAN BEGIN</p><span className="section-count">A FORMAT THAT FITS THE WORK</span></div><div className="format-layout"><h2 id="format-title">Learn together, then <em>try it yourself.</em></h2><div className="format-items"><article><span>01 / WORKSHOPS</span><h3>Practice in a small group.</h3><p>We guide a shared exercise, explain decisions as we go, and leave room to examine where AI helps and where it needs correction.</p></article><article><span>02 / TASK-FOCUSED SESSIONS</span><h3>Bring your own question.</h3><p>A conversation can help us find a manageable task and decide whether a focused working session makes sense. Scope and format are agreed around the actual work.</p></article></div></div></div></section>
-    <section className="next-section section-pad"><div className="container next-layout"><div><p className="eyebrow">NEXT STEP</p><h2>Tell us what <em>you are working on.</em></h2></div><div><p>A brief description of the task, what makes it difficult, and who does the work is plenty. Please keep confidential material out of an initial note.</p><Link className="button button-primary" href="/contact">Start a conversation <Arrow /></Link></div></div></section>
-  </main><SiteFooter /></>;
+  return (
+    <>
+      <SiteHeader />
+      <main id="main">
+        <section className="page-hero" aria-labelledby="title">
+          <div className="container page-hero-grid">
+            <div>
+              <p className="eyebrow">WHAT WE DO</p>
+              <h1 id="title">AI training and <em>workflow support.</em></h1>
+            </div>
+            <p>
+              Learn a method on your own work, design a better process with your team,
+              or bring us in to help build it.
+            </p>
+          </div>
+        </section>
+
+        <section className="format-section offer-section section-pad" aria-labelledby="services-title">
+          <div className="container format-layout">
+            <div>
+              <h2 id="services-title">Ways to work <em>with us.</em></h2>
+              <p>Start with a task you have in mind. We can help you choose a useful scope and a way to check the result.</p>
+            </div>
+            <div className="format-items">
+              {services.map((service) => (
+                <article key={service.id} id={service.id}>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="workflow-example section-pad" id="example" aria-labelledby="example-title">
+          <div className="container">
+            <p className="eyebrow">ILLUSTRATIVE EXAMPLE</p>
+            <h2 id="example-title">From scattered updates to a <em>weekly report.</em></h2>
+            <div className="workflow-comparison">
+              <div className="workflow-panel">
+                <h3>Before</h3>
+                <p>
+                  Each Friday, someone combines updates from team notes and a spreadsheet.
+                  The draft gets written from scratch, and missing updates surface during review.
+                </p>
+              </div>
+              <div className="workflow-panel">
+                <h3>After</h3>
+                <ol>
+                  <li>Use this week’s notes and the approved spreadsheet.</li>
+                  <li>Have AI draft the report in the team’s format and flag missing updates.</li>
+                  <li>Compare totals with the spreadsheet and resolve discrepancies before sending.</li>
+                </ol>
+              </div>
+            </div>
+            <p className="workflow-caption">
+              The team saves the report template and checklist, then tries them on another week’s inputs.
+              A person reviews the draft before it goes out.
+            </p>
+            <Link className="text-link" href="/approach">Read how we test and hand off workflows</Link>
+          </div>
+        </section>
+
+        <section className="next-section section-pad" aria-labelledby="contact-title">
+          <div className="container next-layout">
+            <h2 id="contact-title">What part of your work <em>could be easier?</em></h2>
+            <div>
+              <p>Tell us what you want to improve, who does the work, and where they get stuck.</p>
+              <Link className="button button-primary" href="/contact">Start a conversation</Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </>
+  );
 }
