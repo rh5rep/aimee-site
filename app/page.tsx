@@ -72,6 +72,7 @@ export default function Home() {
               </p>
             </div>
           </div>
+          <Link className="text-link" href="/review">Review your own draft</Link>
         </section>
 
         <section className={styles.example} id="workflow-example" aria-labelledby="example-title">

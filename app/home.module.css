@@ -88,6 +88,8 @@
   border-top: 1px solid var(--line);
 }
 
+.draftReview :global(.text-link) { margin-top: 8px; }
+
 .draftReview .reviewLabel {
   margin: 0 0 7px;
   color: var(--accent);

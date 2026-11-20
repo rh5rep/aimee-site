@@ -25,6 +25,14 @@ The `/workshop` route is the stable destination for the flyer or QR code. It use
 
 The preview reads its color roles from [`brand/website-palette.json`](brand/website-palette.json). The original [AImee palette](brand/palette.json) remains the reference for existing slide and document samples. The site uses the plain text name Max + Rami while logo work is in review. The homepage uses an AI-generated worktable still life as an illustration. Founder imagery uses the existing portraits and the photograph of Max presenting at Einstein. Rami’s portrait comes from the public portfolio source asset `rami-profile-2026.jpg`, resized for the web.
 
+## Draft reviewer
+
+The `/review` page accepts pasted text and plain text or Markdown files. The sample and the writing checks run in the browser. The live reviewer adapts Max’s workshop review method into a server-side prompt and anchors feedback to exact passages from the submitted draft.
+
+The `review-draft` Netlify Function serves `/api/review-draft`. It uses Netlify AI Gateway when the site has an eligible plan and the Gateway supplies the Anthropic environment variables. An Anthropic API key can also be supplied as a server-side environment variable. The default model is Claude Haiku 5.5. Set `DRAFT_REVIEW_MODEL` in the function environment to choose another Anthropic model that supports structured outputs. Keep keys in the function environment. With plain `npm run dev`, the page uses the sample and browser checks. To exercise live review locally, use Netlify Dev with the linked site and an available Gateway or server-side key.
+
+Live review sends the submitted draft, writing goal, and source notes through the function to the model. The function keeps no submissions. Netlify function usage and model calls may consume plan credits. Review the deployed function and usage limits before sharing the live reviewer widely.
+
 ## Netlify
 
 The project uses Next.js App Router, TypeScript, and Tailwind. Netlify detects Next.js and uses its maintained adapter; no adapter version is pinned in this project. Connect only this repository to Netlify. Review the temporary `*.netlify.app` URL with the founders before using it in outreach. A custom domain can be added later.
