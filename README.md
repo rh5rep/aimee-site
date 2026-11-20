@@ -23,7 +23,7 @@ The `/workshop` route is the stable destination for the flyer or QR code. It use
 
 ## Visual identity
 
-The working color schema is in [`brand/palette.json`](brand/palette.json), with usage notes in [`brand/README.md`](brand/README.md). The website reads its core CSS variables from that palette. The public identity now reads Max + Rami; the palette is still the starting point for AImee document and presentation templates. The wordmark and favicon remain provisional.
+The working color schema is in [`brand/palette.json`](brand/palette.json), with usage notes in [`brand/README.md`](brand/README.md). The website reads its core CSS variables from that palette. The public identity now reads Max + Rami; the palette is still the starting point for AImee document and presentation templates. The wordmark and favicon remain provisional. The homepage pairs the existing photograph of Max presenting at Einstein with Rami’s public portfolio portrait from the portfolio source asset `rami-profile-2026.jpg`, resized for the web.
 
 ## Netlify
 

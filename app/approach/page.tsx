@@ -17,7 +17,7 @@ export default function ApproachPage() {
       <SiteHeader activePath="/approach" />
       <main className="container interior" id="main">
         <header className="page-intro">
-          <h1>How we work</h1>
+          <h1>How we <em>work</em></h1>
           <p className="lede">We start with one real task and make sure the person doing it can check and repeat the work.</p>
         </header>
         <ol className="method-list">

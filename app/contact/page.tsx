@@ -10,7 +10,7 @@ export default function ContactPage() {
       <SiteHeader activePath="/contact" />
       <main className="container interior" id="main">
         <header className="page-intro contact-intro">
-          <h1>Contact Max and Rami</h1>
+          <h1>Contact <em>Max and Rami</em></h1>
           <p className="lede">Tell us what you’d like to learn, improve, or build with AI.</p>
           <div className="actions">
             <a className="button" href={taskEmail}>Write an email</a>

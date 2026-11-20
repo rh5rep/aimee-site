@@ -36,7 +36,7 @@ export default function WorkshopPage() {
       <main className="container interior" id="main">
         <header className={styles.intro}>
           <div>
-            <h1>Practical AI for Research</h1>
+            <h1>Practical AI <em>for Research</em></h1>
             <p className={`lede ${styles.description}`}>Two hands-on workshops on experimental planning and scientific writing.</p>
             <a className="text-link" href="#sessions">View the sessions</a>
           </div>

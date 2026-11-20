@@ -11,19 +11,19 @@ export default function AboutPage() {
       <SiteHeader activePath="/about" />
       <main className="container interior" id="main">
         <header className="page-intro">
-          <h1>About Max and Rami</h1>
+          <h1>About <em>Max and Rami</em></h1>
           <p className="lede">Max teaches people to use AI in their work. Rami builds and integrates technical systems.</p>
         </header>
         <div className="bio-list">
-          <article>
+          <article id="max">
             <Image src="/images/max-portrait.webp" alt="Max Horton" width={160} height={160} />
             <div>
               <h2>Max Horton</h2>
               <p>Max is a graduate student at Albert Einstein College of Medicine studying liver aging. He has used AI in his academic work since late 2022 and has given lectures, led workshops, and worked one-on-one with researchers. He writes on Substack about AI in knowledge work.</p>
             </div>
           </article>
-          <article>
-            <Image src="/images/rami-portrait.webp" alt="Rami Hanna" width={160} height={160} />
+          <article id="rami">
+            <Image src="/images/rami-portfolio.jpg" alt="Rami Hanna" width={768} height={1150} />
             <div>
               <h2>Rami Hanna</h2>
               <p>Rami is a robotics engineer with a master’s degree in autonomous systems engineering. His work spans sensing, computer vision, systems integration, and ML-based tools.</p>

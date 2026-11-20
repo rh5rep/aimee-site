@@ -11,6 +11,14 @@
   margin-bottom: 18px;
 }
 
+.intro h1 em {
+  color: var(--studio-accent);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+}
+
 .description {
   max-width: 39ch;
 }
@@ -21,8 +29,9 @@
 
 .visit {
   padding: clamp(20px, 3vw, 31px);
-  border: 1px solid var(--line);
-  background: var(--white);
+  border: 1px solid var(--studio-ink);
+  background: var(--studio-ink);
+  color: var(--paper);
 }
 
 .visit h2 {
@@ -39,12 +48,13 @@
   grid-template-columns: minmax(88px, .6fr) 1fr;
   gap: 10px;
   padding-block: 11px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid #5d566d;
   font-size: .9375rem;
 }
 
 .visit dt,
-.visit small,
+.visit small { color: #dbd5e3; }
+
 .sessionTime span,
 .audience {
   color: var(--ink-soft);
@@ -64,7 +74,13 @@
 
 .visit a {
   margin-top: 14px;
+  border-color: var(--peach);
+  background: var(--peach);
+  color: var(--studio-ink);
 }
+
+.visit a:hover { background: #f7c5a7; }
+.visit a:focus-visible { outline-color: var(--peach); }
 
 .sessions {
   padding-block: 36px 48px;
