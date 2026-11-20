@@ -10,6 +10,21 @@ export const metadata: Metadata = {
   description: "Hands-on AI workshops, one-on-one sessions, team workflow design, and implementation.",
 };
 
+const workExamples = [
+  {
+    title: "Give a draft a second set of eyes",
+    description: "In a writing workshop demo, we read a draft from several angles and asked what readers would take away, which claims needed stronger evidence, and which edits might change the author’s meaning.",
+  },
+  {
+    title: "Make the next report easier to hand over",
+    description: "In a working session, we made a first pass at updating an annual report from newer sources. We reviewed the proposed changes with the author and used last year’s files to draft a checklist for the next reporting cycle.",
+  },
+  {
+    title: "Make project files easier to find",
+    description: "We reviewed a proposed structure for older project files, using a folder that already worked for the person as a guide.",
+  },
+];
+
 export default function WorkPage() {
   return (
     <>
@@ -19,8 +34,8 @@ export default function WorkPage() {
           <header className="page-intro">
             <h1>Services</h1>
             <p className="lede">
-              Bring a task your team does often. We’ll talk through where the work gets stuck
-              and what would make it easier.
+              Bring a draft, a pile of source material, or a task your team does often.
+              We’ll talk through where the work gets stuck and what would make it easier.
             </p>
             <p className="scope-note">
               The task, your tools, and the people doing the work shape the format and timing.
@@ -36,6 +51,18 @@ export default function WorkPage() {
             ))}
           </div>
         </div>
+
+        <section className="container" id="examples" aria-labelledby="examples-title">
+          <h2 className="work-examples-title" id="examples-title">Examples from our work</h2>
+          <div className="service-list">
+            {workExamples.map((example) => (
+              <div className="work-example" key={example.title}>
+                <h3>{example.title}</h3>
+                <p>{example.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="example-band" id="example" aria-labelledby="example-title">
           <div className="container">

@@ -76,6 +76,12 @@
 .serviceList a:hover { text-decoration-color: currentColor; }
 .serviceList p { max-width: 31ch; color: var(--ink-soft); }
 
+.serviceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+}
+
 .example {
   background: var(--linen);
   padding-block: clamp(35px, 6vw, 78px);

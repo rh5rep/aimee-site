@@ -17,9 +17,9 @@ export default function Home() {
           <div className={styles.heroCopy}>
             <h1 id="hero-title">Practical AI help <em>for your team</em></h1>
             <p>
-              We’re Max and Rami. We help owners and teams at small and midsize tech companies
-              take some of the grind out of everyday work. We run hands-on workshops and build
-              AI workflows with the people who’ll use them.
+              We’re Max and Rami. We help teams use AI to review drafts, make sense of source
+              material, and take some of the grind out of recurring work. We teach and build
+              alongside the people who do the work.
             </p>
             <div className="actions">
               <Link className="button" href="#services">See how we can help</Link>
@@ -39,7 +39,10 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <Link className="text-link" href="/work#one-on-one">Looking for one-on-one help?</Link>
+          <div className={styles.serviceLinks}>
+            <Link className="text-link" href="/work#examples">Examples from our work</Link>
+            <Link className="text-link" href="/work#one-on-one">Looking for one-on-one help?</Link>
+          </div>
         </section>
 
         <section className={styles.example} id="workflow-example" aria-labelledby="example-title">

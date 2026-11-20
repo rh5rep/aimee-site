@@ -252,6 +252,7 @@ p + p { margin-top: 12px; }
 }
 
 .service-list section,
+.work-example,
 .contact-guidance {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
@@ -262,6 +263,7 @@ p + p { margin-top: 12px; }
 }
 
 .service-list h2 { font-size: clamp(1.25rem, 2.25vw, 1.7rem); }
+.work-examples-title { margin-bottom: 20px; }
 .service-list p,
 .contact-guidance p { color: var(--ink-soft); }
 
@@ -328,7 +330,7 @@ p + p { margin-top: 12px; }
   .header-inner { align-items: flex-start; flex-direction: column; gap: 2px; padding-top: 13px; }
   .main-nav a { font-size: .875rem; }
   .main-nav .nav-contact { min-height: 44px; border: 0; padding: 0; }
-  .service-list section, .contact-guidance { grid-template-columns: 1fr; }
+  .service-list section, .work-example, .contact-guidance { grid-template-columns: 1fr; }
   .footer-inner { min-height: 0; padding-block: 17px; flex-wrap: wrap; gap: 4px 20px; }
 }
 
