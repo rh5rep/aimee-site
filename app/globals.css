@@ -4,7 +4,7 @@
 
 :root {
   --font-sans: "Avenir Next", "Segoe UI", sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-display: "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
   --font-mono: "SFMono-Regular", Consolas, monospace;
 }
 
@@ -36,7 +36,7 @@ h1, h2, h3 {
   text-wrap: balance;
 }
 
-h1 { font-size: clamp(2.75rem, 5.45vw, 4.75rem); line-height: 1.04; letter-spacing: -.065em; }
+h1 { font-family: var(--font-display); font-size: clamp(2.625rem, 5vw, 4rem); font-weight: 400; line-height: 1.06; letter-spacing: -.046em; }
 h2 { font-size: clamp(1.6rem, 2.8vw, 2.3rem); }
 h3 { font-size: clamp(1.15rem, 1.8vw, 1.45rem); }
 p + p { margin-top: 12px; }
@@ -117,12 +117,11 @@ p + p { margin-top: 12px; }
 .main-nav .nav-contact[aria-current="page"] { border-color: var(--ink); }
 
 .site-footer {
-  background: var(--ink);
-  color: var(--paper);
+  border-top: 1px solid var(--line);
+  background: var(--linen);
 }
 
-.footer-inner { min-height: 91px; }
-.site-footer a:focus-visible { outline-color: var(--accent-on-ink); }
+.footer-inner { min-height: 88px; }
 
 .button {
   display: inline-flex;
@@ -253,7 +252,7 @@ p + p { margin-top: 12px; }
 .service-list p,
 .contact-guidance p { color: var(--ink-soft); }
 
-.example-band { padding-block: clamp(38px, 6vw, 78px); background: var(--accent-tint); }
+.example-band { padding-block: clamp(38px, 6vw, 78px); background: var(--linen); }
 .example-band h2 { margin-bottom: 26px; }
 
 .example-grid {
@@ -296,7 +295,6 @@ p + p { margin-top: 12px; }
 }
 
 .bio-list img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: var(--accent-tint); }
-.bio-list img, .teaching-photo img { filter: grayscale(1); }
 .bio-list h2 { margin-bottom: 7px; font-size: 1.55rem; }
 .bio-list p { color: var(--ink-soft); }
 

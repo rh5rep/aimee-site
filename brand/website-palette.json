@@ -4,15 +4,12 @@
   "colors": {
     "paper": "#F5F3EB",
     "white": "#FCFBF7",
+    "linen": "#EEE9DE",
     "ink": "#20221E",
     "inkSoft": "#56584F",
     "line": "#D9D9CE",
-    "onInkMuted": "#CDCFC4",
-    "onInkLine": "#51544A",
     "accent": "#455532",
     "accentHover": "#323F23",
-    "accentTint": "#E7EADC",
-    "accentOnInk": "#CDD7A6",
-    "accentOnInkHover": "#DEE6BE"
+    "accentTint": "#E7EADC"
   }
 }

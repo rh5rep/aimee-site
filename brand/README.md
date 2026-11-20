@@ -33,6 +33,6 @@ Create one sample document page and one sample slide using this palette; review 
 
 ## Website color study · November 20, 2026
 
-The preview uses [website-palette.json](website-palette.json). Paper and ink carry the layout. Olive is the single accent family, with a dark tone for text and buttons on paper, a pale tone on dark surfaces, and a tint for examples. Use the shared color roles in each page instead of introducing page-specific colors. Photography on the site is currently monochrome. The shared document palette above is still the reference for the existing template samples.
+The preview uses [website-palette.json](website-palette.json). Warm paper and ink carry the layout. Use olive for the main actions and restrained accents, with linen for secondary sections. The homepage worktable illustration adds warmth through natural light and wood tones. Founder photography is presented as portraiture. The shared document palette above is still the reference for the existing template samples.
 
 [Order](https://order.design/) puts its project images against a neutral interface. [Manual’s Dwell House project](https://manual.studio/work/dwell-house) gives documentary imagery room to communicate character, with restrained page styling. [Instrument](https://www.instrument.com/home) uses type scale and a consistent navigation treatment to support a media-rich portfolio. [Rami’s own portfolio](https://www.rami-hanna.com/) provided the reference for the green accent and candid portraits. These are observations for the preview and are pending founder review.

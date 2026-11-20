@@ -23,7 +23,7 @@ The `/workshop` route is the stable destination for the flyer or QR code. It use
 
 ## Visual identity
 
-The preview reads its color roles from [`brand/website-palette.json`](brand/website-palette.json). The original [AImee palette](brand/palette.json) remains the reference for existing slide and document samples. The site uses the plain text name Max + Rami while logo work is in review. The homepage pairs the existing photograph of Max presenting at Einstein with Rami’s public portfolio portrait from the portfolio source asset `rami-profile-2026.jpg`, resized for the web.
+The preview reads its color roles from [`brand/website-palette.json`](brand/website-palette.json). The original [AImee palette](brand/palette.json) remains the reference for existing slide and document samples. The site uses the plain text name Max + Rami while logo work is in review. The homepage uses an AI-generated worktable still life as an illustration. Founder imagery uses the existing portraits and the photograph of Max presenting at Einstein. Rami’s portrait comes from the public portfolio source asset `rami-profile-2026.jpg`, resized for the web.
 
 ## Netlify
 

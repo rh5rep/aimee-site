@@ -29,9 +29,9 @@
 
 .visit {
   padding: clamp(20px, 3vw, 31px);
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--linen);
 }
 
 .visit h2 {
@@ -48,12 +48,12 @@
   grid-template-columns: minmax(88px, .6fr) 1fr;
   gap: 10px;
   padding-block: 11px;
-  border-top: 1px solid var(--on-ink-line);
+  border-top: 1px solid var(--line);
   font-size: .9375rem;
 }
 
 .visit dt,
-.visit small { color: var(--on-ink-muted); }
+.visit small { color: var(--ink-soft); }
 
 .sessionTime span,
 .audience {
@@ -74,13 +74,7 @@
 
 .visit a {
   margin-top: 14px;
-  border-color: var(--accent-on-ink);
-  background: var(--accent-on-ink);
-  color: var(--ink);
 }
-
-.visit a:hover { border-color: var(--accent-on-ink-hover); background: var(--accent-on-ink-hover); }
-.visit a:focus-visible { outline-color: var(--accent-on-ink); }
 
 .sessions {
   padding-block: 36px 48px;
