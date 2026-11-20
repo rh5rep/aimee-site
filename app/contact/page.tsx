@@ -11,7 +11,7 @@ export default function ContactPage() {
       <main className="container interior" id="main" tabIndex={-1}>
         <header className="page-intro contact-intro">
           <h1>Contact <em>Max and Rami</em></h1>
-          <p className="lede">Tell us what you’d like to learn, improve, or build with AI.</p>
+          <p className="lede">Tell us about a part of the work you’d like to make easier for yourself or your team. A few lines are enough to start.</p>
           <div className="actions">
             <a className="button" href={taskEmail}>Write an email</a>
             <a className="text-link" href={`mailto:${email}`}>{email}</a>
@@ -23,7 +23,7 @@ export default function ContactPage() {
             <ul>
               <li>The task you’d like help with</li>
               <li>Who does it today and where they get stuck</li>
-              <li>What you’ve already tried, if anything</li>
+              <li>What would make it easier for the people doing it</li>
             </ul>
             <p>Please keep confidential files and personal information out of your first email.</p>
           </div>

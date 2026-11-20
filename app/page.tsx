@@ -17,12 +17,13 @@ export default function Home() {
           <div className={styles.heroCopy}>
             <h1 id="hero-title">Practical AI help <em>for your team</em></h1>
             <p>
-              We’re Max and Rami. We run hands-on workshops and work alongside teams to design
-              and build AI workflows they can review and run.
+              We’re Max and Rami. We help owners and teams at small and midsize tech companies
+              take some of the grind out of everyday work. We run hands-on workshops and build
+              AI workflows with the people who’ll use them.
             </p>
             <div className="actions">
               <Link className="button" href="#services">See how we can help</Link>
-              <Link className="text-link" href="/contact">Talk with us</Link>
+              <Link className="text-link" href="/contact">Talk through a task</Link>
             </div>
           </div>
           <WorkflowStory />

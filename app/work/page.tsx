@@ -18,7 +18,14 @@ export default function WorkPage() {
         <div className="container">
           <header className="page-intro">
             <h1>Services</h1>
-            <p className="lede">Bring a task your people need to learn or a process your team needs to improve.</p>
+            <p className="lede">
+              Bring a task your team does often. We’ll talk through where the work gets stuck
+              and what would make it easier.
+            </p>
+            <p className="scope-note">
+              The task, your tools, and the people doing the work shape the format and timing.
+              Before we start, we’ll agree on who needs to be involved and what your team should have at the end.
+            </p>
           </header>
           <div className="service-list">
             {services.map((service) => (
@@ -57,7 +64,7 @@ export default function WorkPage() {
 
         <section className="container contact-strip" aria-labelledby="contact-title">
           <h2 id="contact-title">Have a task in mind?</h2>
-          <Link className="button" href="/contact">Discuss a project</Link>
+          <Link className="button" href="/contact">Talk through a task</Link>
         </section>
       </main>
       <SiteFooter />

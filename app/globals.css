@@ -244,6 +244,7 @@ p + p { margin-top: 12px; }
   letter-spacing: -.055em;
 }
 .page-intro .lede { max-width: 49ch; }
+.scope-note { max-width: 60ch; color: var(--ink-soft); }
 
 .service-list {
   max-width: 940px;
