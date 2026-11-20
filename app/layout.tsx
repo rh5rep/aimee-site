@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties, ReactNode } from "react";
-import palette from "../brand/palette.json";
+import palette from "../brand/website-palette.json";
 import "./globals.css";
 
 const brandColors = Object.fromEntries(

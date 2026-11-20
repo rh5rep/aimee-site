@@ -1,8 +1,6 @@
 .hero {
-  --hero-text: #f8f3ec;
-  --hero-muted: #dbd5e3;
-  background: var(--studio-ink);
-  color: var(--hero-text);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .heroLayout {
@@ -18,7 +16,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 22px;
-  color: var(--hero-muted);
+  color: var(--on-ink-muted);
   font-family: var(--font-mono);
   font-size: .78rem;
   text-transform: uppercase;
@@ -28,7 +26,7 @@
 .kicker::before {
   width: 23px;
   height: 1px;
-  background: var(--peach);
+  background: var(--accent-on-ink);
   content: "";
 }
 
@@ -43,7 +41,7 @@
 
 .hero h1 em,
 .example h2 em {
-  color: var(--peach);
+  color: var(--accent-on-ink);
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -.055em;
@@ -54,20 +52,20 @@
 .intro {
   max-width: 39ch;
   margin-top: 24px;
-  color: var(--hero-muted);
+  color: var(--on-ink-muted);
   font-size: clamp(1rem, 1.65vw, 1.22rem);
 }
 
 .heroActions :global(.button) {
-  border-color: var(--peach);
-  background: var(--peach);
-  color: var(--studio-ink);
+  border-color: var(--accent-on-ink);
+  background: var(--accent-on-ink);
+  color: var(--ink);
 }
 
-.heroActions :global(.button):hover { background: #f7c5a7; }
-.heroActions :global(.text-link) { color: var(--hero-text); }
-.heroActions :global(.text-link):hover { color: var(--peach); }
-.hero a:focus-visible { outline-color: var(--peach); }
+.heroActions :global(.button):hover { border-color: var(--accent-on-ink-hover); background: var(--accent-on-ink-hover); }
+.heroActions :global(.text-link) { color: var(--paper); }
+.heroActions :global(.text-link):hover { color: var(--accent-on-ink); }
+.hero a:focus-visible { outline-color: var(--accent-on-ink); }
 
 .portraits {
   display: grid;
@@ -82,25 +80,25 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  background: #555061;
+  background: var(--on-ink-line);
 }
 
-.portrait img { object-fit: cover; }
-.maxPortrait img { object-position: 31% 60%; filter: saturate(.65); }
+.portrait img { object-fit: cover; filter: grayscale(1); }
+.maxPortrait img { object-position: 31% 60%; }
 .ramiPortrait img { object-position: 56% 59%; }
 
 .portraits figcaption {
   display: grid;
   gap: 2px;
   padding-top: 10px;
-  color: var(--hero-muted);
+  color: var(--on-ink-muted);
   font-size: .86rem;
   line-height: 1.4;
 }
 
 .portraits figcaption a {
   width: fit-content;
-  color: var(--hero-text);
+  color: var(--paper);
   font-weight: 680;
   text-underline-offset: 4px;
 }
@@ -141,14 +139,14 @@
 .serviceList span { color: var(--ink-soft); }
 
 .serviceList a:hover strong {
-  color: var(--studio-accent);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 5px;
 }
 
 .example {
-  background: var(--lavender);
-  border-block: 1px solid #d7cde8;
+  background: var(--accent-tint);
+  border-block: 1px solid var(--line);
 }
 
 .exampleLayout {
@@ -160,10 +158,10 @@
 }
 
 .example h2 { max-width: 15ch; }
-.example h2 em { color: #5e417f; }
+.example h2 em { color: var(--accent); }
 .example p { max-width: 41ch; margin-top: 16px; color: var(--ink-soft); }
 .example :global(.text-link) { margin-top: 8px; }
-.example :global(.sample-figure) { border-color: #cfc1e2; background: #efe9f7; }
+.example :global(.sample-figure) { border-color: var(--line); background: var(--paper); }
 .example :global(.sample-paper) p { margin-top: 0; color: var(--ink); }
 
 .event {

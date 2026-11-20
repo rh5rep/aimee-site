@@ -13,8 +13,7 @@ const navigation = [
 function Wordmark() {
   return (
     <Link className="wordmark" href="/" aria-label="Max and Rami home">
-      <span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span>
-      Max <span className="wordmark-plus">+</span> Rami
+      Max + Rami
     </Link>
   );
 }
