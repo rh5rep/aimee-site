@@ -51,14 +51,13 @@ export default function Home() {
         <section className={styles.example} id="workflow-example" aria-labelledby="example-title">
           <div className="container">
             <header className={styles.exampleIntro}>
-              <h2 id="example-title">Take a report apart</h2>
+              <h2 id="example-title">From messy notes to a weekly report</h2>
               <p>
-                A request tracker and a few team notes go into this AI-assisted draft.
-                The draft keeps its sources close so your team can check it before sending.
+                Try a short workflow your team could use to write and check its weekly updates.
               </p>
             </header>
             <ReportWalkthrough />
-            <Link className="text-link" href="/work#example">See how the draft came together</Link>
+            <Link className="text-link" href="/work#example">Read the full reporting example</Link>
           </div>
         </section>
 
