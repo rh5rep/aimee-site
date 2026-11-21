@@ -73,7 +73,7 @@ function groundedReview(output: DraftReview, blocks: string[], sources: string):
 }
 
 export default async function reviewDraft(request: Request) {
-  const key = process.env.ANTHROPIC_API_KEY;
+  const key = process.env.DRAFT_REVIEW_LIVE_ENABLED === "true" ? process.env.ANTHROPIC_API_KEY : undefined;
   if (request.method === "GET") return json({ available: Boolean(key) });
   if (request.method !== "POST") return json({ error: "Use POST to review a draft." }, 405);
   if (!key) return json({ error: "Live AI review is unavailable. You can still run quick checks." }, 503);
