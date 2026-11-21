@@ -4,9 +4,10 @@ export const services = [
     title: "Hands-on workshops",
     description: "We design a live exercise around your group’s work and experience. Participants try it, check what AI produces, and leave with instructions they can use again.",
     firstProject: {
-      bring: "A team that wants to get better at AI",
+      bring: "A team building AI skills",
       format: "Hands-on workshops",
-      help: "Practice on a task your team recognizes, like drafting a tricky reply. Learn what to ask AI, how to check the result, and when to use the method again.",
+      help: "We’ll run a workshop around a familiar task, like drafting a tricky reply. Your team practices what to ask AI and how to check the result.",
+      takeaway: "A set of instructions and checks your team can use on the next task.",
     },
   },
   {
@@ -16,7 +17,8 @@ export const services = [
     firstProject: {
       bring: "A task you’d like help with",
       format: "One-on-one coaching",
-      help: "Bring a draft or another task you want to work through. We’ll make a first pass together and write down the checks you’ll want next time.",
+      help: "Bring a draft or a task you’re stuck on. We’ll make a first pass together and talk through what’s worth keeping.",
+      takeaway: "A first pass you’ve reviewed and a short list of checks to use next time.",
     },
   },
   {
@@ -26,7 +28,8 @@ export const services = [
     firstProject: {
       bring: "A process your team repeats",
       format: "Workflow design and implementation",
-      help: "Show us where a recurring report or handoff gets stuck. We’ll design or build a workflow with a clear review step and a guide your team can use.",
+      help: "Show us where a recurring task gets stuck. We’ll design or build a workflow with your team and agree on who reviews the output.",
+      takeaway: "A workflow your team can run, with the review and handoff steps written down.",
     },
   },
   {
