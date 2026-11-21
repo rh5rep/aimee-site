@@ -101,6 +101,14 @@
   line-height: 1.45;
 }
 
+.projectActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin: 9px 0 8px;
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;

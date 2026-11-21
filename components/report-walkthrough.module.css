@@ -1,9 +1,16 @@
 .notebook {
-  --inset: clamp(18px, 3.5vw, 36px);
+  --inset: clamp(18px, 4cqw, 36px);
+  container-type: inline-size;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--white);
   box-shadow: 0 12px 24px -22px rgb(32 34 30 / 42%);
+}
+
+.sampleLabel {
+  padding: 14px var(--inset) 0;
+  color: var(--ink);
+  font-weight: 680;
 }
 
 .progress {
@@ -126,6 +133,7 @@
 
 .buildButton {
   gap: 10px;
+  margin-inline-start: auto;
   cursor: pointer;
 }
 
@@ -228,7 +236,7 @@
   font-size: .9375rem;
 }
 
-@media (max-width: 680px) {
+@container (max-width: 680px) {
   .workspace { grid-template-columns: 1fr; }
   .review {
     border-inline-start: 0;
@@ -237,7 +245,7 @@
   .arrow { transform: translateY(-50%) rotate(90deg); }
 }
 
-@media (max-width: 520px) {
+@container (max-width: 520px) {
   .progress { column-gap: 9px; }
   .progress li + li::before { margin-inline-end: 9px; }
   .noteGrid { grid-template-columns: 1fr; }

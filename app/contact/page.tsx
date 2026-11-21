@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { email, SiteFooter, SiteHeader, taskEmail } from "../../components/site-shell";
+import { ProjectEmailLink } from "./project-email-link";
 
 export const metadata: Metadata = { title: "Contact | Max + Rami" };
 
@@ -13,7 +15,9 @@ export default function ContactPage() {
           <h1>Contact <em>Max and Rami</em></h1>
           <p className="lede">Tell us about a part of the work you’d like to make easier for yourself or your team. A few lines are enough to start.</p>
           <div className="actions">
-            <a className="button" href={taskEmail}>Write an email</a>
+            <Suspense fallback={<a className="button" href={taskEmail()}>Write an email</a>}>
+              <ProjectEmailLink />
+            </Suspense>
             <a className="text-link" href={`mailto:${email}`}>{email}</a>
           </div>
         </header>

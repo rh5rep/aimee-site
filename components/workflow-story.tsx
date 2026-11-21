@@ -1,38 +1,49 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { reportFollowUp, reportStatus } from "./report-example";
 import styles from "./workflow-story.module.css";
 
-const duration = 14_000;
+const sceneLength = 5_000;
+const openingBlend = 500;
+const replyDelay = 2_400;
+const sendDelay = 4_100;
+const sourceDelay = 500;
+const refreshDelay = 1_500;
+const firstFriday = { closed: 18, open: 2, request: 42 };
+const nextFriday = { closed: 21, open: 3 };
 const scenes = [
   {
-    id: "notes",
-    label: "Notes",
-    start: 0,
+    id: "today",
+    label: "Today",
     preview: 0,
-    title: "It’s Friday. The update is due.",
-    caption: "The numbers are in a tracker. The follow-up is buried in a handoff note.",
+    title: "Friday’s deadline",
+    caption: <>It’s Friday. <strong>The report is due</strong>, and the details are scattered.</>,
   },
   {
     id: "draft",
-    label: "Draft",
-    start: 4_200,
-    preview: 6_000,
-    title: "Give the team a draft to work from.",
-    caption: "The workflow turns the notes into an update and keeps the source attached.",
+    label: "Build",
+    preview: 800,
+    title: "A draft with one gap",
+    caption: <>AI pulls the notes into a draft and flags <strong>the missing owner</strong>.</>,
   },
   {
     id: "review",
-    label: "Review",
-    start: 9_100,
-    preview: 11_500,
-    title: "Leave the judgment with the team.",
-    caption: "A teammate can check the count. Someone still needs to take request 42.",
+    label: "Check",
+    preview: 1_000,
+    title: "One question before sending",
+    caption: <>Who’s taking <strong>request #42?</strong></>,
+  },
+  {
+    id: "reuse",
+    label: "Reuse",
+    preview: refreshDelay + 500,
+    title: "Next Friday, run it again",
+    caption: <>Next Friday, fresh notes go in. The team uses <strong>the same steps</strong>.</>,
   },
 ] as const;
+const duration = sceneLength * scenes.length;
 
 function timestamp(milliseconds: number) {
   return `0:${String(Math.floor(milliseconds / 1000)).padStart(2, "0")}`;
@@ -41,9 +52,27 @@ function timestamp(milliseconds: number) {
 export function WorkflowStory() {
   const [playing, setPlaying] = useState(false);
   const [position, setPosition] = useState(0);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const [audioUnavailable, setAudioUnavailable] = useState(false);
   const stage = useRef<HTMLDivElement>(null);
+  const voiceover = useRef<HTMLAudioElement>(null);
   const elapsed = useRef(0);
-  const scene = scenes[2].start <= position ? scenes[2] : scenes[1].start <= position ? scenes[1] : scenes[0];
+  const sceneIndex = Math.min(Math.floor(position / sceneLength), scenes.length - 1);
+  const scene = scenes[sceneIndex];
+  const sceneStart = sceneIndex * sceneLength;
+  const sceneElapsed = position - sceneStart;
+  const checking = scene.id === "review";
+  const replied = checking && sceneElapsed >= replyDelay;
+  const reusing = scene.id === "reuse";
+  const freshSources = reusing && sceneElapsed >= sourceDelay;
+  const refreshed = reusing && sceneElapsed >= refreshDelay;
+  const showingLastWeek = reusing && !refreshed;
+  const reportSent = (checking && sceneElapsed >= sendDelay) || showingLastWeek;
+  const ownerConfirmed = replied || showingLastWeek;
+  const showReply = replied || (reusing && !freshSources);
+  const captionTitle = replied ? (reportSent ? "Friday’s update is out" : "Maya takes the request") : scene.title;
+  const sourceWeek = freshSources ? nextFriday : firstFriday;
+  const reportWeek = refreshed ? nextFriday : firstFriday;
   const ended = position === duration;
   const playLabel = playing ? "Pause" : ended ? "Replay" : "Play";
 
@@ -57,6 +86,7 @@ export function WorkflowStory() {
     if (!playing) return;
 
     const started = performance.now() - elapsed.current;
+    const track = voiceover.current;
     let frame: number;
 
     function tick(now: number) {
@@ -67,17 +97,54 @@ export function WorkflowStory() {
     }
 
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      track?.pause();
+    };
   }, [playing, showFrame]);
 
-  function seek(milliseconds: number) {
+  function pausePlayback() {
+    voiceover.current?.pause();
     setPlaying(false);
+  }
+
+  function seek(milliseconds: number) {
+    pausePlayback();
     showFrame(milliseconds);
   }
 
+  function disableVoiceover() {
+    setSoundEnabled(false);
+    setAudioUnavailable(true);
+  }
+
+  function playVoiceover() {
+    const track = voiceover.current;
+    if (!track) return;
+
+    track.currentTime = elapsed.current / 1000;
+    void track.play().then(() => {
+      const time = elapsed.current / 1000;
+      if (!track.paused && Math.abs(track.currentTime - time) > .2) track.currentTime = time;
+    }).catch((error: unknown) => {
+      if (!(error instanceof DOMException && error.name === "AbortError")) disableVoiceover();
+    });
+  }
+
   function togglePlayback() {
+    if (playing) {
+      pausePlayback();
+      return;
+    }
     if (ended) showFrame(0);
-    setPlaying(!playing);
+    if (soundEnabled) playVoiceover();
+    setPlaying(true);
+  }
+
+  function toggleSound() {
+    if (soundEnabled) voiceover.current?.pause();
+    else if (playing) playVoiceover();
+    setSoundEnabled(!soundEnabled);
   }
 
   return (
@@ -86,50 +153,95 @@ export function WorkflowStory() {
         ref={stage}
         className={styles.stage}
         data-scene={scene.id}
-        style={{ "--film-duration": `${duration}ms` } as CSSProperties}
+        data-replied={replied}
+        data-sent={checking && reportSent}
+        style={{
+          "--film-duration": `${duration}ms`,
+          "--scene-start": `${sceneStart}ms`,
+          "--opening-blend": `${openingBlend}ms`,
+          "--reply-delay": `${replyDelay}ms`,
+          "--send-delay": `${sendDelay}ms`,
+          "--source-delay": `${sourceDelay}ms`,
+          "--refresh-delay": `${refreshDelay}ms`,
+        } as CSSProperties}
       >
         <Image
           className={styles.photo}
-          src="/images/worktable.jpg"
+          src="/images/friday-workflow-stage.jpg"
           alt=""
           fill
-          preload
-          sizes="(max-width: 720px) 92vw, (max-width: 1250px) 46vw, 610px"
+          sizes="(max-width: 780px) 92vw, (max-width: 980px) 720px, (max-width: 1250px) 41vw, 538px"
         />
         <div className={styles.art}>
-          <div className={`${styles.note} ${styles.tracker}`} aria-hidden={scene.id !== "notes"}>
-            <p>Friday tracker</p>
-            <p>{reportStatus.excerpt}</p>
-          </div>
-          <div className={`${styles.note} ${styles.handoff}`} aria-hidden={scene.id !== "notes"}>
-            <p>Friday handoff</p>
-            <p>#42 is still open. Who’s taking it?</p>
-          </div>
+          {position < sceneLength + openingBlend && (
+            <div className={styles.opening} aria-hidden={scene.id !== "today"}>
+              <p className={styles.stageHeadline}>Friday’s update <em>is due.</em></p>
+              <div className={`${styles.note} ${styles.tracker}`}>
+                <p>Friday tracker</p>
+                <p>{reportStatus.excerpt}</p>
+              </div>
+              <div className={`${styles.note} ${styles.handoff}`}>
+                <p>Friday handoff</p>
+                <p>{reportFollowUp.excerpt}</p>
+              </div>
+            </div>
+          )}
 
-          <div className={styles.sheet} aria-hidden={scene.id === "notes"}>
-            <div className={styles.draft} aria-hidden={scene.id !== "draft"}>
-              <p className={styles.documentLabel}>Draft · Weekly update</p>
-              <p className={styles.documentLine}>{reportStatus.line}</p>
-              <p className={styles.sourceLabel}>{reportStatus.source}</p>
-              <p className={styles.followUp}>{reportFollowUp.line}</p>
-            </div>
-            <div className={styles.review} aria-hidden={scene.id !== "review"}>
-              <p className={styles.documentLabel}>Before sending</p>
-              <dl className={styles.checks}>
-                <div>
-                  <dt>Weekly totals</dt>
-                  <dd className={styles.matched}><span aria-hidden="true">✓</span> Matched the tracker</dd>
+          {scene.id !== "today" && (
+            <div className={styles.workflowStage}>
+              <div className={styles.workflowIntro} key={scene.id}>
+                {reusing && <p className={styles.stageLabel}>Next Friday</p>}
+                <p className={styles.workflowHeadline}>
+                  {scene.id === "draft" && <>Two sources. <em>One draft.</em></>}
+                  {checking && !replied && <>Who’s taking <em>request #42?</em></>}
+                  {checking && replied && (reportSent ? <>Update <em>sent.</em></> : <>Maya’s <em>got it.</em></>)}
+                  {reusing && <>Fresh notes. <em>Same workflow.</em></>}
+                </p>
+              </div>
+              <div className={styles.workflow}>
+                <dl className={styles.inputs}>
+                  <div className={styles.trackerInput}>
+                    <dt>Tracker</dt>
+                    <dd className={freshSources ? styles.freshSource : undefined}>{sourceWeek.closed} closed · {sourceWeek.open} open</dd>
+                  </div>
+                  <div className={showReply ? styles.handoffReply : undefined}>
+                    <dt>{showReply ? "Maya" : "Handoff"}</dt>
+                    <dd className={freshSources ? styles.freshSource : undefined}>
+                      {showReply ? "“I’ll take it.”" : freshSources ? "Owners listed" : `#${firstFriday.request} open`}
+                    </dd>
+                  </div>
+                </dl>
+                <div className={styles.connector} aria-hidden="true"><span /></div>
+                <div className={styles.sheet}>
+                  <div className={styles.sheetHeader}>
+                    <p className={styles.documentLabel}>{showingLastWeek ? "Last Friday’s update" : "Weekly update"}</p>
+                    {reportSent && <span className={styles.sent}>Sent</span>}
+                  </div>
+                  {scene.id === "draft" ? (
+                    <dl className={styles.draftLines}>
+                      <div><dt>{reportWeek.closed} closed · {reportWeek.open} open</dt><dd>Tracker</dd></div>
+                      <div className={styles.gap}><dt>Request #{firstFriday.request}</dt><dd>Owner missing</dd></div>
+                    </dl>
+                  ) : (
+                    <dl className={styles.checks}>
+                      <div className={reusing ? (refreshed ? styles.freshCount : undefined) : styles.matched}>
+                        <dt>{reportWeek.closed} closed · {reportWeek.open} open</dt>
+                        <dd>{refreshed ? "Check tracker" : <><span aria-hidden="true">✓</span> Matches tracker</>}</dd>
+                      </div>
+                      <div className={ownerConfirmed ? styles.confirmed : refreshed ? styles.open : styles.gap}>
+                        <dt>{refreshed ? "Team review" : `Request #${firstFriday.request}`}</dt>
+                        <dd>{refreshed ? "Before sending" : ownerConfirmed ? "Maya confirmed" : "Owner missing"}</dd>
+                      </div>
+                    </dl>
+                  )}
                 </div>
-                <div>
-                  <dt>Request 42</dt>
-                  <dd className={styles.open}><span aria-hidden="true">○</span> Needs an owner</dd>
-                </div>
-              </dl>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
+      <audio ref={voiceover} src="/audio/friday-report-voiceover.mp3" preload="none" onError={disableVoiceover} />
       <div className={styles.transport} role="group" aria-label="Playback">
         <button type="button" className={styles.play} onClick={togglePlayback}>
           <span aria-hidden="true" className={styles.playIcon}>
@@ -149,32 +261,42 @@ export function WorkflowStory() {
           onChange={(event) => seek(event.currentTarget.valueAsNumber)}
         />
         <span className={styles.time} aria-hidden="true">{timestamp(position)} / {timestamp(duration)}</span>
+        <button
+          type="button"
+          className={styles.sound}
+          aria-pressed={soundEnabled}
+          disabled={audioUnavailable}
+          onClick={toggleSound}
+        >
+          Voiceover <span aria-hidden="true">{soundEnabled ? "On" : "Off"}</span>
+        </button>
       </div>
+      {audioUnavailable && <p className={styles.audioStatus} role="status">Voiceover is unavailable. You can still follow the captions.</p>}
 
       <div className={styles.caption}>
-        <p className={styles.eyebrow}>The Friday report <span>·</span> Illustrated example</p>
+        <p className={styles.eyebrow}>Illustrated example</p>
         <div aria-live={playing ? "off" : "polite"} aria-atomic="true">
-          <h2>{scene.title}</h2>
-          <p>{scene.caption}</p>
+          <h3>{captionTitle}</h3>
+          <p>{replied ? <>Maya takes it. <strong>The report goes out.</strong></> : scene.caption}</p>
         </div>
       </div>
 
       <div className={styles.controls}>
         <div className={styles.chapters} role="group" aria-label="Scenes">
-          {scenes.map((chapter) => (
+          {scenes.map((chapter, index) => (
             <button
               key={chapter.id}
               type="button"
               aria-current={scene.id === chapter.id ? "step" : undefined}
-              onClick={() => seek(chapter.preview)}
+              onClick={() => seek(index * sceneLength + chapter.preview)}
             >
               {chapter.label}
             </button>
           ))}
         </div>
-        <Link href="#workflow-example" className={styles.tryLink} onClick={() => setPlaying(false)}>
-          Try it yourself
-        </Link>
+        <a href="#try-report" className={styles.tryLink} onClick={pausePlayback}>
+          Go to the sample
+        </a>
       </div>
     </div>
   );

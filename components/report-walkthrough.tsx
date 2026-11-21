@@ -31,6 +31,7 @@ export function ReportWalkthrough() {
 
   return (
     <div className={styles.notebook}>
+      <p className={styles.sampleLabel} id="try-report-title">Try the first Friday’s report</p>
       <ol className={styles.progress} aria-label="Demo progress">
         {steps.map((label) => (
           <li key={label} aria-current={step === label ? "step" : undefined}><span>{label}</span></li>
@@ -106,9 +107,7 @@ export function ReportWalkthrough() {
             ))}
           </fieldset>
           <div className={styles.notesFooter}>
-            <p className={styles.instruction}>
-              {included.length > 0 ? "Sample notes" : "Select a note to build the draft."}
-            </p>
+            {included.length === 0 && <p className={styles.instruction}>Select a note to build the draft.</p>}
             <button
               className={`button ${styles.buildButton}`}
               type="button"

@@ -13,9 +13,9 @@ export function FirstProject() {
   const [project, setProject] = useState(projects[0]);
 
   return (
-    <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title">
+    <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title" tabIndex={-1}>
       <div className={styles.board}>
-        <div>
+        <div data-home-reveal="text">
           <h2 id="services-title">What would you <em>bring us?</em></h2>
           <div className={styles.choices} role="group" aria-label="Pick a starting point">
             {projects.map((option) => (
@@ -32,7 +32,7 @@ export function FirstProject() {
             ))}
           </div>
         </div>
-        <div className={styles.note} id="first-project-note" aria-live="polite" aria-atomic="true">
+        <div className={styles.note} id="first-project-note" aria-live="polite" aria-atomic="true" data-home-reveal="panel">
           <div key={project.id} className={styles.noteContent}>
             <p className={styles.type}>Example · {project.title}</p>
             <h3>{project.headline}</h3>
@@ -42,7 +42,12 @@ export function FirstProject() {
               <div><dt>Your team gets</dt><dd>{project.takeaway}</dd></div>
             </dl>
           </div>
-          <Link className="text-link" href={`/work#${project.id}`}>See service details</Link>
+          <div className={styles.projectActions}>
+            <Link className="button" href={{ pathname: "/contact", query: { service: project.id } }}>
+              Talk to us about this task
+            </Link>
+            <Link className="text-link" href={`/work#${project.id}`}>See service details</Link>
+          </div>
         </div>
       </div>
       <div className={styles.links}>

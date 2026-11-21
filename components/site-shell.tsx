@@ -1,7 +1,12 @@
 import Link from "next/link";
 
 export const email = "aimee_workflows@proton.me";
-export const taskEmail = `mailto:${email}?subject=${encodeURIComponent("Working with Max and Rami")}&body=${encodeURIComponent("Hi Max and Rami,\n\nThe task or project we’d like help with:\n\nWho does the work and where they get stuck:\n\nWhat would make it easier for them:\n\n")}`;
+
+export function taskEmail(serviceTitle?: string) {
+  const subject = serviceTitle ? `${serviceTitle} with Max and Rami` : "Working with Max and Rami";
+  const body = "Hi Max and Rami,\n\nThe task or project we’d like help with:\n\nWho does the work and where they get stuck:\n\nWhat would make it easier for them:\n\n";
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 const navigation = [
   { href: "/work", label: "Services" },

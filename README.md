@@ -23,7 +23,9 @@ The `/workshop` route is the stable destination for the flyer or QR code. It use
 
 ## Visual identity
 
-The preview reads its color roles from [`brand/website-palette.json`](brand/website-palette.json). The original [AImee palette](brand/palette.json) remains the reference for existing slide and document samples. The site uses the plain text name Max + Rami while logo work is in review. The homepage uses an AI-generated worktable still life as an illustration. Founder imagery uses the existing portraits and the photograph of Max presenting at Einstein. Rami’s portrait comes from the public portfolio source asset `rami-profile-2026.jpg`, resized for the web.
+The preview reads its color roles from [`brand/website-palette.json`](brand/website-palette.json). The original [AImee palette](brand/palette.json) remains the reference for existing slide and document samples. The site uses the plain text name Max + Rami while logo work is in review. The Friday Report uses a generated folded-paper backdrop behind the animated workflow cards. Founder imagery uses the existing portraits and the photograph of Max presenting at Einstein. Rami’s portrait comes from the public portfolio source asset `rami-profile-2026.jpg`, resized for the web.
+
+The Friday Report’s optional voiceover uses a bundled track generated with [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M). The visible captions in `components/workflow-story.tsx` carry its script.
 
 ## Draft reviewer
 
