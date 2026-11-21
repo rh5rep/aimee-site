@@ -29,7 +29,7 @@ export default function ApproachPage() {
           ))}
         </ol>
         <div className="contact-strip">
-          <Link className="text-link" href="/work#example">See the sample workflow</Link>
+          <Link className="text-link" href="/demos">Watch the Friday Report demo</Link>
           <Link className="button" href="/contact">Discuss a project</Link>
         </div>
       </main>

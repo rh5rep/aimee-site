@@ -1,0 +1,103 @@
+.demos {
+  max-width: 972px;
+  padding-block: clamp(32px, 6vw, 76px);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 12px clamp(24px, 4.5vw, 62px);
+  margin-bottom: clamp(20px, 3.2vw, 36px);
+}
+
+.intro h1 {
+  margin-top: 5px;
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  text-wrap: initial;
+}
+
+.intro > p {
+  max-width: 41ch;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+}
+
+.reportingLink { margin-top: 8px; }
+
+.draftReview {
+  margin-top: clamp(24px, 4vw, 56px);
+  padding-top: clamp(24px, 4vw, 52px);
+  border-top: 1px solid var(--line);
+}
+
+.draftReview h2 {
+  margin-block: 6px clamp(16px, 2vw, 26px);
+  font-family: var(--font-display);
+  font-size: clamp(1.9375rem, 3.1vw, 2.75rem);
+  font-weight: 400;
+  text-wrap: initial;
+}
+
+.draftReview :global(.text-link) { margin-top: 8px; }
+
+.reviewComparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.reviewPage {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  padding: clamp(17px, 3vw, 34px);
+}
+
+.reviewPage + .reviewPage {
+  border-inline-start: 1px solid var(--line);
+  background: var(--accent-tint);
+}
+
+.reviewPage h3 {
+  color: var(--accent);
+  font-size: .875rem;
+  letter-spacing: 0;
+}
+
+.reviewPage blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  line-height: 1.33;
+}
+
+.reviewPage mark {
+  background: var(--accent-tint);
+  color: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.reviewPage p {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.reviewPage strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .intro,
+  .reviewComparison { grid-template-columns: 1fr; }
+
+  .reviewPage + .reviewPage {
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+  }
+}

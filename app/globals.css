@@ -329,13 +329,22 @@ p + p { margin-top: 12px; }
 
 @media (max-width: 600px) {
   .header-inner { align-items: flex-start; flex-direction: column; gap: 2px; padding-top: 13px; }
+  .main-nav { column-gap: clamp(5px, 1.8vw, 11px); }
   .main-nav a { font-size: .875rem; }
   .main-nav .nav-contact { min-height: 44px; border: 0; padding: 0; }
   .service-list section, .work-example, .contact-guidance { grid-template-columns: 1fr; }
   .footer-inner { min-height: 0; padding-block: 17px; flex-wrap: wrap; gap: 4px 20px; }
 }
 
-@media (max-width: 365px) {
-  .main-nav { column-gap: 9px; }
+@media (max-width: 375px) {
+  .main-nav { column-gap: 6px; }
   .main-nav a { font-size: .8125rem; }
+}
+
+@media (max-width: 345px) {
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 0 16px;
+  }
 }

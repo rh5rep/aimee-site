@@ -12,7 +12,7 @@ export function ReportWalkthrough() {
   return (
     <div className={styles.workspace}>
       <div className={styles.draft}>
-        <h3 className={styles.title}>Weekly operations update</h3>
+        <h2 className={styles.title}>Weekly operations update</h2>
         <p className={styles.instruction}>
           AI drafted this from Friday’s tracker and handoff note.
           Choose a line to see what you can verify before sending.

@@ -275,7 +275,7 @@ export function WorkflowStory() {
 
       <div className={styles.filmDetails}>
         <div className={styles.caption} aria-live={playing ? "off" : "polite"} aria-atomic="true">
-          <h3>{captionTitle}</h3>
+          <h2>{captionTitle}</h2>
           <p>{replied ? <>Maya takes it. <strong>The report goes out.</strong></> : scene.caption}</p>
         </div>
         <div className={styles.chapters} role="group" aria-label="Scenes">
