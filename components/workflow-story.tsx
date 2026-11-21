@@ -31,7 +31,7 @@ const scenes = [
   {
     id: "review",
     label: "Check",
-    preview: 1_000,
+    preview: 1_300,
     title: "One question before sending",
     caption: <>Who’s taking <strong>request #42?</strong></>,
   },
@@ -156,7 +156,6 @@ export function WorkflowStory() {
         data-replied={replied}
         data-sent={checking && reportSent}
         style={{
-          "--film-duration": `${duration}ms`,
           "--scene-start": `${sceneStart}ms`,
           "--opening-blend": `${openingBlend}ms`,
           "--reply-delay": `${replyDelay}ms`,
@@ -170,7 +169,7 @@ export function WorkflowStory() {
           src="/images/friday-workflow-stage.jpg"
           alt=""
           fill
-          sizes="(max-width: 780px) 92vw, (max-width: 980px) 720px, (max-width: 1250px) 41vw, 538px"
+          sizes="(max-width: 1080px) 90vw, 970px"
         />
         <div className={styles.art}>
           {position < sceneLength + openingBlend && (
@@ -273,15 +272,11 @@ export function WorkflowStory() {
       </div>
       {audioUnavailable && <p className={styles.audioStatus} role="status">Voiceover is unavailable. You can still follow the captions.</p>}
 
-      <div className={styles.caption}>
-        <p className={styles.eyebrow}>Illustrated example</p>
-        <div aria-live={playing ? "off" : "polite"} aria-atomic="true">
+      <div className={styles.filmDetails}>
+        <div className={styles.caption} aria-live={playing ? "off" : "polite"} aria-atomic="true">
           <h3>{captionTitle}</h3>
           <p>{replied ? <>Maya takes it. <strong>The report goes out.</strong></> : scene.caption}</p>
         </div>
-      </div>
-
-      <div className={styles.controls}>
         <div className={styles.chapters} role="group" aria-label="Scenes">
           {scenes.map((chapter, index) => (
             <button
@@ -294,8 +289,12 @@ export function WorkflowStory() {
             </button>
           ))}
         </div>
-        <a href="#try-report" className={styles.tryLink} onClick={pausePlayback}>
-          Go to the sample
+      </div>
+
+      <div className={styles.handoffPrompt}>
+        <p>Use the same notes to build a draft and check a line against its source.</p>
+        <a href="#try-report" className={`button ${styles.tryLink}`} onClick={pausePlayback}>
+          Try the exercise
         </a>
       </div>
     </div>

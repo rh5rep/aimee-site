@@ -14,17 +14,20 @@ export default function Home() {
       <main className={styles.home} id="main" tabIndex={-1}>
         <section className={`container ${styles.hero}`} aria-labelledby="hero-title">
           <div className={styles.heroCopy}>
+            <p className={styles.heroLabel}>AI training and workflow consulting</p>
             <h1 id="hero-title">Hi, we’re <em>Max and Rami.</em></h1>
-            <p>
-              Bring us a task your team repeats, like a weekly report or a messy handoff.
-              Together, we’ll build an AI workflow your team can check and run again.
+            <p className={styles.heroLead}>
+              Bring us a weekly update your team pieces together from a tracker and handoff notes.
+              We’ll help you build a way to draft it, check it, and run it again next week.
             </p>
-            <p className={styles.heroFormats}>We also run hands-on workshops and offer one-on-one coaching.</p>
+            <p className={styles.heroFormats}>
+              We offer hands-on workshops, one-on-one coaching, and workflow design and implementation for teams.
+            </p>
           </div>
           <div className={styles.heroPortraits}>
             <figure>
               <div className={styles.portraitFrame}>
-                <Image src="/images/max-portrait.webp" alt="" width={540} height={540} loading="eager" />
+                <Image className={styles.maxPortrait} src="/images/max-portrait.webp" alt="Portrait of Max Horton" width={540} height={540} loading="eager" />
               </div>
               <figcaption>
                 <Link href="/about#max">Max Horton</Link>
@@ -33,7 +36,7 @@ export default function Home() {
             </figure>
             <figure>
               <div className={styles.portraitFrame}>
-                <Image className={styles.ramiPortrait} src="/images/rami-portfolio.jpg" alt="" width={768} height={1150} loading="eager" />
+                <Image className={styles.ramiPortrait} src="/images/rami-portfolio.jpg" alt="Portrait of Rami Hanna" width={768} height={1150} loading="eager" />
               </div>
               <figcaption>
                 <Link href="/about#rami">Rami Hanna</Link>
@@ -42,8 +45,8 @@ export default function Home() {
             </figure>
           </div>
           <div className={`actions ${styles.heroActions}`}>
-            <a className="button" href="#services">How we can help</a>
-            <a className="text-link" href="#work-in-practice">See our work</a>
+            <Link className="button" href="/contact">Tell us about a task</Link>
+            <a className="text-link" href="#workflow-example">See the Friday Report</a>
           </div>
         </section>
 
@@ -52,13 +55,30 @@ export default function Home() {
         <section className={`container ${styles.workProof}`} id="work-in-practice" aria-labelledby="work-in-practice-title" tabIndex={-1}>
           <h2 id="work-in-practice-title" data-home-reveal="text">What we’ve worked on</h2>
           <div data-home-reveal="panel">
-            <h3>Updating an annual report from newer sources</h3>
+            <h3>Updating a section of an annual report</h3>
             <p>
-              In a one-on-one session, Max helped a researcher make a first pass at updating
-              an annual report with AI. Together they reviewed the suggested edits and used
-              last year’s files to draft a checklist for the next reporting cycle.
+              In a one-on-one session, Max and a researcher used AI to draft an update to
+              one part of an annual grant report. They reviewed the suggested edits together
+              and used last year’s files to draft a checklist for the next reporting cycle.
             </p>
             <Link className="text-link" href="/work#examples">See more examples from our work</Link>
+          </div>
+        </section>
+
+        <section className={styles.example} id="workflow-example" aria-labelledby="example-title" tabIndex={-1}>
+          <div className={`container ${styles.feature}`}>
+            <header className={styles.featureIntro}>
+              <div>
+                <p className={styles.featureLabel}>Fictional example · 20-second film</p>
+                <h2 id="example-title">The Friday Report</h2>
+              </div>
+              <p>A weekly update is due. The tracker has the totals, but one request still needs an owner.</p>
+            </header>
+            <WorkflowStory />
+            <div className={styles.exercise} id="try-report" role="group" aria-labelledby="try-report-title" tabIndex={-1}>
+              <ReportWalkthrough />
+            </div>
+            <Link className={`text-link ${styles.exampleLink}`} href="/work#example">Read the full reporting example</Link>
           </div>
         </section>
 
@@ -90,24 +110,6 @@ export default function Home() {
             </div>
           </div>
           <Link className="text-link" href="/review">Review your own draft</Link>
-        </section>
-
-        <section className={styles.example} id="workflow-example" aria-labelledby="example-title">
-          <div className="container">
-            <header className={styles.exampleIntro} data-home-reveal="text">
-              <h2 id="example-title">The Friday Report</h2>
-              <p>A Friday update is due, and one detail is missing. Watch the team get it out the door, then try drafting and checking it yourself.</p>
-            </header>
-            <div className={styles.reportPair}>
-              <div data-home-reveal="panel">
-                <WorkflowStory />
-              </div>
-              <div id="try-report" role="group" aria-labelledby="try-report-title" tabIndex={-1} data-home-reveal="panel">
-                <ReportWalkthrough />
-              </div>
-            </div>
-            <Link className="text-link" href="/work#example">Read the full reporting example</Link>
-          </div>
         </section>
 
         <ProjectProcess />

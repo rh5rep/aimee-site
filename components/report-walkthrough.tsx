@@ -31,7 +31,7 @@ export function ReportWalkthrough() {
 
   return (
     <div className={styles.notebook}>
-      <p className={styles.sampleLabel} id="try-report-title">Try the first Friday’s report</p>
+      <h3 className={styles.sampleLabel} id="try-report-title">Try the Friday Report</h3>
       <ol className={styles.progress} aria-label="Demo progress">
         {steps.map((label) => (
           <li key={label} aria-current={step === label ? "step" : undefined}><span>{label}</span></li>
@@ -42,7 +42,7 @@ export function ReportWalkthrough() {
         <>
           <div className={styles.workspace}>
             <div className={styles.draft}>
-              <h3 className={styles.title} ref={heading} tabIndex={-1}>Weekly operations update</h3>
+              <h4 className={styles.title} ref={heading} tabIndex={-1}>Weekly operations update</h4>
               <p className={styles.instruction}>Select a line to check its source.</p>
               <div className={styles.lines}>
                 {reportLines.filter((item) => included.includes(item)).map((item) => (
@@ -56,23 +56,22 @@ export function ReportWalkthrough() {
                   >
                     <span className={styles.lineLabel}>{item.label}</span>
                     <span>{item.line}</span>
-                    <span className={styles.arrow} aria-hidden="true">→</span>
                   </button>
                 ))}
               </div>
             </div>
             <div className={styles.review} id="report-evidence" aria-live="polite" aria-atomic="true">
               {selected ? (
-                <>
+                <div className={styles.original} key={selected.label}>
                   <p className={styles.eyebrow}>Original note</p>
-                  <h3>{selected.source}</h3>
+                  <h4>{selected.source}</h4>
                   <blockquote className={styles.excerpt}>{selected.note}</blockquote>
                   <p className={styles.eyebrow}>What a person checks</p>
                   <p className={styles.check}>{selected.check}</p>
-                </>
+                </div>
               ) : (
                 <>
-                  <h3>Source check</h3>
+                  <h4>Source check</h4>
                   <p className={styles.instruction}>
                     The original note and what to check before sending will appear here.
                   </p>
@@ -86,7 +85,7 @@ export function ReportWalkthrough() {
         </>
       ) : (
         <div className={styles.notes}>
-          <h3 className={styles.title} ref={heading} tabIndex={-1}>Friday’s notes</h3>
+          <h4 className={styles.title} ref={heading} tabIndex={-1}>Friday’s notes</h4>
           <p className={styles.instruction}>Choose the notes you want to use in the weekly update.</p>
           <fieldset className={styles.noteGrid}>
             <legend className="sr-only">Notes to include</legend>
@@ -114,7 +113,7 @@ export function ReportWalkthrough() {
               disabled={included.length === 0}
               onClick={() => showDraft(true)}
             >
-              Build draft <span aria-hidden="true">→</span>
+              Build draft
             </button>
           </div>
         </div>
