@@ -241,11 +241,6 @@
   font-size: clamp(1rem, 1.6vw, 1.2rem);
 }
 
-.exercise {
-  margin-top: clamp(18px, 3vw, 32px);
-}
-
-.exercise:focus-visible,
 .example:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;

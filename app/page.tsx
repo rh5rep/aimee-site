@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReportWalkthrough } from "../components/report-walkthrough";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { WorkflowStory } from "../components/workflow-story";
 import { FirstProject } from "./first-project";
+import { FridayReportLink } from "./friday-report-link";
 import { ProjectProcess } from "./project-process";
 import styles from "./home.module.css";
 
@@ -46,7 +46,7 @@ export default function Home() {
           </div>
           <div className={`actions ${styles.heroActions}`}>
             <Link className="button" href="/contact">Tell us about a task</Link>
-            <a className="text-link" href="#workflow-example">See the Friday Report</a>
+            <FridayReportLink />
           </div>
         </section>
 
@@ -72,12 +72,9 @@ export default function Home() {
                 <p className={styles.featureLabel}>Fictional example · 20-second film</p>
                 <h2 id="example-title">The Friday Report</h2>
               </div>
-              <p>A weekly update is due. The tracker has the totals, but one request still needs an owner.</p>
+              <p>Every Friday, an operations team turns a tracker and handoff notes into an update. Watch AI draft it and see what the team checks before sending.</p>
             </header>
             <WorkflowStory />
-            <div className={styles.exercise} id="try-report" role="group" aria-labelledby="try-report-title" tabIndex={-1}>
-              <ReportWalkthrough />
-            </div>
             <Link className={`text-link ${styles.exampleLink}`} href="/work#example">Read the full reporting example</Link>
           </div>
         </section>

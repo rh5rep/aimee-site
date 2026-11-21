@@ -27,6 +27,10 @@ export default function AboutPage() {
             <div>
               <h2>Rami Hanna</h2>
               <p>Rami is a robotics engineer with a master’s degree in autonomous systems engineering. His work spans sensing, computer vision, systems integration, and ML-based tools.</p>
+              <div className="actions">
+                <a className="text-link" href="https://www.rami-hanna.com/">Personal website</a>
+                <a className="text-link" href="https://www.linkedin.com/in/ramiihanna/">LinkedIn</a>
+              </div>
             </div>
           </article>
         </div>

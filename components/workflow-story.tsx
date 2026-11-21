@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { reportFollowUp, reportStatus } from "./report-example";
+import { ReportWalkthrough } from "./report-walkthrough";
 import styles from "./workflow-story.module.css";
 
 const sceneLength = 5_000;
@@ -291,12 +292,13 @@ export function WorkflowStory() {
         </div>
       </div>
 
-      <div className={styles.handoffPrompt}>
-        <p>Use the same notes to build a draft and check a line against its source.</p>
-        <a href="#try-report" className={`button ${styles.tryLink}`} onClick={pausePlayback}>
-          Try the exercise
-        </a>
-      </div>
+      <details className={styles.exercise} id="try-report">
+        <summary className={styles.handoffPrompt} onClick={pausePlayback}>
+          <span className={styles.exerciseAction}>Try the exercise</span>
+          <span>Check a line in the draft against its source.</span>
+        </summary>
+        <ReportWalkthrough />
+      </details>
     </div>
   );
 }

@@ -312,6 +312,7 @@ p + p { margin-top: 12px; }
 .bio-list img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: var(--accent-tint); }
 .bio-list h2 { margin-bottom: 7px; font-size: 1.55rem; }
 .bio-list p { color: var(--ink-soft); }
+.bio-list .actions { margin-top: 4px; }
 
 .teaching-photo { max-width: 860px; margin-top: 18px; }
 .teaching-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 62%; }
