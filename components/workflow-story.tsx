@@ -292,13 +292,7 @@ export function WorkflowStory() {
         </div>
       </div>
 
-      <details className={styles.exercise} id="try-report">
-        <summary className={styles.handoffPrompt} onClick={pausePlayback}>
-          <span className={styles.exerciseAction}>Try the exercise</span>
-          <span>Check a line in the draft against its source.</span>
-        </summary>
-        <ReportWalkthrough />
-      </details>
+      <ReportWalkthrough onSourceOpen={pausePlayback} />
     </div>
   );
 }

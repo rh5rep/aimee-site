@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { email, SiteFooter, SiteHeader, taskEmail } from "../../components/site-shell";
 import { ProjectEmailLink } from "./project-email-link";
+import styles from "./contact.module.css";
 
 export const metadata: Metadata = { title: "Contact | Max + Rami" };
 
@@ -11,27 +12,28 @@ export default function ContactPage() {
     <>
       <SiteHeader activePath="/contact" />
       <main className="container interior" id="main" tabIndex={-1}>
-        <header className="page-intro contact-intro">
-          <h1>Contact <em>Max and Rami</em></h1>
-          <p className="lede">Tell us about a part of the work you’d like to make easier for yourself or your team. A few lines are enough to start.</p>
-          <div className="actions">
+        <header className="page-intro">
+          <h1>Tell us what you’re <em>working on.</em></h1>
+          <p className="lede">Is there a task you’d like to make easier for yourself or your team? A few lines are enough to start.</p>
+        </header>
+        <div className={styles.exchange}>
+          <section className={styles.email} aria-labelledby="email-title">
+            <h2 id="email-title">Start with an email</h2>
             <Suspense fallback={<a className="button" href={taskEmail()}>Write an email</a>}>
               <ProjectEmailLink />
             </Suspense>
             <a className="text-link" href={`mailto:${email}`}>{email}</a>
-          </div>
-        </header>
-        <section className="contact-guidance" aria-labelledby="email-title">
-          <h2 id="email-title">What to include</h2>
-          <div>
+          </section>
+          <section className={styles.guidance} aria-labelledby="include-title">
+            <h2 id="include-title">What to include</h2>
             <ul>
-              <li>The task you’d like help with</li>
-              <li>Who does it today and where they get stuck</li>
-              <li>What would make it easier for the people doing it</li>
+              <li>What task would you like help with?</li>
+              <li>Who does it today, and where do they get stuck?</li>
+              <li>What would make the task easier?</li>
             </ul>
             <p>Please keep confidential files and personal information out of your first email.</p>
-          </div>
-        </section>
+          </section>
+        </div>
         <div className="contact-strip">
           <Link className="text-link" href="/workshop">Looking for the Einstein workshops?</Link>
         </div>

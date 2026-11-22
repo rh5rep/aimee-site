@@ -399,43 +399,6 @@
   text-underline-offset: 5px;
 }
 
-.handoffPrompt {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  padding: 12px clamp(12px, 2vw, 22px);
-  border-top: 1px solid var(--line);
-  background: var(--accent-tint);
-  color: var(--accent-hover);
-  cursor: pointer;
-  list-style: none;
-}
-
-.handoffPrompt::-webkit-details-marker { display: none; }
-
-.handoffPrompt:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: -3px;
-}
-
-.exerciseAction {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-  padding: 8px 13px;
-  border-radius: 2px;
-  background: var(--accent);
-  color: var(--white);
-  font-size: .9375rem;
-  font-weight: 680;
-}
-
-.handoffPrompt:hover .exerciseAction { background: var(--accent-hover); }
-.exerciseAction::after { content: "+" / ""; }
-.exercise[open] .exerciseAction::after { content: "−" / ""; }
-
 @container (max-width: 650px) {
   .stage { aspect-ratio: 2 / 1; }
   .filmDetails { grid-template-columns: 1fr; }

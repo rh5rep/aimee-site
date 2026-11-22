@@ -252,8 +252,7 @@ p + p { margin-top: 12px; }
 }
 
 .service-list section,
-.work-example,
-.contact-guidance {
+.work-example {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
   align-items: baseline;
@@ -264,8 +263,7 @@ p + p { margin-top: 12px; }
 
 .service-list h2 { font-size: clamp(1.25rem, 2.25vw, 1.7rem); }
 .work-examples-title { margin-bottom: 20px; }
-.service-list p,
-.contact-guidance p { color: var(--ink-soft); }
+.service-list p { color: var(--ink-soft); }
 
 .example-band { padding-block: clamp(38px, 6vw, 78px); background: var(--linen); }
 .example-band h2 { margin-bottom: 26px; }
@@ -299,30 +297,6 @@ p + p { margin-top: 12px; }
 .method-list h2 { margin-bottom: 6px; font-size: 1.38rem; }
 .method-list p { color: var(--ink-soft); }
 
-.bio-list { max-width: 860px; }
-
-.bio-list article {
-  display: grid;
-  grid-template-columns: clamp(88px, 15vw, 160px) 1fr;
-  gap: clamp(14px, 4vw, 34px);
-  padding-block: 24px;
-  border-top: 1px solid var(--line);
-}
-
-.bio-list img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: var(--accent-tint); }
-.bio-list h2 { margin-bottom: 7px; font-size: 1.55rem; }
-.bio-list p { color: var(--ink-soft); }
-.bio-list .actions { margin-top: 4px; }
-
-.teaching-photo { max-width: 860px; margin-top: 18px; }
-.teaching-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 62%; }
-.teaching-photo figcaption { color: var(--ink-soft); margin-top: 8px; font-size: .875rem; }
-
-.contact-guidance { max-width: 820px; }
-.contact-guidance h2 { font-size: 1.4rem; }
-.contact-guidance ul { padding-left: 18px; margin: 0 0 14px; list-style: disc; }
-.contact-intro .text-link { overflow-wrap: anywhere; }
-
 @media (max-width: 760px) {
   .example-grid { grid-template-columns: 1fr; }
 }
@@ -332,11 +306,11 @@ p + p { margin-top: 12px; }
   .main-nav { column-gap: clamp(5px, 1.8vw, 11px); }
   .main-nav a { font-size: .875rem; }
   .main-nav .nav-contact { min-height: 44px; border: 0; padding: 0; }
-  .service-list section, .work-example, .contact-guidance { grid-template-columns: 1fr; }
+  .service-list section, .work-example { grid-template-columns: 1fr; }
   .footer-inner { min-height: 0; padding-block: 17px; flex-wrap: wrap; gap: 4px 20px; }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 420px) {
   .main-nav { column-gap: 6px; }
   .main-nav a { font-size: .8125rem; }
 }

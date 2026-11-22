@@ -13,7 +13,7 @@ const navigation = [
   { href: "/approach", label: "Approach" },
   { href: "/demos", label: "Demos" },
   { href: "/about", label: "About" },
-  { href: "/workshop", label: "Events" },
+  { href: "/workshop", label: "Workshops" },
 ];
 
 function Wordmark() {
@@ -50,7 +50,7 @@ export function SiteFooter() {
         <Wordmark />
         <nav aria-label="Footer navigation">
           <Link href="/work">Services</Link>
-          <Link href="/workshop">Events</Link>
+          <Link href="/workshop">Workshops</Link>
           <Link href="/contact">Contact</Link>
         </nav>
       </div>

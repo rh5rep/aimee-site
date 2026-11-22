@@ -19,7 +19,10 @@ export default function DemosPage() {
             <p className="meta">Fictional example · 20-second film</p>
             <h1>The Friday Report</h1>
           </div>
-          <p>Every Friday, an operations team turns a tracker and handoff notes into an update. Watch AI draft it and see what the team checks before sending.</p>
+          <div className={styles.setup}>
+            <p>It’s Friday. The weekly update is due, and a request still needs an owner. See how the team drafts the update with AI and checks it before sending.</p>
+            <a className="text-link" href="#try-report">Jump to the source check</a>
+          </div>
         </header>
         <WorkflowStory />
         <Link className={`text-link ${styles.reportingLink}`} href="/work#example">Read the full reporting example</Link>
@@ -52,6 +55,10 @@ export default function DemosPage() {
             </div>
           </div>
           <Link className="text-link" href="/review">Review your own draft</Link>
+        </section>
+        <section className="contact-strip" aria-labelledby="demo-contact">
+          <h2 id="demo-contact">Have a report your team writes every week?</h2>
+          <Link className="button" href="/contact?service=workflow-design">Tell us about it</Link>
         </section>
       </main>
       <SiteFooter />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { email, SiteHeader, SiteFooter } from "../../components/site-shell";
 import styles from "./workshop.module.css";
 
@@ -18,14 +19,16 @@ const sessions = [
     day: "Monday, December 7",
     title: "Experimental planning",
     audience: "graduate students and postdocs",
-    description: "Bring an experiment idea or troubleshooting question. Use AI to surface assumptions, compare options, and decide what you’d check before moving forward.",
+    bring: "an experiment idea or a troubleshooting question.",
+    description: "Use AI to surface assumptions and compare options. Decide what you’d check before moving forward.",
   },
   {
     date: "2026-12-08",
     day: "Tuesday, December 8",
     title: "Writing and revision",
     audience: "faculty and trainees",
-    description: "Bring a short passage. Get focused feedback and decide which edits make the argument clearer while preserving its scientific meaning.",
+    bring: "a short passage from a draft.",
+    description: "Get focused feedback and decide which edits make the argument clearer while preserving its scientific meaning.",
   },
 ];
 
@@ -37,8 +40,8 @@ export default function WorkshopPage() {
         <header className={styles.intro}>
           <div>
             <h1>Practical AI <em>for Research</em></h1>
-            <p className={`lede ${styles.description}`}>Two hands-on workshops on experimental planning and scientific writing.</p>
-            <a className="text-link" href="#sessions">View the sessions</a>
+            <p className={`lede ${styles.description}`}>Join Max and Rami at Einstein for two hands-on workshops. Bring an experiment idea or a draft and practice using AI to think it through.</p>
+            <a className="text-link" href="#sessions">Find your session</a>
           </div>
           <aside className={styles.visit} id="details" aria-labelledby="details-title">
             <h2 id="details-title">Event details</h2>
@@ -54,26 +57,30 @@ export default function WorkshopPage() {
 
         <section className={styles.sessions} id="sessions" aria-labelledby="sessions-title">
           <h2 id="sessions-title">Sessions</h2>
-          {sessions.map((session) => (
-            <article key={session.date}>
-              <div className={styles.sessionTime}>
-                <time dateTime={session.date}>{session.day}</time>
-                <span>{workshopTime}</span>
-              </div>
-              <div>
+          <div className={styles.sessionGrid}>
+            {sessions.map((session) => (
+              <article key={session.date}>
+                <p className={styles.sessionTime}>
+                  <time dateTime={session.date}>{session.day}</time>
+                  <span>{workshopTime}</span>
+                </p>
                 <h3>{session.title}</h3>
-                <p>{session.description}</p>
                 <p className={styles.audience}>Designed for {session.audience}.</p>
-              </div>
-            </article>
-          ))}
+                <p><strong>Bring</strong> {session.bring}</p>
+                <p>{session.description}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className={styles.preparation} aria-labelledby="prepare-title">
-          <h2 id="prepare-title">What to bring</h2>
+          <h2 id="prepare-title">What to expect</h2>
           <div>
-            <p>No prior AI experience is required. Bring a question or passage you’re able to share, or use one of the examples provided.</p>
-            <p>In each session, you’ll give AI relevant context, review its suggestions, and save the instructions you want to use again.</p>
+            <p>We’ll walk through an example together. Then you’ll give AI context for your own task, check what comes back, and save the instructions you’d use again.</p>
+            <p>No prior AI experience is required. Bring something you’re able to share, or use an example we provide.</p>
+            <div className="actions">
+              <Link className="text-link" href="/about">Meet the instructors</Link>
+            </div>
           </div>
         </section>
 

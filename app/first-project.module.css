@@ -185,20 +185,24 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  :is(.questions, .pair)[data-home-reveal-state="waiting"]:not(:focus-within, :target) .turn {
+  :is(.questions, .pair)[data-home-reveal-state="waiting"]:not(:focus-within, :target) .turn,
+  .questions[data-home-start-state="scrolling"] .turn {
     opacity: 0;
     transform: translateY(18px);
   }
 
-  :is(.questions, .pair)[data-home-reveal-state="arriving"]:not(:focus-within, :target) .turn {
+  :is(.questions, .pair)[data-home-reveal-state="arriving"]:not(:focus-within, :target) .turn,
+  .questions[data-home-start-state="playing"] .turn {
     animation: exchange-arrival 540ms cubic-bezier(.16, 1, .3, 1) backwards;
   }
 
-  :is(.questions, .pair)[data-home-reveal-state="arriving"]:not(:focus-within, :target) [data-home-reveal-finish] {
+  :is(.questions, .pair)[data-home-reveal-state="arriving"]:not(:focus-within, :target) [data-home-reveal-finish],
+  .questions[data-home-start-state="playing"] [data-home-reveal-finish] {
     animation-delay: 1100ms;
   }
 
   .questions[data-home-reveal-state="arriving"] ~ .pair[data-home-reveal-state="arriving"] .turn,
+  .questions[data-home-start-state] ~ .pair[data-home-reveal-state="arriving"] .turn,
   .pair[data-home-reveal-state="arriving"] + .pair[data-home-reveal-state="arriving"] .turn {
     animation-play-state: paused;
   }

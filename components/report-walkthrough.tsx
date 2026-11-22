@@ -1,54 +1,41 @@
-"use client";
-
-import { useState } from "react";
 import { reportFollowUp, reportStatus } from "./report-example";
 import styles from "./report-walkthrough.module.css";
 
 const reportLines = [reportStatus, reportFollowUp];
 
-export function ReportWalkthrough() {
-  const [selected, setSelected] = useState<(typeof reportLines)[number] | null>(null);
-
+export function ReportWalkthrough({ onSourceOpen }: { onSourceOpen: () => void }) {
   return (
-    <div className={styles.workspace}>
-      <div className={styles.draft}>
-        <h2 className={styles.title}>Weekly operations update</h2>
-        <p className={styles.instruction}>
-          AI drafted this from Friday’s tracker and handoff note.
-          Choose a line to see what you can verify before sending.
-        </p>
-        <div className={styles.lines}>
-          {reportLines.map((item) => (
-            <button
-              key={item.label}
-              type="button"
-              className={styles.line}
-              aria-pressed={selected === item}
-              aria-controls="report-evidence"
-              onClick={() => setSelected(item)}
-            >
+    <section className={styles.exercise} id="try-report" aria-labelledby="try-report-title" tabIndex={-1}>
+      <header className={styles.intro}>
+        <h2 id="try-report-title">Would you send this update?</h2>
+        <p>Open a line from the AI draft to see its source and what you’d check before sending.</p>
+      </header>
+      <div className={styles.lines}>
+        {reportLines.map((item) => (
+          <details
+            key={item.label}
+            className={styles.line}
+            onToggle={(event) => {
+              if (event.currentTarget.open) onSourceOpen();
+            }}
+          >
+            <summary>
               <span className={styles.lineLabel}>{item.label}</span>
               <span>{item.line}</span>
-            </button>
-          ))}
-        </div>
+            </summary>
+            <div className={styles.evidence}>
+              <div>
+                <h3>{item.source}</h3>
+                <blockquote>{item.note}</blockquote>
+              </div>
+              <div>
+                <h3>What we’d check</h3>
+                <p>{item.check}</p>
+              </div>
+            </div>
+          </details>
+        ))}
       </div>
-      <div className={styles.review} id="report-evidence" aria-live="polite" aria-atomic="true">
-        {selected ? (
-          <div className={styles.original} key={selected.label}>
-            <p className={styles.eyebrow}>Original note</p>
-            <h3>{selected.source}</h3>
-            <blockquote className={styles.excerpt}>{selected.note}</blockquote>
-            <p className={styles.eyebrow}>What to check before sending</p>
-            <p className={styles.check}>{selected.check}</p>
-          </div>
-        ) : (
-          <>
-            <h3>Source check</h3>
-            <p className={styles.instruction}>The original note and what to check will appear here.</p>
-          </>
-        )}
-      </div>
-    </div>
+    </section>
   );
 }

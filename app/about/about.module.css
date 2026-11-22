@@ -1,0 +1,54 @@
+.founders {
+  display: grid;
+  gap: 16px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: center;
+  background: var(--linen);
+}
+
+.profile + .profile { background: var(--accent-tint); }
+
+.portrait {
+  align-self: stretch;
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  background: var(--linen);
+}
+
+.portrait img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.portrait .ramiPortrait {
+  transform: scale(1.85);
+  transform-origin: 52% 43%;
+}
+
+.bio { padding: clamp(24px, 4vw, 52px); }
+.bio h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.bio p { max-width: 49ch; }
+
+.bio .role {
+  margin-block: 6px 18px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.teaching { margin-top: clamp(32px, 6vw, 65px); }
+.teaching img { width: 100%; height: auto; aspect-ratio: 2.35; object-fit: cover; object-position: center 69%; }
+.teaching figcaption { margin-top: 8px; color: var(--ink-soft); font-size: .875rem; }
+
+@media (max-width: 700px) {
+  .profile { grid-template-columns: minmax(0, 1fr); }
+  .portrait { aspect-ratio: 4 / 3; min-height: 0; }
+  .teaching img { aspect-ratio: 4 / 3; }
+}

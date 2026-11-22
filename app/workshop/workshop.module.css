@@ -1,9 +1,9 @@
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(270px, .8fr);
-  align-items: start;
-  gap: clamp(32px, 8vw, 100px);
-  padding-block: clamp(44px, 7vw, 92px) clamp(48px, 7vw, 86px);
+  grid-template-columns: minmax(0, 1.35fr) minmax(270px, .9fr);
+  align-items: center;
+  gap: clamp(24px, 6vw, 82px);
+  padding-block: clamp(38px, 6vw, 78px) clamp(36px, 5vw, 66px);
 }
 
 .intro h1 {
@@ -19,24 +19,18 @@
   white-space: nowrap;
 }
 
-.description {
-  max-width: 39ch;
-}
-
-.intro .visit {
-  margin-top: 4px;
-}
+.description { max-width: 42ch; }
+.intro :global(.text-link) { margin-top: 6px; }
 
 .visit {
-  padding: clamp(20px, 3vw, 31px);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--linen);
+  padding: clamp(22px, 3vw, 36px);
+  background: var(--accent);
+  color: var(--white);
 }
 
 .visit h2 {
-  margin-bottom: 20px;
-  font-size: 1.25rem;
+  margin-bottom: 14px;
+  font: 400 clamp(1.7rem, 2.6vw, 2.2rem)/1.1 var(--font-display);
 }
 
 .visit dl {
@@ -48,12 +42,12 @@
   grid-template-columns: minmax(88px, .6fr) 1fr;
   gap: 10px;
   padding-block: 11px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid color-mix(in srgb, var(--white) 30%, transparent);
   font-size: .9375rem;
 }
 
 .visit dt,
-.visit small { color: var(--ink-soft); }
+.visit small { color: var(--accent-tint); }
 
 .sessionTime span,
 .audience {
@@ -72,30 +66,34 @@
   font-weight: 400;
 }
 
-.visit a {
-  margin-top: 14px;
+.visit :global(.button) {
+  margin-top: 12px;
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--accent);
 }
 
-.sessions {
-  padding-block: 36px 48px;
-  border-top: 1px solid var(--line);
-}
+.visit :global(.button:hover) { background: var(--accent-tint); }
+.visit :global(.button:focus-visible) { outline-color: var(--white); }
 
-.sessions h2 {
-  margin-bottom: 20px;
-}
+.sessions { padding-block: 0 clamp(32px, 5vw, 56px); }
+.sessions h2 { margin-bottom: 16px; }
 
-.sessions article,
-.preparation {
+.sessionGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: clamp(20px, 5vw, 65px);
-  padding-block: 25px;
-  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
+.sessions article {
+  padding: clamp(21px, 3.4vw, 40px);
+  background: var(--linen);
+}
+
+.sessions article + article { background: var(--accent-tint); }
 
 .sessions h3 {
-  margin-bottom: 7px;
+  margin-block: 15px 7px;
+  font: 400 clamp(1.7rem, 3vw, 2.3rem)/1.1 var(--font-display);
 }
 
 .sessions p,
@@ -104,10 +102,13 @@
 }
 
 .sessionTime {
-  display: grid;
-  align-content: start;
-  gap: 4px;
-  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  margin: 0;
+  color: var(--accent);
+  font-size: .9375rem;
+  font-weight: 700;
 }
 
 .sessionTime span {
@@ -116,30 +117,24 @@
 }
 
 .sessions .audience {
-  margin: 12px 0 0;
+  margin: 0 0 19px;
   font-size: .9375rem;
 }
 
-.preparation {
-  padding-block: 36px;
-}
+.sessions article > p:last-child { margin-bottom: 0; }
 
-.preparation p:last-child {
-  margin-bottom: 0;
+.preparation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 12px clamp(20px, 5vw, 65px);
+  padding-block: clamp(22px, 4vw, 42px);
+  border-block: 1px solid var(--line);
 }
 
 @media (max-width: 720px) {
   .intro,
-  .sessions article,
+  .sessionGrid,
   .preparation {
     grid-template-columns: 1fr;
-  }
-
-  .sessions article {
-    gap: 12px;
-  }
-
-  .preparation {
-    gap: 10px;
   }
 }

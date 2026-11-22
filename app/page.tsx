@@ -39,7 +39,7 @@ export default function Home() {
                 </div>
                 <figcaption>
                   <Link href="/about#rami">Rami Hanna</Link>
-                  <span>Robotics engineering</span>
+                  <span>Robotics and applied AI</span>
                 </figcaption>
               </figure>
             </div>
