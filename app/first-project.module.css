@@ -103,6 +103,17 @@
   margin-top: 13px;
 }
 
+.situation .description { position: relative; }
+
+.revealPoint {
+  position: absolute;
+  inset-block-start: clamp(-32px, -2.2vw, -20px);
+  inset-inline-start: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
 .offer :global(.text-link) { margin-top: 8px; }
 .offer :global(.text-link):hover { color: var(--accent-tint); }
 .offer a:focus-visible { outline-color: var(--white); }

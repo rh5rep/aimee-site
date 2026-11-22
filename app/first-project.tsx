@@ -34,7 +34,10 @@ export function FirstProject() {
               <div className={styles.turn}>
                 <p className={styles.label}>You bring</p>
                 <p className={styles.bring}>{bring}</p>
-                <p className={styles.description} data-home-reveal-trigger>{example}</p>
+                <p className={styles.description}>
+                  <span className={styles.revealPoint} data-home-reveal-trigger aria-hidden="true" />
+                  {example}
+                </p>
               </div>
             </div>
             <div className={styles.offer}>
