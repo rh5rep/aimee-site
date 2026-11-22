@@ -235,8 +235,8 @@
   .heroPortraits figure { animation-name: open-portrait; animation-delay: 425ms; }
   .ramiName { animation-delay: 715ms; }
   .heroPortraits figure + figure { animation-delay: 960ms; }
-  .heroLead { animation-delay: 960ms; }
-  .heroActions { animation-delay: 1100ms; }
+  .heroLead { animation-delay: 1360ms; }
+  .heroActions { animation-delay: 1500ms; }
 
   .hero::after {
     animation: open-rule 850ms cubic-bezier(.16, 1, .3, 1) 140ms backwards;
