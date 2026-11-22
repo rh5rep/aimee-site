@@ -62,7 +62,7 @@
 .offer .label { color: var(--accent-tint); }
 
 .pair {
-  min-height: clamp(365px, 66svh, 630px);
+  min-height: clamp(330px, 54svh, 540px);
   align-content: center;
   align-items: start;
   border-top: 1px solid transparent;
@@ -141,7 +141,7 @@
   }
 
   .situation,
-  .offer { padding-block: 26px; }
+  .offer { padding-block: 22px; }
 }
 
 @media (max-width: 400px) {
