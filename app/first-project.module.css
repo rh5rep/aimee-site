@@ -1,8 +1,18 @@
 .section { padding-bottom: clamp(24px, 4vw, 48px); }
 
-.section:focus-visible {
+.section:focus-visible .board {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
+}
+
+.track[data-scroll="true"] .board {
+  position: sticky;
+  top: 24px;
+}
+
+.track[data-scroll="true"] .scrollSpace {
+  --scroll-step: clamp(140px, 28vh, 250px);
+  height: calc(var(--scroll-step) * var(--project-count));
 }
 
 .board {
@@ -33,8 +43,14 @@
 
 .tabs {
   display: grid;
-  margin-top: clamp(24px, 4vw, 48px);
+  margin-top: 10px;
   border-top: 1px solid var(--line);
+}
+
+.hint {
+  margin-top: clamp(14px, 2vw, 24px);
+  color: var(--ink-soft);
+  font-size: .875rem;
 }
 
 .tabs button {
@@ -99,7 +115,17 @@
 
 .answers h2 em { color: var(--accent-tint); }
 
-.panel { margin-top: clamp(24px, 4vw, 48px); }
+.panels {
+  display: grid;
+  margin-top: clamp(24px, 4vw, 48px);
+}
+
+.panel {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.panel[aria-hidden="true"] { visibility: hidden; }
 
 .response {
   padding-top: clamp(16px, 2.2vw, 24px);
@@ -142,8 +168,16 @@
 .answers :global(.text-link):hover { color: var(--accent-tint); }
 
 @media (max-width: 720px) {
-  .board { grid-template-columns: 1fr; }
-  .tabs button { min-height: 48px; }
+  .board {
+    --gutter: clamp(17px, 4.5vw, 28px);
+    grid-template-columns: 1fr;
+  }
+  .board h2 { font-size: clamp(1.875rem, 5.5vw, 2.625rem); }
+  .board h2 > span { display: inline; }
+  .tabs button { min-height: 48px; padding-block: 8px; }
+  .panels { margin-top: 14px; }
+  .response { padding-top: 12px; }
+  .takeaway { margin-top: 12px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -152,7 +186,7 @@
 
   .tabs button::before { transition: transform 230ms ease-out; }
 
-  .panel:not([hidden]) .response {
+  .panel[aria-hidden="false"] .response {
     animation: reveal-response 260ms ease-out both;
   }
 }
