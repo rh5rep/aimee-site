@@ -17,7 +17,8 @@ export function HomeMotion() {
     let startFrame = 0;
     let startPause = 0;
     let previousScroll = window.scrollY;
-    const inset = Math.min(160, Math.round(window.innerHeight * .2));
+    const insetRatio = window.innerWidth <= 760 ? .1 : .2;
+    const inset = Math.min(160, Math.round(window.innerHeight * insetRatio));
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;

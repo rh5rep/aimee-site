@@ -53,7 +53,12 @@ export function FirstProject() {
                 <p className={styles.label}>We bring</p>
                 <h3 id={`service-title-${id}`}>{format}</h3>
                 <p className={styles.description}>{help}</p>
-                <Link className="text-link" href={`/work#${id}`}>{linkLabel}</Link>
+                <div className={styles.offerLinks}>
+                  <Link className="text-link" href={`/work#${id}`}>{linkLabel}</Link>
+                  {id === "workflow-design" && (
+                    <Link className="text-link" href="/work#implementation">Implementation</Link>
+                  )}
+                </div>
               </div>
             </div>
           </article>

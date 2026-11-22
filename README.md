@@ -11,6 +11,8 @@ npm run dev
 
 Open `http://localhost:3000`. Run `npm run lint`, `npm run typecheck`, and `npm run build` before sharing a preview.
 
+`npm run build` creates the static site in `out/`. To preview that export, use a static host that maps URLs such as `/work` to `out/work.html`. Use `npm run dev` for local navigation while editing.
+
 ## Content and launch review
 
 Public page copy lives in `app/`; the shared navigation, footer, and current contact address live in `components/site-shell.tsx`. The November redesign includes founder bios, portraits, a teaching photo, and the December research workshops. Max and Rami should review the wording and image use together before wider promotion. Review [CONTENT_REVIEW.md](CONTENT_REVIEW.md) before publishing. The current contact address is `aimee_workflows@proton.me`; a professional address can replace it later without changing the page structure.
@@ -37,4 +39,4 @@ Live review sends the submitted draft, writing goal, and source notes through th
 
 ## Netlify
 
-The project uses Next.js App Router, TypeScript, and Tailwind. Netlify detects Next.js and uses its maintained adapter; no adapter version is pinned in this project. Connect only this repository to Netlify. Review the temporary `*.netlify.app` URL with the founders before using it in outreach. A custom domain can be added later.
+The project uses Next.js App Router, TypeScript, and Tailwind. The settings in `netlify.toml` run `npm run build` and publish the static export from `out/`. Connect only this repository to Netlify. Review the temporary `*.netlify.app` URL with the founders before using it in outreach. A custom domain can be added later.

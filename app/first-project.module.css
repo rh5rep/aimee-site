@@ -137,7 +137,13 @@
 
 .pair + .pair .revealPoint { inset-block-start: 0; }
 
-.offer :global(.text-link) { margin-top: 8px; }
+.offerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(10px, 2vw, 22px);
+  margin-top: 8px;
+}
+
 .offer :global(.text-link):hover { color: var(--accent-tint); }
 .offer a:focus-visible { outline-color: var(--white); }
 

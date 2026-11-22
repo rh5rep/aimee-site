@@ -38,7 +38,7 @@ export const services = [
       jumpLabel: "Workflows",
       format: "Team workflows",
       help: "We design or build a workflow with your team, test it on real work, and agree on what to check.",
-      linkLabel: "Explore workflow services",
+      linkLabel: "Workflow design",
     },
   },
   {

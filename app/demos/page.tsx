@@ -56,7 +56,7 @@ export default function DemosPage() {
               </p>
             </div>
           </div>
-          <Link className="text-link" href="/review">Review your own draft</Link>
+          <Link className="text-link" href="/review">Try the sample or check your draft</Link>
         </section>
         <section className="contact-strip" aria-labelledby="demo-contact">
           <h2 id="demo-contact">Have a report your team writes every week?</h2>

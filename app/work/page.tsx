@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const workExamples = [
   {
     title: "Give a draft a second set of eyes",
-    description: "In a writing workshop demo, we read a draft from several angles and asked what readers would take away, which claims needed stronger evidence, and which edits might change the author’s meaning.",
+    description: "In a rehearsal for our writing workshop, we read a draft from several angles and asked what readers would take away, which claims needed stronger evidence, and which edits might change the author’s meaning.",
   },
   {
     title: "Make the next report easier to hand over",
