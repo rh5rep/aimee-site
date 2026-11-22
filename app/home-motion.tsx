@@ -10,6 +10,8 @@ export function HomeMotion() {
 
     const pending = new Map<HTMLElement, HTMLElement>();
     const services = main.querySelector("#services");
+    const startLink = main.querySelector<HTMLAnchorElement>("[data-home-service-start]");
+    const questions = startLink && main.querySelector<HTMLElement>(startLink.hash);
     let previousScroll = window.scrollY;
     const inset = Math.min(160, Math.round(window.innerHeight * .2));
     const observer = new IntersectionObserver((entries) => {
@@ -53,6 +55,16 @@ export function HomeMotion() {
       if (section) reveal(section);
     }
 
+    function scrollToQuestions(event: MouseEvent) {
+      if (!startLink || !questions || !motion.matches || event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      event.preventDefault();
+      if (window.location.hash !== startLink.hash) window.history.pushState(null, "", startLink.hash);
+      questions.focus({ preventScroll: true });
+      questions.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
     function showFocused(event: FocusEvent) {
       const section = (event.target as Element).closest<HTMLElement>("[data-home-reveal]");
       if (section) reveal(section);
@@ -76,6 +88,7 @@ export function HomeMotion() {
     }
 
     showTarget();
+    startLink?.addEventListener("click", scrollToQuestions);
     window.addEventListener("scroll", showScrolledPast, { passive: true });
     window.addEventListener("hashchange", showTarget);
     main.addEventListener("focusin", showFocused);
@@ -86,6 +99,7 @@ export function HomeMotion() {
       for (const element of pending.keys()) {
         delete element.dataset.homeRevealState;
       }
+      startLink?.removeEventListener("click", scrollToQuestions);
       window.removeEventListener("scroll", showScrolledPast);
       window.removeEventListener("hashchange", showTarget);
       main.removeEventListener("focusin", showFocused);

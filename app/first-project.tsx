@@ -9,7 +9,9 @@ const projects = services.flatMap(({ id, firstProject }) =>
 export function FirstProject() {
   return (
     <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title" tabIndex={-1}>
-      <p className={styles.bridge}>You might be wondering where to start.</p>
+      <p className={styles.bridge}>
+        You might be wondering <a href="#services-title" data-home-service-start>where to start</a>.
+      </p>
       <nav className={styles.index} aria-label="Jump to a service">
         {projects.map(({ id, jumpLabel }) => (
           <a key={id} href={`#service-${id}`}>{jumpLabel}</a>
@@ -17,7 +19,7 @@ export function FirstProject() {
       </nav>
 
       <div className={styles.board}>
-        <h2 id="services-title" className={styles.questions} data-home-reveal="exchange">
+        <h2 id="services-title" className={styles.questions} data-home-reveal="exchange" tabIndex={-1}>
           <span>
             <span className={styles.turn} data-home-reveal-trigger>What could you <em>bring?</em></span>
           </span>{" "}

@@ -10,7 +10,17 @@
   text-wrap: balance;
 }
 
+.bridge a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+.bridge a:hover { color: var(--accent-hover); }
+
 .section:focus-visible,
+.questions:focus-visible,
 .pair:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
