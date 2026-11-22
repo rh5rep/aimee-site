@@ -5,10 +5,12 @@ export const services = [
     description: "We design a live exercise around your group’s work and experience. Participants try it, check what AI produces, and leave with instructions they can use again.",
     firstProject: {
       bring: "A team building AI skills",
+      example: "Bring a task people already do, like drafting a tricky reply.",
       jumpLabel: "Workshops",
-      format: "Hands-on workshops",
-      help: "We’ll run a workshop around a familiar task, like drafting a tricky reply. Your team practices what to ask AI and how to check the result.",
-      takeaway: "A set of instructions and checks your team can use on the next task.",
+      format: "Hands-on AI workshops",
+      help: "We design a live exercise around your team’s work. Together we practice giving AI useful context and checking what it produces.",
+      takeaway: "Instructions and checks your team can use on the next task.",
+      linkLabel: "Explore workshops",
     },
   },
   {
@@ -16,11 +18,13 @@ export const services = [
     title: "One-on-one sessions",
     description: "Work through a task with one of us. We help you choose the relevant inputs, make a first pass, and write down the checks you’ll want next time.",
     firstProject: {
-      bring: "A task you’d like help with",
+      bring: "A draft you’re stuck on",
+      example: "Bring a draft, a few notes, or a task you want to try with AI.",
       jumpLabel: "Coaching",
       format: "One-on-one coaching",
-      help: "Bring a draft or a task you’re stuck on. We’ll make a first pass together and talk through what’s worth keeping.",
-      takeaway: "A first pass you’ve reviewed and a short list of checks to use next time.",
+      help: "Sit down with one of us. We’ll make a first pass together, check it against your source material, and decide what’s worth keeping.",
+      takeaway: "A first pass you’ve reviewed and a short checklist for next time.",
+      linkLabel: "Explore coaching",
     },
   },
   {
@@ -29,10 +33,12 @@ export const services = [
     description: "We map the process with your team, prototype one step, and document what goes in, who reviews the output, and how it moves to the next person.",
     firstProject: {
       bring: "A process your team repeats",
+      example: "Show us how a recurring task works today and where it gets stuck.",
       jumpLabel: "Workflows",
       format: "Workflow design and implementation",
-      help: "Show us where a recurring task gets stuck. We’ll design or build a workflow with your team and agree on who reviews the output.",
+      help: "We design or build an AI workflow with your team. We test it on real examples and agree on what a person needs to check.",
       takeaway: "A workflow your team can run, with the review and handoff steps written down.",
+      linkLabel: "Explore workflow services",
     },
   },
   {

@@ -3,7 +3,7 @@
   grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr);
   align-items: center;
   gap: clamp(28px, 5vw, 76px);
-  padding-block: clamp(44px, 7.4vw, 112px);
+  padding-block: clamp(37px, 6.2vw, 90px) clamp(40px, 5.7vw, 82px);
 }
 
 .introduction {
@@ -35,12 +35,11 @@
 }
 
 .heroLead {
-  max-width: 38ch;
+  max-width: 41ch;
   margin-top: clamp(16px, 2.2vw, 28px);
   color: var(--ink-soft);
   font-size: clamp(1.125rem, 1.8vw, 1.375rem);
   line-height: 1.48;
-  text-wrap: balance;
 }
 
 .heroActions { margin-top: clamp(18px, 2.1vw, 27px); }
@@ -54,7 +53,7 @@
   padding: clamp(10px, 1.35vw, 18px);
   border: 1px solid var(--line);
   background: var(--white);
-  box-shadow: 0 20px 38px -28px rgb(32 34 30 / 36%);
+  box-shadow: 0 14px 26px -24px rgb(32 34 30 / 35%);
 }
 
 .heroPortraits::before {
@@ -86,8 +85,8 @@
 
 .ramiPortrait {
   filter: grayscale(.62) sepia(.14) contrast(.94) brightness(.96);
-  transform: scale(3.35);
-  transform-origin: 58% 40%;
+  transform: scale(3.45);
+  transform-origin: 57% 42.5%;
 }
 
 .heroPortraits figcaption {
@@ -114,64 +113,51 @@
 
 .examples {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 26px);
-  padding-bottom: clamp(42px, 6.5vw, 82px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(14px, 2.2vw, 30px);
+}
+
+.examples section {
+  padding: clamp(22px, 3vw, 36px);
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.examples .demo { background: var(--accent-tint); }
+
+.exampleLabel {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: .875rem;
+  font-weight: 650;
 }
 
 .examples h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.625rem, 2.85vw, 2.375rem);
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
   font-weight: 400;
   letter-spacing: -.035em;
-  text-wrap: balance;
+  text-wrap: initial;
 }
 
-.examples section {
-  border: 1px solid var(--line);
-  border-radius: 4px;
-}
-
-.workProof,
-.demoCopy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: clamp(20px, 2.6vw, 36px);
-}
-
-.workProof { background: var(--white); }
-
-.examples p {
-  max-width: 48ch;
+.examples h2 + p {
+  max-width: 54ch;
   margin-top: 9px;
   color: var(--ink-soft);
 }
 
-.examples :global(.text-link) {
-  margin-top: auto;
-  padding-top: 4px;
-}
-
-.demo {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(94px, 12vw, 170px);
-  background: var(--accent-tint);
-}
-
-.demoImage {
-  position: relative;
-  overflow: hidden;
-  min-height: 116px;
-  border-radius: 0 3px 3px 0;
-  background: var(--accent);
-}
-
-.demoImage img { object-fit: cover; }
+.examples :global(.text-link) { margin-top: 6px; }
 
 .demo:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+.contact h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
+  font-weight: 400;
+  text-wrap: initial;
 }
 
 @media (max-width: 730px) {
@@ -186,13 +172,4 @@
 @media (max-width: 400px) {
   .hero h1 { font-size: clamp(2.625rem, 11.9vw, 3.25rem); }
   .heroActions { column-gap: 12px; }
-  .demo { grid-template-columns: 1fr; }
-  .demoImage {
-    min-height: 68px;
-    border-radius: 0 0 3px 3px;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  :global(html):has(.hero) { scroll-behavior: smooth; }
 }
