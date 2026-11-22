@@ -175,7 +175,12 @@
   }
 
   :is(.questions, .pair)[data-home-reveal-state="arriving"]:not(:focus-within, :target) [data-home-reveal-finish] {
-    animation-delay: 165ms;
+    animation-delay: 1100ms;
+  }
+
+  .questions[data-home-reveal-state="arriving"] ~ .pair[data-home-reveal-state="arriving"] .turn,
+  .pair[data-home-reveal-state="arriving"] + .pair[data-home-reveal-state="arriving"] .turn {
+    animation-play-state: paused;
   }
 }
 
