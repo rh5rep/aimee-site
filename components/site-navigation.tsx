@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 
 export function StickyHeader({ children }: { children: ReactNode }) {
@@ -71,29 +72,33 @@ export function SkipLink() {
 
 export function MobileMenu({ children }: { children: ReactNode }) {
   const menu = useRef<HTMLDetailsElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-    function closeOutside(event: PointerEvent) {
-      const element = menu.current;
-      if (element?.open && event.target instanceof Node && !element.contains(event.target)) {
+    const element = menu.current;
+    if (!element) return;
+    element.open = false;
+
+    // A touch can blur the summary before the tapped link receives its click.
+    const closeOutside = (event: Event) => {
+      if (event.type === "focusin" && event.target === document.body) return;
+      if (element.open && event.target instanceof Node && !element.contains(event.target)) {
         element.open = false;
       }
-    }
+    };
 
     document.addEventListener("pointerdown", closeOutside);
-    return () => document.removeEventListener("pointerdown", closeOutside);
-  }, []);
+    document.addEventListener("focusin", closeOutside);
+    return () => {
+      document.removeEventListener("pointerdown", closeOutside);
+      document.removeEventListener("focusin", closeOutside);
+    };
+  }, [pathname]);
 
   return (
     <details
       className="mobile-menu"
       ref={menu}
-      onBlur={({ currentTarget, relatedTarget }) => {
-        if (!currentTarget.contains(relatedTarget)) currentTarget.open = false;
-      }}
-      onClick={({ currentTarget, target }) => {
-        if (target instanceof Element && target.closest("a")) currentTarget.open = false;
-      }}
       onKeyDown={(event) => {
         const element = event.currentTarget;
         if (event.key !== "Escape" || !element.open) return;

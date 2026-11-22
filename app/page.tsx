@@ -45,7 +45,7 @@ export default function Home() {
             </div>
 
             <div className={`actions ${styles.heroActions}`}>
-              <a className="button" href="#services">See how we help</a>
+              <a className="button" href="#services-title" data-home-service-start aria-describedby="start-instructions">See how we help</a>
               <Link className="text-link" href="/contact">Tell us about a task</Link>
             </div>
           </div>

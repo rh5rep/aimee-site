@@ -10,8 +10,8 @@ export function HomeMotion() {
 
     const pending = new Map<HTMLElement, HTMLElement>();
     const services = main.querySelector("#services");
-    const startLink = main.querySelector<HTMLAnchorElement>("[data-home-service-start]");
-    const questions = startLink && main.querySelector<HTMLElement>(startLink.hash);
+    const startLinks = main.querySelectorAll<HTMLAnchorElement>("[data-home-service-start]");
+    const questions = services?.querySelector<HTMLElement>("#services-title");
     const startSteps = [...(services?.querySelectorAll<HTMLElement>('[data-home-reveal="exchange"]') ?? [])];
     let startStep = -1;
     let startFrame = 0;
@@ -116,13 +116,14 @@ export function HomeMotion() {
     }
 
     function startWalkthrough(event: MouseEvent) {
-      if (!startLink || !questions || startSteps[0] !== questions || !motion.matches ||
-          event.defaultPrevented || event.button !== 0) return;
+      if (!questions || startSteps[0] !== questions || !motion.matches ||
+          event.defaultPrevented || event.button > 0) return;
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
       event.preventDefault();
       stopStartReveal();
-      if (window.location.hash !== startLink.hash) window.history.pushState(null, "", startLink.hash);
+      const hash = `#${questions.id}`;
+      if (window.location.hash !== hash) window.history.pushState(null, "", hash);
       for (const step of startSteps) {
         reveal(step);
         step.dataset.homeStartState = "waiting";
@@ -175,7 +176,7 @@ export function HomeMotion() {
     }
 
     showTarget();
-    startLink?.addEventListener("click", startWalkthrough);
+    for (const link of startLinks) link.addEventListener("click", startWalkthrough);
     window.addEventListener("scroll", showScrolledPast, { passive: true });
     window.addEventListener("hashchange", showTarget);
     window.addEventListener("popstate", showTarget);
@@ -192,7 +193,7 @@ export function HomeMotion() {
       for (const element of pending.keys()) {
         delete element.dataset.homeRevealState;
       }
-      startLink?.removeEventListener("click", startWalkthrough);
+      for (const link of startLinks) link.removeEventListener("click", startWalkthrough);
       window.removeEventListener("scroll", showScrolledPast);
       window.removeEventListener("hashchange", showTarget);
       window.removeEventListener("popstate", showTarget);
