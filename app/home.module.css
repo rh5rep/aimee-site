@@ -24,7 +24,7 @@
   grid-template-areas: "greeting portraits" "offer portraits" "actions portraits";
   align-content: center;
   align-items: center;
-  min-height: clamp(490px, calc(89svh - 68px), 740px);
+  min-height: clamp(490px, calc(83svh - var(--header-offset)), 700px);
   padding-block: clamp(52px, 6.5vw, 94px);
 }
 
@@ -202,6 +202,7 @@
     grid-template-columns: 1fr;
     grid-template-areas: "greeting" "offer" "portraits" "actions";
     min-height: 0;
+    max-width: 560px;
     gap: clamp(20px, 5vw, 32px);
     padding-block: clamp(40px, 7vw, 62px);
   }
@@ -213,9 +214,11 @@
   .heroLead,
   .heroActions { margin: 0; }
 
-  .heroPortraits { width: min(100%, 480px); }
-
   .hero h1 { font-size: clamp(2.875rem, 11.5vw, 4.75rem); }
+
+  .examples > h2,
+  .contact { text-align: start; }
+  .contact { justify-items: start; }
 
   .examplePair { grid-template-columns: 1fr; }
   .examplePair .demo { border-top: 0; }

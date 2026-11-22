@@ -14,14 +14,20 @@ export default function DemosPage() {
     <>
       <SiteHeader activePath="/demos" />
       <main className="container interior" id="main" tabIndex={-1}>
-        <header className="page-intro">
-          <p className={`meta ${styles.filmLabel}`}>Fictional example · 20-second film</p>
-          <h1>The <em>Friday Report</em></h1>
-          <p className="lede">It’s Friday. The weekly update is due, and a request still needs an owner. See how the team drafts the update with AI and checks it before sending.</p>
-          <a className="text-link" href="#try-report">Jump to the source check</a>
+        <header className={`page-intro ${styles.intro}`}>
+          <div>
+            <p className={`meta ${styles.filmLabel}`}>Fictional example · 20-second film</p>
+            <h1>The <em>Friday Report</em></h1>
+          </div>
+          <div>
+            <p className="lede">It’s Friday. The weekly update is due, and a request still needs an owner. See how the team drafts the update with AI and checks it before sending.</p>
+            <a className="text-link" href="#try-report">Jump to the source check</a>
+          </div>
         </header>
-        <WorkflowStory />
-        <Link className={`text-link ${styles.reportingLink}`} href="/work#example">Read the Friday Report walkthrough</Link>
+        <div className={styles.film}>
+          <WorkflowStory />
+          <Link className={`text-link ${styles.reportingLink}`} href="/work#example">Read the Friday Report walkthrough</Link>
+        </div>
 
         <section className={styles.draftReview} id="draft-review" aria-labelledby="draft-review-title">
           <header>

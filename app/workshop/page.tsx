@@ -56,7 +56,7 @@ export default function WorkshopPage() {
         </header>
 
         <section className={styles.sessions} id="sessions" aria-labelledby="sessions-title">
-          <h2 id="sessions-title">Sessions</h2>
+          <h2 className="section-title" id="sessions-title">Sessions</h2>
           <div className={styles.sessionGrid}>
             {sessions.map((session) => (
               <article key={session.date}>
@@ -74,7 +74,7 @@ export default function WorkshopPage() {
         </section>
 
         <section className={styles.preparation} aria-labelledby="prepare-title">
-          <h2 id="prepare-title">What to expect</h2>
+          <h2 className="section-title" id="prepare-title">What to expect</h2>
           <div>
             <p>We’ll walk through an example together. Then you’ll give AI context for your own task, check what comes back, and save the instructions you’d use again.</p>
             <p>No prior AI experience is required. Bring something you’re able to share, or use an example we provide.</p>

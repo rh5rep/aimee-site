@@ -83,11 +83,13 @@ export function HomeMotion() {
     function playStartStep() {
       const step = startSteps[startStep];
       const { top, bottom, height } = step.getBoundingClientRect();
-      const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const { scrollPaddingTop, scrollPaddingBottom } = getComputedStyle(document.documentElement);
+      const topInset = parseFloat(scrollPaddingTop) || 0;
+      const bottomInset = parseFloat(scrollPaddingBottom) || 0;
       const viewport = window.innerHeight;
       const scroll = window.scrollY;
-      const alignTop = startStep === 0 || top < padding || height > viewport - 2 * padding;
-      const distance = alignTop ? top - padding : Math.max(0, bottom - viewport + padding);
+      const alignTop = startStep === 0 || top < topInset || height > viewport - topInset - bottomInset;
+      const distance = alignTop ? top - topInset : Math.max(0, bottom - viewport + bottomInset);
       const limit = document.documentElement.scrollHeight - viewport;
       const destination = Math.max(0, Math.min(scroll + distance, limit));
 

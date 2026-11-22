@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function MilestonesPage() {
   return (
     <main className={styles.page}>
-      <div className={styles.shell}>
+      <div className="container">
         <header className={styles.header}>
           <Link href="/" className={styles.brand} aria-label="Max and Rami home">Max <span>+</span> Rami</Link>
           <span className={styles.headerLabel}>A little founder corner</span>

@@ -1,4 +1,15 @@
+.intro:global(.page-intro) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px clamp(24px, 5vw, 68px);
+  max-width: none;
+  padding-block: clamp(35px, 4.1vw, 59px) clamp(21px, 2.8vw, 35px);
+}
+
+.intro h1 { margin-bottom: 0; }
 .filmLabel { margin-bottom: 8px; }
+.film { max-width: 1000px; margin-inline: auto; }
 
 .reportingLink { margin-top: 8px; }
 
@@ -70,6 +81,7 @@
 }
 
 @media (max-width: 720px) {
+  .intro:global(.page-intro),
   .reviewComparison { grid-template-columns: 1fr; }
 
   .reviewPage + .reviewPage {

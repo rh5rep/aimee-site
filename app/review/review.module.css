@@ -62,7 +62,7 @@
   width: 100%;
   margin: 4px 0 0;
   padding: 10px 12px;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--ink-soft) 60%, var(--line));
   border-radius: 3px;
   background: var(--paper);
   font: inherit;
@@ -70,6 +70,7 @@
 }
 
 .fields textarea { resize: vertical; }
+.fields :is(input, textarea)::placeholder { color: var(--ink-soft); opacity: 1; }
 
 .workspace :is(button, textarea, input, summary, h2):focus-visible,
 .upload:focus-within {

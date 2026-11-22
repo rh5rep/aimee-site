@@ -60,7 +60,7 @@ export default function WorkPage() {
         </div>
 
         <section className="container" id="examples" aria-labelledby="examples-title">
-          <h2 className="work-examples-title" id="examples-title">Examples from our work</h2>
+          <h2 className="section-title work-examples-title" id="examples-title">Examples from our work</h2>
           <div className="service-list">
             {workExamples.map((example) => (
               <div className="work-example" key={example.title}>
@@ -74,7 +74,7 @@ export default function WorkPage() {
         <section className="example-band" id="example" aria-labelledby="example-title">
           <div className="container">
             <p className="meta">Fictional workflow example</p>
-            <h2 id="example-title">The Friday Report</h2>
+            <h2 className="section-title" id="example-title">The Friday Report</h2>
             <div className="example-grid">
               <div>
                 <h3>Before</h3>
@@ -94,7 +94,10 @@ export default function WorkPage() {
               Before sending, someone checks the totals against the tracker and confirms the owner.
               The team keeps the format and checklist for next week.
             </p>
-            <Link className="text-link" href="/demos#try-report">Try checking the draft against its sources</Link>
+            <div className={styles.demoLinks}>
+              <Link className="text-link" href="/demos#friday-report">Watch the film</Link>
+              <Link className="text-link" href="/demos#try-report">Try the source check</Link>
+            </div>
           </div>
         </section>
 

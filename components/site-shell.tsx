@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileMenu, SkipLink, StickyHeader, Wordmark } from "./site-navigation";
 
 export const email = "aimee_workflows@proton.me";
 
@@ -16,30 +17,34 @@ const navigation = [
   { href: "/workshop", label: "Events" },
 ];
 
-function Wordmark() {
+function NavigationLinks({ activePath }: { activePath?: string }) {
+  return navigation.map(({ href, label }) => (
+    <Link key={href} href={href} aria-current={activePath === href ? "page" : undefined}>{label}</Link>
+  ));
+}
+
+function ContactLink({ activePath }: { activePath?: string }) {
   return (
-    <Link className="wordmark" href="/" aria-label="Max and Rami home">
-      Max + Rami
-    </Link>
+    <Link href="/contact" className="nav-contact" aria-current={activePath === "/contact" ? "page" : undefined}>Contact</Link>
   );
 }
 
 export function SiteHeader({ activePath }: { activePath?: string }) {
   return (
-    <>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header">
-        <div className="container header-inner">
-          <Wordmark />
-          <nav className="main-nav" aria-label="Main navigation">
-            {navigation.map(({ href, label }) => (
-              <Link key={href} href={href} aria-current={activePath === href ? "page" : undefined}>{label}</Link>
-            ))}
-            <Link href="/contact" className="nav-contact" aria-current={activePath === "/contact" ? "page" : undefined}>Contact</Link>
-          </nav>
+    <StickyHeader>
+      <SkipLink />
+      <div className="container header-inner">
+        <Wordmark />
+        <nav className="main-nav" aria-label="Main navigation">
+          <NavigationLinks activePath={activePath} />
+          <ContactLink activePath={activePath} />
+        </nav>
+        <div className="mobile-tools">
+          <ContactLink activePath={activePath} />
+          <MobileMenu><NavigationLinks activePath={activePath} /></MobileMenu>
         </div>
-      </header>
-    </>
+      </div>
+    </StickyHeader>
   );
 }
 

@@ -6,11 +6,12 @@
   --font-sans: "Avenir Next", "Segoe UI", sans-serif;
   --font-display: "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
   --font-mono: "SFMono-Regular", Consolas, monospace;
+  --header-offset: 69px;
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-padding-top: 24px; }
+html { scroll-padding-block: calc(var(--header-offset) + 16px) 24px; }
 
 body {
   margin: 0;
@@ -75,7 +76,13 @@ p + p { margin-top: 12px; }
   outline-offset: 1px;
 }
 
-.site-header { border-bottom: 1px solid var(--line); }
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 5;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
 
 .header-inner,
 .footer-inner {
@@ -85,6 +92,9 @@ p + p { margin-top: 12px; }
   gap: 20px;
   min-height: 68px;
 }
+
+.header-inner { position: relative; }
+.header-inner > .wordmark { min-height: 44px; }
 
 .wordmark {
   display: inline-flex;
@@ -127,6 +137,8 @@ p + p { margin-top: 12px; }
 
 .main-nav .nav-contact:hover,
 .main-nav .nav-contact[aria-current="page"] { border-color: var(--ink); }
+
+.mobile-tools { display: none; }
 
 .site-footer {
   border-top: 1px solid var(--line);
@@ -258,6 +270,7 @@ p + p { margin-top: 12px; }
   border-top: 1px solid var(--line);
 }
 
+.section-title { font: 400 clamp(1.75rem, 3.2vw, 2.5rem)/1.12 var(--font-display); }
 .work-examples-title { margin-bottom: 20px; }
 .service-list p { color: var(--ink-soft); }
 
@@ -288,27 +301,70 @@ p + p { margin-top: 12px; }
 .example-note { max-width: 64ch; margin-top: 20px; }
 
 @media (max-width: 760px) {
+  :root { --header-offset: 61px; }
+
+  .header-inner { min-height: 60px; gap: 12px; }
+  .header-inner > .wordmark { font-size: 1.25rem; }
+  .main-nav { display: none; }
+  .mobile-tools { display: flex; align-items: center; gap: 12px; }
+
+  .mobile-tools .nav-contact,
+  .mobile-menu summary,
+  .mobile-nav a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: .875rem;
+    font-weight: 650;
+    text-underline-offset: 4px;
+  }
+
+  .mobile-tools [aria-current="page"],
+  .mobile-tools a:hover { text-decoration: underline; }
+
+  .mobile-menu summary {
+    gap: 8px;
+    padding-inline: 11px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .mobile-menu summary::after {
+    width: 6px;
+    height: 6px;
+    border: solid var(--accent);
+    border-width: 0 1px 1px 0;
+    transform: translateY(-2px) rotate(45deg);
+    content: "";
+  }
+
+  .mobile-menu[open] summary { border-color: var(--accent); }
+  .mobile-menu[open] summary::after { transform: translateY(2px) rotate(225deg); }
+
+  .mobile-nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-block-size: calc(100svh - var(--header-offset) - 10px);
+    overflow-y: auto;
+    column-gap: 14px;
+    padding: 6px 16px;
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--accent);
+    background: var(--white);
+    box-shadow: 0 12px 24px rgb(32 34 30 / 12%);
+  }
+
+  .contact-strip { display: grid; justify-items: start; gap: 12px; }
   .example-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
-  .header-inner { align-items: flex-start; flex-direction: column; gap: 2px; padding-top: 13px; }
-  .main-nav { column-gap: clamp(5px, 1.8vw, 11px); }
-  .main-nav a { font-size: .875rem; }
-  .main-nav .nav-contact { min-height: 44px; border: 0; padding: 0; }
   .work-example { grid-template-columns: 1fr; }
   .footer-inner { min-height: 0; padding-block: 17px; flex-wrap: wrap; gap: 4px 20px; }
-}
-
-@media (max-width: 420px) {
-  .main-nav { column-gap: 6px; }
-  .main-nav a { font-size: .8125rem; }
-}
-
-@media (max-width: 345px) {
-  .main-nav {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    gap: 0 16px;
-  }
 }

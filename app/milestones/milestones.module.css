@@ -1,16 +1,15 @@
 .page{min-height:100vh;background:var(--paper);color:var(--ink)}
-.shell{width:min(1160px,calc(100% - 64px));margin:0 auto}
 .header{min-height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-.brand{font-size:27px;font-weight:800;letter-spacing:-.08em}.brand span{color:var(--accent)}
+.brand{font-size:1.42rem;font-weight:750;letter-spacing:-.055em}.brand span{color:var(--accent)}
 .headerLabel{font-size:12px;font-weight:700;color:var(--ink-soft);letter-spacing:.04em}
-.hero{padding:94px 0 89px;max-width:900px}
+.hero{padding:clamp(43px,7vw,88px) 0 clamp(31px,5vw,62px);max-width:780px}
 .eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--ink-soft);margin:0 0 22px}
-.hero h1{font-size:clamp(58px,7vw,100px);line-height:.99;letter-spacing:-.075em;font-weight:700;margin:0 0 28px}
-.hero h1 em{font-family:Georgia,serif;font-weight:400;color:var(--accent)}
+.hero h1{margin:0 0 15px}
+.hero h1 em{color:var(--accent)}
 .hero>p:last-child{max-width:720px;font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0}
 .timeline{border-top:1px solid var(--line);padding:64px 0 82px}
 .timelineHeader{display:flex;justify-content:space-between;align-items:end;gap:45px}
-.timelineHeader h2{font-size:clamp(35px,4vw,54px);line-height:1.08;letter-spacing:-.06em;margin:0}
+.timelineHeader h2{font:400 clamp(1.75rem,3.2vw,2.5rem)/1.12 var(--font-display);margin:0}
 .timelineHeader>p{max-width:315px;color:var(--ink-soft);font-size:14px;line-height:1.55;margin:0 0 3px}
 .trackArea{position:relative;margin:77px 20px 70px;height:85px}
 .track{position:absolute;top:13px;left:0;right:0;height:6px;border-radius:6px;background:var(--line)}
@@ -45,6 +44,11 @@
 .legendReached{background:var(--accent)}.legendFuture{background:var(--line)}
 .footer{display:flex;justify-content:space-between;gap:25px;padding:28px 0 45px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:12px;line-height:1.5}
 .footer p{margin:0}.footer a{font-weight:700;white-space:nowrap}.footer a:hover{color:var(--accent-hover)}
-@media(max-width:800px){.shell{width:min(100% - 40px,640px)}.hero{padding:72px 0}.timeline{padding:50px 0 66px}.timelineHeader{display:block}.timelineHeader>p{margin:18px 0 0}.trackArea{margin:65px 17px 65px}.detail{padding:29px}.detailMain{grid-template-columns:1fr;gap:26px}.dateBox{max-width:260px}.trackLabels small{font-size:10px}}
-@media(max-width:500px){.shell{width:calc(100% - 36px)}.header{min-height:65px}.brand{font-size:25px}.hero{padding:56px 0 62px}.hero h1{font-size:clamp(48px,12vw,65px)}.hero>p:last-child{font-size:16px}.timelineHeader h2{font-size:38px}.trackArea{margin:62px 11px 63px}.trackLabels>span{min-width:55px;max-width:68px;font-size:9px}.trackLabels small{font-size:9px;line-height:1.25}.detail{padding:23px}.detailLead{margin-bottom:22px}.detailNumber{font-size:45px}.detailMain h3{font-size:34px}.detailMain p{font-size:15px}.footer{display:block}.footer a{display:inline-block;margin-top:12px}}
+@media(max-width:800px){.timeline{padding:50px 0 66px}.timelineHeader{display:block}.timelineHeader>p{margin:18px 0 0}.trackArea{margin:65px 17px 65px}.detail{padding:29px}.detailMain{grid-template-columns:1fr;gap:26px}.dateBox{max-width:260px}.trackLabels small{font-size:10px}}
+@media(max-width:500px){.header{min-height:65px}.hero>p:last-child{font-size:16px}.trackArea{margin:62px 16px 63px}.trackLabels>span{min-width:55px;max-width:68px;font-size:9px}.trackLabels small{font-size:9px;line-height:1.25}.detail{padding:23px}.detailLead{margin-bottom:22px}.detailNumber{font-size:45px}.detailMain h3{font-size:34px}.detailMain p{font-size:15px}.footer{display:block}.footer a{display:inline-block;margin-top:12px}}
 @media(prefers-reduced-motion:reduce){.page *,.page *:before,.page *:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+@media (max-width: 500px) {
+  .trackLabels > span:first-child { text-align: start; transform: translateX(-16px); }
+  .trackLabels > span:last-child { text-align: end; transform: translateX(calc(-100% + 16px)); }
+}
