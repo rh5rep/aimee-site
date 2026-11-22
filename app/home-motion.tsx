@@ -8,17 +8,21 @@ export function HomeMotion() {
     const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
     if (!main || !motion.matches || !("IntersectionObserver" in window)) return;
 
-    const waiting = new Set<HTMLElement>();
+    const waiting = new Map<HTMLElement, HTMLElement>();
+    const inset = Math.min(160, Math.round(window.innerHeight * .2));
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        reveal(entry.target as HTMLElement, true);
+        const element = entry.target.closest<HTMLElement>("[data-home-reveal]");
+        if (element) reveal(element, true);
       }
-    }, { rootMargin: "0px 0px -48px 0px" });
+    }, { rootMargin: `0px 0px -${inset}px 0px` });
 
     function reveal(element: HTMLElement, animate = false) {
-      if (waiting.delete(element)) {
-        observer.unobserve(element);
+      const trigger = waiting.get(element);
+      if (trigger) {
+        waiting.delete(element);
+        observer.unobserve(trigger);
         if (animate) {
           element.dataset.homeRevealState = "arriving";
           return;
@@ -41,16 +45,19 @@ export function HomeMotion() {
 
     function finishArrival(event: AnimationEvent) {
       const element = event.target;
-      if (element instanceof HTMLElement && element.dataset.homeRevealState === "arriving") {
-        delete element.dataset.homeRevealState;
+      if (!(element instanceof HTMLElement)) return;
+      const arrival = element.closest<HTMLElement>('[data-home-reveal-state="arriving"]');
+      if (arrival && (arrival === element || element.hasAttribute("data-home-reveal-finish"))) {
+        delete arrival.dataset.homeRevealState;
       }
     }
 
     for (const element of main.querySelectorAll<HTMLElement>("[data-home-reveal]")) {
-      if (element.getBoundingClientRect().top < window.innerHeight || element.matches(":target, :has(:target), :focus-within")) continue;
+      const trigger = element.querySelector<HTMLElement>("[data-home-reveal-trigger]") ?? element;
+      if (trigger.getBoundingClientRect().top < window.innerHeight || element.matches(":target, :has(:target), :focus-within")) continue;
       element.dataset.homeRevealState = "waiting";
-      waiting.add(element);
-      observer.observe(element);
+      waiting.set(element, trigger);
+      observer.observe(trigger);
     }
 
     showTarget();

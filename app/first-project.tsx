@@ -9,18 +9,18 @@ const projects = services.flatMap(({ id, firstProject }) =>
 export function FirstProject() {
   return (
     <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title" tabIndex={-1}>
-      <h2 id="services-title" className={styles.questions} data-home-reveal>
-        <span>What would you <em>bring us?</em></span>{" "}
-        <span>What would we <em>bring you?</em></span>
-      </h2>
-
       <nav className={styles.index} aria-label="Jump to a service">
         {projects.map(({ id, jumpLabel }) => (
           <a key={id} href={`#service-${id}`}>{jumpLabel}</a>
         ))}
       </nav>
 
-      <div className={styles.pairs}>
+      <div className={styles.board}>
+        <h2 id="services-title" className={styles.questions} data-home-reveal>
+          <span>What would you <em>bring us?</em></span>{" "}
+          <span>What would we <em>bring you?</em></span>
+        </h2>
+
         {projects.map(({ id, bring, example, format, help, linkLabel }) => (
           <article
             key={id}
@@ -28,16 +28,22 @@ export function FirstProject() {
             id={`service-${id}`}
             aria-labelledby={`service-title-${id}`}
             tabIndex={-1}
-            data-home-reveal
+            data-home-reveal="exchange"
           >
             <div className={styles.situation}>
-              <p className={styles.bring}>{bring}</p>
-              <p>{example}</p>
+              <div className={styles.turn}>
+                <p className={styles.label}>You bring</p>
+                <p className={styles.bring}>{bring}</p>
+                <p className={styles.description} data-home-reveal-trigger>{example}</p>
+              </div>
             </div>
             <div className={styles.offer}>
-              <h3 id={`service-title-${id}`}>{format}</h3>
-              <p>{help}</p>
-              <Link className="text-link" href={`/work#${id}`}>{linkLabel}</Link>
+              <div className={styles.turn} data-home-reveal-finish>
+                <p className={styles.label}>We bring</p>
+                <h3 id={`service-title-${id}`}>{format}</h3>
+                <p className={styles.description}>{help}</p>
+                <Link className="text-link" href={`/work#${id}`}>{linkLabel}</Link>
+              </div>
             </div>
           </article>
         ))}

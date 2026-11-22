@@ -224,12 +224,12 @@
   .hero:focus-within *,
   .home:has(:target) .hero * { animation: none; }
 
-  .home :global([data-home-reveal-state="waiting"]):not(:focus-within, :target, :has(:target)) {
+  .home :global([data-home-reveal-state="waiting"]):not([data-home-reveal="exchange"], :focus-within, :target, :has(:target)) {
     opacity: 0;
     transform: translateY(20px);
   }
 
-  .home :global([data-home-reveal-state="arriving"]):not(:focus-within, :target, :has(:target)) {
+  .home :global([data-home-reveal-state="arriving"]):not([data-home-reveal="exchange"], :focus-within, :target, :has(:target)) {
     animation: page-arrival 570ms cubic-bezier(.16, 1, .3, 1);
   }
 }
