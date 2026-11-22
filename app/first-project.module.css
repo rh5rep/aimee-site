@@ -40,7 +40,7 @@
 
 .questions {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4.45vw, 4rem);
+  font-size: clamp(2.125rem, 3.6vw, 3.25rem);
   font-weight: 400;
   letter-spacing: -.05em;
   line-height: 1.02;
@@ -48,7 +48,7 @@
 }
 
 .questions > span {
-  padding: clamp(26px, 3.6vw, 52px) var(--home-inset);
+  padding: clamp(20px, 2vw, 28px) var(--home-inset);
 }
 
 .questions .turn { display: block; }
@@ -64,7 +64,7 @@
 .offer .label { color: var(--accent-tint); }
 
 .pair {
-  min-height: clamp(330px, 54svh, 540px);
+  min-height: clamp(270px, 34svh, 340px);
   align-content: center;
   align-items: start;
   border-top: 1px solid transparent;
@@ -73,7 +73,7 @@
 
 .situation,
 .offer {
-  padding: clamp(36px, 4.3vw, 62px) var(--home-inset);
+  padding: clamp(28px, 3vw, 40px) var(--home-inset);
 }
 
 .label {
@@ -144,7 +144,7 @@
     line-height: 1.06;
   }
 
-  .questions > span { padding-block: 15px; }
+  .questions > span { padding-block: 12px; }
   .questions em { display: inline; }
 
   .questions > span:last-child,
@@ -157,7 +157,7 @@
   }
 
   .situation,
-  .offer { padding-block: 22px; }
+  .offer { padding-block: 16px; }
 }
 
 @media (max-width: 400px) {

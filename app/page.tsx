@@ -18,6 +18,11 @@ export default function Home() {
               <em><span className={styles.maxName}>Max</span>{" "}<span className={styles.ramiName}>and Rami.</span></em>
             </h1>
 
+            <p className={styles.heroLead}>
+              We run hands-on AI workshops and build workflows your team can run and check.
+              We also coach one-on-one.
+            </p>
+
             <div className={styles.heroPortraits}>
               <figure>
                 <div className={styles.portraitFrame}>
@@ -39,15 +44,9 @@ export default function Home() {
               </figure>
             </div>
 
-            <div className={styles.heroDetails}>
-              <p className={styles.heroLead}>
-                We teach AI in hands-on workshops and one‑on‑one coaching.
-                We help teams build workflows they can run and check.
-              </p>
-              <div className={`actions ${styles.heroActions}`}>
-                <a className="button" href="#services">See how we help</a>
-                <Link className="text-link" href="/contact">Tell us about a task</Link>
-              </div>
+            <div className={`actions ${styles.heroActions}`}>
+              <a className="button" href="#services">See how we help</a>
+              <Link className="text-link" href="/contact">Tell us about a task</Link>
             </div>
           </div>
         </section>
