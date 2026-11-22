@@ -13,22 +13,10 @@ export default function Home() {
         <HomeMotion />
         <section className={styles.hero} aria-labelledby="hero-title">
           <div className={`container ${styles.heroInner}`}>
-            <div className={styles.heroCopy}>
-              <h1 id="hero-title">
-                <span>Hi, we’re</span>{" "}
-                <em>Max and Rami.</em>
-              </h1>
-              <div className={styles.heroDetails}>
-                <p className={styles.heroLead}>
-                  We teach AI in hands-on workshops and one‑on‑one coaching.
-                  We help teams build workflows they can run and check.
-                </p>
-                <div className={`actions ${styles.heroActions}`}>
-                  <a className="button" href="#services">See how we help</a>
-                  <Link className="text-link" href="/contact">Tell us about a task</Link>
-                </div>
-              </div>
-            </div>
+            <h1 id="hero-title">
+              <span className={styles.greeting}>Hi, we’re</span>{" "}
+              <em><span className={styles.maxName}>Max</span>{" "}<span className={styles.ramiName}>and Rami.</span></em>
+            </h1>
 
             <div className={styles.heroPortraits}>
               <figure>
@@ -49,6 +37,17 @@ export default function Home() {
                   <span>Robotics engineering</span>
                 </figcaption>
               </figure>
+            </div>
+
+            <div className={styles.heroDetails}>
+              <p className={styles.heroLead}>
+                We teach AI in hands-on workshops and one‑on‑one coaching.
+                We help teams build workflows they can run and check.
+              </p>
+              <div className={`actions ${styles.heroActions}`}>
+                <a className="button" href="#services">See how we help</a>
+                <Link className="text-link" href="/contact">Tell us about a task</Link>
+              </div>
             </div>
           </div>
         </section>

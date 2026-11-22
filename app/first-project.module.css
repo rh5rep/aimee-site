@@ -103,7 +103,8 @@
   margin-top: 13px;
 }
 
-.situation .description { position: relative; }
+.pair:first-of-type .situation .description,
+.pair + .pair .situation .turn { position: relative; }
 
 .revealPoint {
   position: absolute;
@@ -113,6 +114,8 @@
   height: 1px;
   pointer-events: none;
 }
+
+.pair + .pair .revealPoint { inset-block-start: 0; }
 
 .offer :global(.text-link) { margin-top: 8px; }
 .offer :global(.text-link):hover { color: var(--accent-tint); }

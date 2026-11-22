@@ -20,24 +20,36 @@
 .heroInner {
   display: grid;
   grid-template-columns: var(--home-columns);
+  grid-template-areas: "greeting portraits" "details portraits";
+  grid-template-rows: 1fr 1fr;
   align-items: center;
   min-height: clamp(490px, calc(89svh - 68px), 740px);
   padding-block: clamp(52px, 6.5vw, 94px);
 }
 
-.heroCopy { padding-inline-end: var(--home-inset); }
-
 .hero h1 {
+  grid-area: greeting;
+  align-self: end;
+  padding-inline-end: var(--home-inset);
   font-size: clamp(3.25rem, 6.5vw, 6rem);
   line-height: .97;
   letter-spacing: -.063em;
   text-wrap: initial;
 }
 
-.hero h1 span,
+.greeting,
 .hero h1 em { display: block; }
 
 .hero h1 em { color: var(--accent); }
+
+.maxName,
+.ramiName { display: inline-block; }
+
+.heroDetails {
+  grid-area: details;
+  align-self: start;
+  padding-inline-end: var(--home-inset);
+}
 
 .heroLead {
   max-width: 38ch;
@@ -50,6 +62,7 @@
 .heroActions { margin-top: clamp(20px, 2.5vw, 32px); }
 
 .heroPortraits {
+  grid-area: portraits;
   display: grid;
   grid-template-columns: var(--home-columns);
   gap: clamp(10px, 1.3vw, 18px);
@@ -184,17 +197,21 @@
 
   .heroInner {
     grid-template-columns: 1fr;
+    grid-template-areas: "greeting" "portraits" "details";
+    grid-template-rows: auto;
     min-height: 0;
-    gap: clamp(28px, 6vw, 42px);
+    gap: clamp(20px, 5vw, 32px);
     padding-block: clamp(40px, 7vw, 62px);
   }
 
-  .heroCopy,
+  .hero h1,
+  .heroDetails,
   .heroPortraits { padding-inline: 0; }
 
   .heroPortraits { width: min(100%, 480px); }
 
   .hero h1 { font-size: clamp(2.875rem, 11.5vw, 4.75rem); }
+  .heroLead { margin-top: 0; }
 
   .examplePair { grid-template-columns: 1fr; }
   .examplePair .demo { border-top: 0; }
@@ -205,17 +222,19 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero h1 span,
-  .hero h1 em,
+  .greeting,
+  .maxName,
+  .ramiName,
   .heroDetails,
   .heroPortraits figure {
-    animation: hello 660ms cubic-bezier(.16, 1, .3, 1) backwards;
+    animation: hello 560ms cubic-bezier(.16, 1, .3, 1) backwards;
   }
 
-  .hero h1 em { animation-delay: 130ms; }
-  .heroDetails { animation-delay: 360ms; }
-  .heroPortraits figure { animation-name: open-portrait; animation-delay: 210ms; }
-  .heroPortraits figure + figure { animation-delay: 310ms; }
+  .maxName { animation-delay: 150ms; }
+  .heroPortraits figure { animation-name: open-portrait; animation-delay: 425ms; }
+  .ramiName { animation-delay: 715ms; }
+  .heroPortraits figure + figure { animation-delay: 960ms; }
+  .heroDetails { animation-delay: 1100ms; }
 
   .hero::after {
     animation: open-rule 850ms cubic-bezier(.16, 1, .3, 1) 140ms backwards;
