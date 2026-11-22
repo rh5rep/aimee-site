@@ -8,7 +8,9 @@ export function HomeMotion() {
     const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
     if (!main || !motion.matches || !("IntersectionObserver" in window)) return;
 
-    const waiting = new Map<HTMLElement, HTMLElement>();
+    const pending = new Map<HTMLElement, HTMLElement>();
+    const services = main.querySelector("#services");
+    let previousScroll = window.scrollY;
     const inset = Math.min(160, Math.round(window.innerHeight * .2));
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -19,16 +21,31 @@ export function HomeMotion() {
     }, { rootMargin: `0px 0px -${inset}px 0px` });
 
     function reveal(element: HTMLElement, animate = false) {
-      const trigger = waiting.get(element);
-      if (trigger) {
-        waiting.delete(element);
-        observer.unobserve(trigger);
-        if (animate) {
-          element.dataset.homeRevealState = "arriving";
-          return;
-        }
+      const trigger = pending.get(element);
+      if (!trigger) return;
+      observer.unobserve(trigger);
+      if (animate) {
+        element.dataset.homeRevealState = "arriving";
+        return;
       }
-      if (!animate) delete element.dataset.homeRevealState;
+      pending.delete(element);
+      delete element.dataset.homeRevealState;
+    }
+
+    function showScrolledPast() {
+      const scroll = window.scrollY;
+      const distance = Math.abs(scroll - previousScroll);
+      previousScroll = scroll;
+      if (!pending.size) return;
+      if (services?.matches(":target") && services.getBoundingClientRect().top >= 0) return;
+
+      // Keep the stagger near the bottom of the screen. Show content as soon as
+      // a reader reaches it, or across the viewport after a large scroll jump.
+      const height = window.innerHeight;
+      const edge = distance >= height * .3 ? height : height * .55;
+      for (const [element, trigger] of pending) {
+        if (trigger.getBoundingClientRect().top <= edge) reveal(element);
+      }
     }
 
     function showTarget() {
@@ -46,7 +63,7 @@ export function HomeMotion() {
       if (!(element instanceof HTMLElement)) return;
       const arrival = element.closest<HTMLElement>('[data-home-reveal-state="arriving"]');
       if (arrival && (arrival === element || element.hasAttribute("data-home-reveal-finish"))) {
-        delete arrival.dataset.homeRevealState;
+        reveal(arrival);
       }
     }
 
@@ -54,20 +71,22 @@ export function HomeMotion() {
       const trigger = element.querySelector<HTMLElement>("[data-home-reveal-trigger]") ?? element;
       if (trigger.getBoundingClientRect().top < window.innerHeight - inset || element.matches(":target, :has(:target), :focus-within")) continue;
       element.dataset.homeRevealState = "waiting";
-      waiting.set(element, trigger);
+      pending.set(element, trigger);
       observer.observe(trigger);
     }
 
     showTarget();
+    window.addEventListener("scroll", showScrolledPast, { passive: true });
     window.addEventListener("hashchange", showTarget);
     main.addEventListener("focusin", showFocused);
     main.addEventListener("animationend", finishArrival);
     main.addEventListener("animationcancel", finishArrival);
     return () => {
       observer.disconnect();
-      for (const element of main.querySelectorAll<HTMLElement>("[data-home-reveal-state]")) {
+      for (const element of pending.keys()) {
         delete element.dataset.homeRevealState;
       }
+      window.removeEventListener("scroll", showScrolledPast);
       window.removeEventListener("hashchange", showTarget);
       main.removeEventListener("focusin", showFocused);
       main.removeEventListener("animationend", finishArrival);
