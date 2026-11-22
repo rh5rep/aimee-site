@@ -16,9 +16,13 @@ export function FirstProject() {
       </nav>
 
       <div className={styles.board}>
-        <h2 id="services-title" className={styles.questions} data-home-reveal>
-          <span>What would you <em>bring us?</em></span>{" "}
-          <span>What would we <em>bring you?</em></span>
+        <h2 id="services-title" className={styles.questions} data-home-reveal="exchange">
+          <span>
+            <span className={styles.turn} data-home-reveal-trigger>What would you <em>bring us?</em></span>
+          </span>{" "}
+          <span>
+            <span className={styles.turn} data-home-reveal-finish>What would we <em>bring you?</em></span>
+          </span>
         </h2>
 
         {projects.map(({ id, bring, example, format, help, linkLabel }) => (

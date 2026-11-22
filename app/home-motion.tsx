@@ -32,9 +32,7 @@ export function HomeMotion() {
     }
 
     function showTarget() {
-      const target = main?.querySelector(":target");
-      const section = target?.closest<HTMLElement>("[data-home-reveal]")
-        ?? target?.querySelector<HTMLElement>("[data-home-reveal]");
+      const section = main?.querySelector(":target")?.closest<HTMLElement>("[data-home-reveal]");
       if (section) reveal(section);
     }
 
@@ -54,7 +52,7 @@ export function HomeMotion() {
 
     for (const element of main.querySelectorAll<HTMLElement>("[data-home-reveal]")) {
       const trigger = element.querySelector<HTMLElement>("[data-home-reveal-trigger]") ?? element;
-      if (trigger.getBoundingClientRect().top < window.innerHeight || element.matches(":target, :has(:target), :focus-within")) continue;
+      if (trigger.getBoundingClientRect().top < window.innerHeight - inset || element.matches(":target, :has(:target), :focus-within")) continue;
       element.dataset.homeRevealState = "waiting";
       waiting.set(element, trigger);
       observer.observe(trigger);
