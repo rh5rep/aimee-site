@@ -1,29 +1,4 @@
-.demos {
-  max-width: 972px;
-  padding-block: clamp(32px, 6vw, 76px);
-}
-
-.intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  align-items: end;
-  gap: 12px clamp(24px, 4.5vw, 62px);
-  margin-bottom: clamp(20px, 3.2vw, 36px);
-}
-
-.intro h1 {
-  margin-top: 5px;
-  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-  text-wrap: initial;
-}
-
-.setup p {
-  max-width: 41ch;
-  color: var(--ink-soft);
-  font-size: clamp(1rem, 1.6vw, 1.125rem);
-}
-
-.setup :global(.text-link) { margin-top: 4px; }
+.filmLabel { margin-bottom: 8px; }
 
 .reportingLink { margin-top: 8px; }
 
@@ -95,7 +70,6 @@
 }
 
 @media (max-width: 720px) {
-  .intro,
   .reviewComparison { grid-template-columns: 1fr; }
 
   .reviewPage + .reviewPage {

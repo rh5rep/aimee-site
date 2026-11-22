@@ -1,0 +1,38 @@
+.catalog {
+  background: var(--linen);
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.service > * { padding: clamp(18px, 3.4vw, 40px); }
+
+.service h2 {
+  font: 400 clamp(1.625rem, 3vw, 2.375rem)/1.1 var(--font-display);
+  text-wrap: initial;
+}
+
+.service > div { background: var(--accent-tint); }
+.service p { max-width: 52ch; }
+.service :global(.text-link) { margin-top: 4px; }
+.service:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.inlineLink {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.scope {
+  max-width: 62ch;
+  padding-block: clamp(24px, 4vw, 48px);
+  color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+  .service { grid-template-columns: 1fr; }
+  .service h2 { padding-block: 17px; }
+}

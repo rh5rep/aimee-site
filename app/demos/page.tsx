@@ -13,19 +13,15 @@ export default function DemosPage() {
   return (
     <>
       <SiteHeader activePath="/demos" />
-      <main className={`container ${styles.demos}`} id="main" tabIndex={-1}>
-        <header className={styles.intro}>
-          <div>
-            <p className="meta">Fictional example · 20-second film</p>
-            <h1>The Friday Report</h1>
-          </div>
-          <div className={styles.setup}>
-            <p>It’s Friday. The weekly update is due, and a request still needs an owner. See how the team drafts the update with AI and checks it before sending.</p>
-            <a className="text-link" href="#try-report">Jump to the source check</a>
-          </div>
+      <main className="container interior" id="main" tabIndex={-1}>
+        <header className="page-intro">
+          <p className={`meta ${styles.filmLabel}`}>Fictional example · 20-second film</p>
+          <h1>The <em>Friday Report</em></h1>
+          <p className="lede">It’s Friday. The weekly update is due, and a request still needs an owner. See how the team drafts the update with AI and checks it before sending.</p>
+          <a className="text-link" href="#try-report">Jump to the source check</a>
         </header>
         <WorkflowStory />
-        <Link className={`text-link ${styles.reportingLink}`} href="/work#example">Read the full reporting example</Link>
+        <Link className={`text-link ${styles.reportingLink}`} href="/work#example">Read the Friday Report walkthrough</Link>
 
         <section className={styles.draftReview} id="draft-review" aria-labelledby="draft-review-title">
           <header>
@@ -58,7 +54,7 @@ export default function DemosPage() {
         </section>
         <section className="contact-strip" aria-labelledby="demo-contact">
           <h2 id="demo-contact">Have a report your team writes every week?</h2>
-          <Link className="button" href="/contact?service=workflow-design">Tell us about it</Link>
+          <Link className="button" href="/contact?service=workflow-design">Tell us about a task</Link>
         </section>
       </main>
       <SiteFooter />

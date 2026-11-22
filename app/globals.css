@@ -229,7 +229,7 @@ p + p { margin-top: 12px; }
   padding-block: clamp(27px, 5vw, 56px);
 }
 
-.contact-strip h2 { font-size: clamp(1.35rem, 2.8vw, 1.85rem); }
+.contact-strip h2 { font: 400 clamp(1.5rem, 2.8vw, 2rem)/1.12 var(--font-display); }
 
 .page-intro {
   max-width: 780px;
@@ -244,14 +244,11 @@ p + p { margin-top: 12px; }
   letter-spacing: -.055em;
 }
 .page-intro .lede { max-width: 49ch; }
-.scope-note { max-width: 60ch; color: var(--ink-soft); }
-
 .service-list {
   max-width: 940px;
   padding-bottom: clamp(36px, 6vw, 70px);
 }
 
-.service-list section,
 .work-example {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
@@ -261,7 +258,6 @@ p + p { margin-top: 12px; }
   border-top: 1px solid var(--line);
 }
 
-.service-list h2 { font-size: clamp(1.25rem, 2.25vw, 1.7rem); }
 .work-examples-title { margin-bottom: 20px; }
 .service-list p { color: var(--ink-soft); }
 
@@ -291,12 +287,6 @@ p + p { margin-top: 12px; }
 .example-inputs dd { color: var(--ink-soft); }
 .example-note { max-width: 64ch; margin-top: 20px; }
 
-.method-list { margin: 0; padding-left: 30px; max-width: 850px; list-style: decimal; }
-.method-list li { padding: 18px 0 20px 8px; border-top: 1px solid var(--line); }
-.method-list li::marker { font-weight: 700; }
-.method-list h2 { margin-bottom: 6px; font-size: 1.38rem; }
-.method-list p { color: var(--ink-soft); }
-
 @media (max-width: 760px) {
   .example-grid { grid-template-columns: 1fr; }
 }
@@ -306,7 +296,7 @@ p + p { margin-top: 12px; }
   .main-nav { column-gap: clamp(5px, 1.8vw, 11px); }
   .main-nav a { font-size: .875rem; }
   .main-nav .nav-contact { min-height: 44px; border: 0; padding: 0; }
-  .service-list section, .work-example { grid-template-columns: 1fr; }
+  .work-example { grid-template-columns: 1fr; }
   .footer-inner { min-height: 0; padding-block: 17px; flex-wrap: wrap; gap: 4px 20px; }
 }
 

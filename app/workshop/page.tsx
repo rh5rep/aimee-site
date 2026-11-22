@@ -80,6 +80,7 @@ export default function WorkshopPage() {
             <p>No prior AI experience is required. Bring something you’re able to share, or use an example we provide.</p>
             <div className="actions">
               <Link className="text-link" href="/about">Meet the instructors</Link>
+              <Link className="text-link" href="/work#workshops">Explore team workshops</Link>
             </div>
           </div>
         </section>

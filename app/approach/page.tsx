@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
+import styles from "./approach.module.css";
 
 export const metadata: Metadata = { title: "Approach | Max + Rami" };
 
 const steps = [
-  { title: "Define the task", detail: "Agree on the inputs you can use, what a useful result looks like, and who will review it." },
-  { title: "Make a first pass", detail: "Use the relevant files, examples, and instructions. Keep track of the choices that shape the output." },
-  { title: "Check the result", detail: "Compare the output with the sources and the agreed criteria. Try a second example to see where the approach breaks." },
-  { title: "Hand it over", detail: "Save the instructions and review steps. For an implementation, document how your team can run, update, and troubleshoot it." },
+  { title: "Start with one task", detail: "Walk us through how you do it today and where it gets stuck. Together we agree on what a useful result would look like and which inputs we can use." },
+  { title: "Make a first pass", detail: "We try it together with your files, examples, and instructions. We note the choices that affect the result." },
+  { title: "Check it together", detail: "We compare the result with the sources and agree on what needs a person’s judgment. We try a fresh example to see where the approach breaks." },
+  { title: "Make it repeatable", detail: "We write down the instructions and checks you’ll need next time. When we build a workflow, we document how your team can run and maintain it." },
 ];
 
 export default function ApproachPage() {
@@ -17,10 +18,10 @@ export default function ApproachPage() {
       <SiteHeader activePath="/approach" />
       <main className="container interior" id="main" tabIndex={-1}>
         <header className="page-intro">
-          <h1>How we <em>work</em></h1>
-          <p className="lede">We start with one real task and make sure the person doing it can check and repeat the work.</p>
+          <h1>How we <em>work together.</em></h1>
+          <p className="lede">Bring a task you already do. We’ll work through it with you and make sure you know what to check when you try it again.</p>
         </header>
-        <ol className="method-list">
+        <ol className={styles.steps}>
           {steps.map((step) => (
             <li key={step.title}>
               <h2>{step.title}</h2>
@@ -28,10 +29,13 @@ export default function ApproachPage() {
             </li>
           ))}
         </ol>
-        <div className="contact-strip">
-          <Link className="text-link" href="/demos">Watch the Friday Report demo</Link>
-          <Link className="button" href="/contact">Discuss a project</Link>
-        </div>
+        <section className="contact-strip" aria-labelledby="approach-next">
+          <div>
+            <h2 id="approach-next">What does a source check look like?</h2>
+            <Link className="text-link" href="/demos">See the Friday Report example</Link>
+          </div>
+          <Link className="button" href="/contact">Tell us about a task</Link>
+        </section>
       </main>
       <SiteFooter />
     </>

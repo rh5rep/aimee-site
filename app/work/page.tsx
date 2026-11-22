@@ -4,6 +4,7 @@ import { reportFollowUp, reportStatus } from "../../components/report-example";
 import { ReportSample } from "../../components/report-sample";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 import { services } from "./services";
+import styles from "./work.module.css";
 
 export const metadata: Metadata = {
   title: "Services | Max + Rami",
@@ -32,23 +33,29 @@ export default function WorkPage() {
       <main id="main" tabIndex={-1}>
         <div className="container">
           <header className="page-intro">
-            <h1>Services</h1>
+            <h1>What can we <em>help you do?</em></h1>
             <p className="lede">
               Bring a skill your team wants to learn or a task you want to make easier.
               We’ll talk through what would help and where to start.
             </p>
-            <p className="scope-note">
-              The task, your tools, and the people doing the work shape the format and timing.
-              Before we start, we’ll agree on who needs to be involved and what your team should have at the end.
-            </p>
           </header>
-          <div className="service-list">
+          <div className={styles.catalog}>
             {services.map((service) => (
-              <section key={service.id} id={service.id} aria-labelledby={`${service.id}-title`}>
+              <section className={styles.service} key={service.id} id={service.id} aria-labelledby={`${service.id}-title`} tabIndex={-1}>
                 <h2 id={`${service.id}-title`}>{service.title}</h2>
-                <p>{service.description}</p>
+                <div>
+                  <p>{service.description}</p>
+                  {service.id === "workflow-design" && (
+                    <p>To turn the prototype into a workflow your team can use, we can <a className={styles.inlineLink} href="#implementation">scope the implementation</a> with you.</p>
+                  )}
+                  <Link className="text-link" href={`/contact?service=${service.id}`}>{service.contactLabel}</Link>
+                </div>
               </section>
             ))}
+          </div>
+          <div className={styles.scope}>
+            <p>The task, your tools, and the people doing the work shape the format and timing. We’ll agree on what your team should have at the end.</p>
+            <Link className="text-link" href="/approach">See how we work</Link>
           </div>
         </div>
 
@@ -66,7 +73,8 @@ export default function WorkPage() {
 
         <section className="example-band" id="example" aria-labelledby="example-title">
           <div className="container">
-            <h2 id="example-title">From team notes to a weekly report</h2>
+            <p className="meta">Fictional workflow example</p>
+            <h2 id="example-title">The Friday Report</h2>
             <div className="example-grid">
               <div>
                 <h3>Before</h3>
@@ -86,12 +94,13 @@ export default function WorkPage() {
               Before sending, someone checks the totals against the tracker and confirms the owner.
               The team keeps the format and checklist for next week.
             </p>
+            <Link className="text-link" href="/demos#try-report">Try checking the draft against its sources</Link>
           </div>
         </section>
 
         <section className="container contact-strip" aria-labelledby="contact-title">
           <h2 id="contact-title">Have a task in mind?</h2>
-          <Link className="button" href="/contact">Talk through a task</Link>
+          <Link className="button" href="/contact">Tell us about a task</Link>
         </section>
       </main>
       <SiteFooter />

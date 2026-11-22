@@ -1,7 +1,8 @@
 export const services = [
   {
     id: "workshops",
-    title: "Hands-on workshops",
+    title: "Hands-on AI workshops",
+    contactLabel: "Ask about a team workshop",
     description: "We design a live exercise around your group’s work and experience. Participants try it, check what AI produces, and leave with instructions they can use again.",
     firstProject: {
       bring: "A team building AI skills",
@@ -14,7 +15,8 @@ export const services = [
   },
   {
     id: "one-on-one",
-    title: "One-on-one sessions",
+    title: "One-on-one coaching",
+    contactLabel: "Ask about coaching",
     description: "Work through a task with one of us. We help you choose the relevant inputs, make a first pass, and write down the checks you’ll want next time.",
     firstProject: {
       bring: "A draft you’re stuck on",
@@ -28,6 +30,7 @@ export const services = [
   {
     id: "workflow-design",
     title: "Team workflow design",
+    contactLabel: "Talk through a workflow",
     description: "We map the process with your team, prototype one step, and document what goes in, who reviews the output, and how it moves to the next person.",
     firstProject: {
       bring: "A process your team repeats",
@@ -41,6 +44,7 @@ export const services = [
   {
     id: "implementation",
     title: "Workflow implementation",
+    contactLabel: "Discuss an implementation",
     description: "We agree on the scope and acceptance criteria, then build and test the workflow on representative examples. Depending on the project, that can include connecting tools, adding a review step, and documenting how to run and maintain it.",
   },
 ];

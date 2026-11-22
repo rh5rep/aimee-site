@@ -5,7 +5,9 @@
 }
 
 .exchange section { padding: clamp(24px, 5vw, 60px); }
-.exchange h2 { margin-bottom: 18px; font-size: clamp(1.65rem, 3vw, 2.25rem); }
+.exchange h2 { margin-bottom: 18px; font: 400 clamp(1.65rem, 3vw, 2.25rem)/1.1 var(--font-display); }
+
+.topic { margin-bottom: 12px; color: var(--accent); font-weight: 650; }
 
 .email > a:last-child {
   display: table;

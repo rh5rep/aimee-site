@@ -26,6 +26,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
+  filter: grayscale(.45) sepia(.1) contrast(.94);
 }
 
 .portrait .ramiPortrait {
@@ -34,7 +35,7 @@
 }
 
 .bio { padding: clamp(24px, 4vw, 52px); }
-.bio h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.bio h2 { font: 400 clamp(2rem, 4vw, 3rem)/1.1 var(--font-display); }
 .bio p { max-width: 49ch; }
 
 .bio .role {

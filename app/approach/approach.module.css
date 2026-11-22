@@ -1,0 +1,34 @@
+.steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: decimal inside;
+  border-top: 1px solid var(--line);
+}
+
+.steps li {
+  padding: clamp(21px, 3.5vw, 40px);
+  border-bottom: 1px solid var(--line);
+  background: var(--linen);
+}
+
+.steps li:nth-child(even) { background: var(--accent-tint); }
+
+.steps li::marker {
+  color: var(--accent);
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.steps h2 {
+  margin-block: 8px;
+  font: 400 clamp(1.75rem, 3vw, 2.4rem)/1.1 var(--font-display);
+  text-wrap: initial;
+}
+
+.steps p { max-width: 48ch; }
+
+@media (max-width: 700px) {
+  .steps { grid-template-columns: 1fr; }
+}

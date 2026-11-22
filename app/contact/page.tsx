@@ -19,10 +19,14 @@ export default function ContactPage() {
         <div className={styles.exchange}>
           <section className={styles.email} aria-labelledby="email-title">
             <h2 id="email-title">Start with an email</h2>
-            <Suspense fallback={<a className="button" href={taskEmail()}>Write an email</a>}>
+            <Suspense fallback={
+              <>
+                <a className="button" href={taskEmail()}>Write an email</a>
+                <a className="text-link" href={`mailto:${email}`}>{email}</a>
+              </>
+            }>
               <ProjectEmailLink />
             </Suspense>
-            <a className="text-link" href={`mailto:${email}`}>{email}</a>
           </section>
           <section className={styles.guidance} aria-labelledby="include-title">
             <h2 id="include-title">What to include</h2>

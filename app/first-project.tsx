@@ -10,15 +10,16 @@ export function FirstProject() {
   return (
     <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title" tabIndex={-1}>
       <p className={styles.bridge}>
-        You might be wondering <a href="#services-title" data-home-service-start>where to start</a>.
+        You might be wondering <a href="#services-title" data-home-service-start aria-describedby="start-instructions">where to start</a>.
       </p>
+      <span id="start-instructions" hidden>Opens the service questions. With motion enabled, it walks through all three services. Scroll or press Escape to stop.</span>
       <nav className={styles.index} aria-label="Jump to a service">
         {projects.map(({ id, jumpLabel }) => (
           <a key={id} href={`#service-${id}`}>{jumpLabel}</a>
         ))}
       </nav>
 
-      <div className={styles.board}>
+      <div>
         <h2 id="services-title" className={styles.questions} data-home-reveal="exchange" tabIndex={-1}>
           <span>
             <span className={styles.turn} data-home-reveal-trigger>What could you <em>bring?</em></span>
