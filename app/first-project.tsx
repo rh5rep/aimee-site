@@ -30,7 +30,7 @@ export function FirstProject() {
   }
 
   return (
-    <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title">
+    <section className={`container ${styles.section}`} id="services" aria-labelledby="services-title" tabIndex={-1}>
       <div className={styles.board}>
         <div className={styles.choices}>
           <h2 id="services-title"><span>What would you</span> bring <em>us?</em></h2>
