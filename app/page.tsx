@@ -34,7 +34,7 @@ export default function Home() {
                   <Image className={styles.maxPortrait} src="/images/max-portrait.webp" alt="Portrait of Max Horton" width={540} height={540} loading="eager" />
                 </div>
                 <figcaption>
-                  <Link href="/about#max">Max Horton</Link>
+                  Max Horton
                   <span>Research and AI teaching</span>
                 </figcaption>
               </figure>
@@ -43,7 +43,7 @@ export default function Home() {
                   <Image className={styles.ramiPortrait} src="/images/rami-portfolio.jpg" alt="Portrait of Rami Hanna" width={768} height={1150} loading="eager" />
                 </div>
                 <figcaption>
-                  <Link href="/about#rami">Rami Hanna</Link>
+                  Rami Hanna
                   <span>Robotics and applied AI</span>
                 </figcaption>
               </figure>

@@ -94,25 +94,17 @@
   padding: 8px 0 3px;
   border-top: 1px solid var(--line);
   line-height: 1.35;
-}
-
-.heroPortraits figcaption a {
-  display: inline-block;
   font-family: var(--font-display);
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   letter-spacing: -.025em;
-  text-decoration: underline;
-  text-decoration-color: var(--line);
-  text-underline-offset: 4px;
 }
-
-.heroPortraits figcaption a:hover { text-decoration-color: currentColor; }
 
 .heroPortraits figcaption span {
   display: block;
   margin-top: 4px;
   color: var(--ink-soft);
-  font-size: .875rem;
+  font: .875rem/1.35 var(--font-sans);
+  letter-spacing: normal;
 }
 
 .examples {
@@ -252,8 +244,11 @@
 
   .maxName { animation-delay: 150ms; }
   .heroPortraits figure { animation-name: open-portrait; animation-delay: 425ms; }
-  .ramiName { animation-delay: 715ms; }
-  .heroPortraits figure + figure { animation-delay: 960ms; }
+  .ramiName { animation-delay: 490ms; }
+  .heroPortraits figure + figure { animation-delay: 680ms; }
+
+  .heroLead,
+  .heroActions { animation: hello 340ms ease-out 1050ms backwards; }
 
   .hero::after {
     animation: open-rule 850ms cubic-bezier(.16, 1, .3, 1) 140ms backwards;
