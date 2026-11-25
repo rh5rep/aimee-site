@@ -444,8 +444,6 @@
   .caption { min-height: 110px; }
 }
 
-.exerciseLink { justify-self: start; }
-
 @container (max-width: 350px) {
   .transport { grid-template-columns: auto minmax(0, 1fr) auto; }
   .timeline { grid-area: 2 / 1 / 3 / -1; height: 30px; }

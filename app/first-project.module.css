@@ -1,4 +1,4 @@
-.section { margin-block: var(--home-space) clamp(32px, 5vw, 70px); }
+.section { margin-block: clamp(28px, 4vw, 56px); }
 
 .heading {
   margin-bottom: 16px;
@@ -6,53 +6,38 @@
   letter-spacing: -.035em;
 }
 
-.section:focus-visible,
-.heading:focus-visible,
-.pair:focus-visible,
-.pair:target {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
+.heading span { display: inline-block; }
+.heading:focus-visible, .section:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .pair {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  align-items: baseline;
-  gap: 12px 28px;
-  padding: clamp(14px, 1.8vw, 23px) var(--home-inset);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   border-top: 1px solid var(--line);
 }
-
 .pair:last-of-type { border-bottom: 1px solid var(--line); }
+.pair > div { padding: clamp(15px, 2vw, 25px) var(--home-inset); background: var(--linen); }
+.pair > div + div { background: var(--accent-tint); }
+.label { font-size: .8125rem; font-weight: 680; color: var(--accent); margin-bottom: 4px; }
+.pair h3 { font: 400 clamp(1.3rem, 2.1vw, 1.75rem)/1.15 var(--font-display); letter-spacing: -.025em; }
+.details { margin-top: 8px; }
 
-.pair h3 {
-  font: 400 clamp(1.375rem, 2.3vw, 1.875rem)/1.16 var(--font-display);
-  letter-spacing: -.03em;
-  text-wrap: initial;
+@media (max-width: 700px) {
+  .pair { grid-template-columns: 1fr; }
+  .pair > div { padding: 12px 17px; }
 }
 
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 20px;
-}
-
-.contact {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 20px;
-  padding: clamp(22px, 3vw, 36px) var(--home-inset);
-  background: var(--linen);
-}
-
-@media (max-width: 760px) {
-  .pair {
-    grid-template-columns: 1fr;
-    gap: 3px;
-    padding-inline: 0;
+@media (prefers-reduced-motion: no-preference) {
+  .pair[data-home-start-state="waiting"] .turn { opacity: 0; }
+  .heading[data-home-start-state="playing"] span,
+  .pair[data-home-start-state="playing"] .turn,
+  .pair[data-home-reveal-state="arriving"] .turn {
+    animation: exchange-arrival 400ms ease-out backwards;
   }
-  .links { gap: 0 16px; }
+  .pair[data-home-start-state="playing"] [data-home-reveal-finish],
+  .pair[data-home-reveal-state="arriving"] [data-home-reveal-finish] { animation-delay: 420ms; }
+}
+
+@keyframes exchange-arrival {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
 }

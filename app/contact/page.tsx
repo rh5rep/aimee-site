@@ -22,7 +22,7 @@ export default function ContactPage() {
             <Suspense fallback={
               <>
                 <a className="button" href={taskEmail()}>Write an email</a>
-                <a className={`text-link ${styles.address}`} href={`mailto:${email}`}>{email}</a>
+                <p className={styles.address}>{email}</p>
               </>
             }>
               <ProjectEmailLink />

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 import { WorkflowStory } from "../../components/workflow-story";
 import { sampleInput } from "../../lib/draft-review";
-import script from "../../components/friday-script.json";
 import styles from "./demos.module.css";
 
 export const metadata: Metadata = {
@@ -24,10 +23,6 @@ export default function DemosPage() {
           <div>
             <p className="lede">It’s 4:45 on Friday. You’re ready to close your laptop. One thing left: tell the team what got done and who’s picking up the rest on Monday.</p>
             <p className={styles.setup}>Here’s how we’d turn a tracker and a week of handoff notes into a first draft you can check and send.</p>
-            <div className="actions">
-              <a className="text-link" href="#friday-report">Watch the {script.durationMs / 1000}-second film</a>
-              <a className="text-link" href="#try-report">Try the source check</a>
-            </div>
           </div>
         </header>
         <div className={styles.film}>

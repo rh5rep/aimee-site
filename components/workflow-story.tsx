@@ -278,9 +278,6 @@ export function WorkflowStory() {
             </button>
           ))}
         </div>
-        <a className={`text-link ${styles.exerciseLink}`} href="#try-report" onClick={pausePlayback}>
-          Try the source check
-        </a>
       </div>
       <ReportWalkthrough onSourceOpen={pausePlayback} />
     </div>
