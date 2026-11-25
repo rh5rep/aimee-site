@@ -1,7 +1,7 @@
 .exercise {
   --inset: clamp(16px, 4cqw, 32px);
   padding: var(--inset);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
   background: var(--linen);
 }
 
@@ -78,6 +78,37 @@
 .evidence p,
 .evidence blockquote { margin: 0; }
 .evidence blockquote { font-family: var(--font-display); white-space: pre-line; }
+
+.practice {
+  padding: 14px 15px 16px;
+  border-top: 1px solid var(--line);
+}
+
+.week { display: grid; gap: 5px; margin: 0 0 12px; }
+.week div { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.week dt { min-width: 9em; color: var(--ink-soft); font-size: .875rem; }
+.week dd { margin: 0; font-weight: 650; }
+
+.decision { display: grid; margin: 0; padding: 0; border: 0; }
+.decision legend { font-weight: 700; }
+.decision label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  width: fit-content;
+  cursor: pointer;
+}
+.decision input { accent-color: var(--accent); }
+.decision input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.feedback { margin: 0; }
+.feedback:not(:empty) {
+  margin-top: 6px;
+  padding: 9px 12px;
+  border-left: 2px solid var(--accent);
+  background: var(--accent-tint);
+}
 
 @container (max-width: 540px) {
   .evidence { grid-template-columns: 1fr; }

@@ -14,7 +14,7 @@ export default function ContactPage() {
       <main className="container interior" id="main" tabIndex={-1}>
         <header className="page-intro">
           <h1>Tell us what you’re <em>working on.</em></h1>
-          <p className="lede">Is there a task you’d like to make easier for yourself or your team? A few lines are enough to start.</p>
+          <p className="lede">A few lines about one task are enough. In the first conversation, we’ll work out where it gets stuck, who needs to be involved, and what would make a useful first pass.</p>
         </header>
         <div className={styles.exchange}>
           <section aria-labelledby="email-title">

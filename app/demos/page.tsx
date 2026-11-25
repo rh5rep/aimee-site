@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 import { WorkflowStory } from "../../components/workflow-story";
+import { sampleInput } from "../../lib/draft-review";
 import styles from "./demos.module.css";
 
 export const metadata: Metadata = {
@@ -20,8 +21,11 @@ export default function DemosPage() {
             <h1>The <em>Friday Report</em></h1>
           </div>
           <div>
-            <p className="lede">It’s Friday. The weekly update is due, and a request still needs an owner. Check the AI draft against the tracker and handoff notes.</p>
-            <a className="text-link" href="#friday-report">Watch the 20-second film</a>
+            <p className="lede">Each Friday, someone copies the totals from a tracker and chases missing names in the handoff notes. Watch the team check one draft, then try the next report yourself.</p>
+            <div className="actions">
+              <a className="text-link" href="#friday-report">Watch the 24-second film</a>
+              <a className="text-link" href="#try-report">Try the source check</a>
+            </div>
           </div>
         </header>
         <div className={styles.film}>
@@ -40,8 +44,8 @@ export default function DemosPage() {
                 “The new guide helped people finish faster and <mark>make fewer mistakes</mark>.”
               </blockquote>
               <p>
-                <strong>What we’d flag</strong>
-                The pilot timed the task. A claim about mistakes would need an error count.
+                <strong>Fictional pilot notes</strong>
+                {sampleInput.sources}
               </p>
             </div>
             <div className={styles.reviewPage}>
@@ -50,12 +54,12 @@ export default function DemosPage() {
                 “In the pilot, median completion time fell from 12 to 8 minutes with the new guide.”
               </blockquote>
               <p>
-                <strong>Why it helps</strong>
-                The reader can see what improved and by how much.
+                <strong>Why this edit</strong>
+                The timing supports the revised sentence. A claim about mistakes would need an error count.
               </p>
             </div>
           </div>
-          <Link className="text-link" href="/review">Try the sample review</Link>
+          <Link className="text-link" href="/review?sample=writing#review-result-title">Open the marked-up sample</Link>
         </section>
         <section className="contact-strip" aria-labelledby="demo-contact">
           <h2 id="demo-contact">Have a report your team writes every week?</h2>

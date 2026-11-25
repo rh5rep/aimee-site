@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
-import { DraftReviewer } from "./draft-reviewer";
+import { DraftReviewer, DraftReviewerEntry } from "./draft-reviewer";
 
 export const metadata: Metadata = {
   title: "Draft review | Max + Rami",
@@ -20,7 +21,9 @@ export default function ReviewPage() {
             Based on Max’s writing workshop.
           </p>
         </header>
-        <DraftReviewer />
+        <Suspense fallback={<DraftReviewer />}>
+          <DraftReviewerEntry />
+        </Suspense>
         <div className="contact-strip">
           <Link className="button" href="/contact?service=one-on-one">Talk with us about a draft</Link>
           <Link className="text-link" href="/demos#draft-review">Back to the writing demo</Link>

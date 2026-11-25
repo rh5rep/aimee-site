@@ -1,0 +1,11 @@
+{
+  "durationMs": 24000,
+  "cues": {
+    "today": { "startMs": 0, "text": "How do you make Friday’s report? “We copy totals and chase owners.”" },
+    "draft": { "startMs": 6000, "text": "AI drafts the update from two notes. The totals are in, but one owner is missing." },
+    "review": { "startMs": 12000, "text": "The totals match. Who owns request 42?" },
+    "confirmed": { "startMs": 15000, "text": "Maya confirms." },
+    "sent": { "startMs": 16600, "text": "The team sends it." },
+    "reuse": { "startMs": 18000, "text": "Next Friday, check the new totals and confirm the owners again." }
+  }
+}

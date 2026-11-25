@@ -24,8 +24,8 @@
 
 .visit {
   padding: clamp(22px, 3vw, 36px);
-  background: var(--accent);
-  color: var(--white);
+  background: var(--accent-tint);
+  color: var(--ink);
 }
 
 .visit h2 {
@@ -42,12 +42,12 @@
   grid-template-columns: minmax(88px, .6fr) 1fr;
   gap: 10px;
   padding-block: 11px;
-  border-top: 1px solid color-mix(in srgb, var(--white) 30%, transparent);
+  border-top: 1px solid var(--line);
   font-size: .9375rem;
 }
 
 .visit dt,
-.visit small { color: var(--accent-tint); }
+.visit small { color: var(--ink-soft); }
 
 .sessionTime span,
 .audience {
@@ -66,15 +66,7 @@
   font-weight: 400;
 }
 
-.visit :global(.button) {
-  margin-top: 12px;
-  border-color: var(--white);
-  background: var(--white);
-  color: var(--accent);
-}
-
-.visit :global(.button:hover) { background: var(--accent-tint); }
-.visit :global(.button:focus-visible) { outline-color: var(--white); }
+.visit :global(.button) { margin-top: 12px; }
 
 .sessions { padding-block: 0 clamp(32px, 5vw, 56px); }
 .sessions h2 { margin-bottom: 16px; }

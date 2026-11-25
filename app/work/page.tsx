@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 
 const workExamples = [
   {
-    title: "Give a draft a second set of eyes",
+    title: "Rehearsing a draft review",
     description: "In a rehearsal for our writing workshop, we read a draft from several angles and asked what readers would take away, which claims needed stronger evidence, and which edits might change the author’s meaning.",
   },
   {
-    title: "Make the next report easier to hand over",
-    description: "In a working session, we made a first pass at updating an annual report from newer sources. We reviewed the proposed changes with the author and used last year’s files to draft a checklist for the next reporting cycle.",
+    title: "Reviewing an annual report",
+    description: "In a one-on-one session, Max and a researcher reviewed edits to a section of an annual report. They spotted links the report couldn’t include and used last year’s files to draft a checklist for the next cycle.",
   },
   {
-    title: "Make project files easier to find",
+    title: "Planning a folder structure",
     description: "We reviewed a proposed structure for older project files, using a folder that already worked for the person as a guide.",
   },
 ];
@@ -36,6 +36,11 @@ export default function WorkPage() {
               Bring a skill your team wants to learn or a task you want to make easier.
               We’ll talk through what would help and where to start.
             </p>
+            <nav className={styles.index} aria-label="Jump to a service">
+              {services.map((service) => (
+                <a className="text-link" key={service.id} href={`#${service.id}`}>{service.indexLabel}</a>
+              ))}
+            </nav>
           </header>
           <div className={styles.catalog}>
             {services.map((service) => (
@@ -44,7 +49,7 @@ export default function WorkPage() {
                 <div>
                   <p>{service.description}</p>
                   {service.id === "workflow-design" && (
-                    <p>Ready to put it to work? <a className={styles.inlineLink} href="#implementation">See how we build and test it.</a></p>
+                    <p>If that step holds up, we can <a className={styles.inlineLink} href="#implementation">scope an implementation</a>.</p>
                   )}
                   <Link className="text-link" href={`/contact?service=${service.id}`}>{service.contactLabel}</Link>
                 </div>

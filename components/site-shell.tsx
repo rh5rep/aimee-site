@@ -14,7 +14,7 @@ const navigation = [
   { href: "/approach", label: "Approach" },
   { href: "/demos", label: "Demos" },
   { href: "/about", label: "About" },
-  { href: "/workshop", label: "Events" },
+  { href: "/workshop", label: "Einstein workshops" },
 ];
 
 function NavigationLinks({ activePath }: { activePath?: string }) {

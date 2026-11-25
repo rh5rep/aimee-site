@@ -2,49 +2,24 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
-import { reportFollowUp, reportStatus } from "./report-example";
+import { firstFriday, nextFriday, reportFollowUp, reportStatus } from "./report-example";
 import { ReportWalkthrough } from "./report-walkthrough";
+import script from "./friday-script.json";
 import styles from "./workflow-story.module.css";
 
-const sceneLength = 5_000;
+const { cues } = script;
 const openingBlend = 500;
-const replyDelay = 2_400;
-const sendDelay = 4_100;
+const replyDelay = cues.confirmed.startMs - cues.review.startMs;
+const sendDelay = cues.sent.startMs - cues.review.startMs;
 const sourceDelay = 500;
 const refreshDelay = 1_500;
-const firstFriday = { closed: 18, open: 2, request: 42 };
-const nextFriday = { closed: 21, open: 3 };
 const scenes = [
-  {
-    id: "today",
-    label: "Today",
-    preview: 0,
-    title: "Friday’s deadline",
-    caption: <>It’s Friday. <strong>The report is due</strong>, and the details are scattered.</>,
-  },
-  {
-    id: "draft",
-    label: "Build",
-    preview: 800,
-    title: "A draft with one gap",
-    caption: <>AI pulls the notes into a draft and flags <strong>the missing owner</strong>.</>,
-  },
-  {
-    id: "review",
-    label: "Check",
-    preview: 1_300,
-    title: "One question before sending",
-    caption: <>Who’s taking <strong>request #42?</strong></>,
-  },
-  {
-    id: "reuse",
-    label: "Reuse",
-    preview: refreshDelay + 500,
-    title: "Next Friday, run it again",
-    caption: <>Next Friday, fresh notes go in. The team uses <strong>the same steps</strong>.</>,
-  },
+  { id: "today", label: "Today", preview: 0, title: "Where Friday gets stuck", cue: cues.today },
+  { id: "draft", label: "Build", preview: 800, title: "A draft with one gap", cue: cues.draft },
+  { id: "review", label: "Check", preview: 1_300, title: "One question before sending", cue: cues.review },
+  { id: "reuse", label: "Reuse", preview: refreshDelay + 500, title: "Next Friday, run it again", cue: cues.reuse },
 ] as const;
-const duration = sceneLength * scenes.length;
+const duration = script.durationMs;
 
 function timestamp(milliseconds: number) {
   return `0:${String(Math.floor(milliseconds / 1000)).padStart(2, "0")}`;
@@ -58,9 +33,8 @@ export function WorkflowStory() {
   const stage = useRef<HTMLDivElement>(null);
   const voiceover = useRef<HTMLAudioElement>(null);
   const elapsed = useRef(0);
-  const sceneIndex = Math.min(Math.floor(position / sceneLength), scenes.length - 1);
-  const scene = scenes[sceneIndex];
-  const sceneStart = sceneIndex * sceneLength;
+  const scene = scenes.findLast((chapter) => position >= chapter.cue.startMs) ?? scenes[0];
+  const sceneStart = scene.cue.startMs;
   const sceneElapsed = position - sceneStart;
   const checking = scene.id === "review";
   const replied = checking && sceneElapsed >= replyDelay;
@@ -72,6 +46,7 @@ export function WorkflowStory() {
   const ownerConfirmed = replied || showingLastWeek;
   const showReply = replied || (reusing && !freshSources);
   const captionTitle = replied ? (reportSent ? "Friday’s update is out" : "Maya takes the request") : scene.title;
+  const caption = checking && reportSent ? cues.sent : replied ? cues.confirmed : scene.cue;
   const sourceWeek = freshSources ? nextFriday : firstFriday;
   const reportWeek = refreshed ? nextFriday : firstFriday;
   const ended = position === duration;
@@ -150,7 +125,6 @@ export function WorkflowStory() {
 
   return (
     <div className={styles.story} role="group" aria-label="The Friday Report exercise and film">
-      <ReportWalkthrough onSourceOpen={pausePlayback} />
       <div
         ref={stage}
         className={styles.stage}
@@ -178,9 +152,9 @@ export function WorkflowStory() {
           sizes="(max-width: 1080px) 90vw, 970px"
         />
         <div className={styles.art}>
-          {position < sceneLength + openingBlend && (
+          {position < cues.draft.startMs + openingBlend && (
             <div className={styles.opening} aria-hidden={scene.id !== "today"}>
-              <p className={styles.stageHeadline}>Friday’s update <em>is due.</em></p>
+              <p className={styles.stageHeadline}>How do you make <em>Friday’s report?</em></p>
               <div className={`${styles.note} ${styles.tracker}`}>
                 <p>Friday tracker</p>
                 <p>{reportStatus.excerpt}</p>
@@ -281,21 +255,25 @@ export function WorkflowStory() {
       <div className={styles.filmDetails}>
         <div className={styles.caption} aria-live={playing ? "off" : "polite"} aria-atomic="true">
           <h2>{captionTitle}</h2>
-          <p>{replied ? <>Maya takes it. <strong>The report goes out.</strong></> : scene.caption}</p>
+          <p>{caption.text}</p>
         </div>
         <div className={styles.chapters} role="group" aria-label="Scenes">
-          {scenes.map((chapter, index) => (
+          {scenes.map((chapter) => (
             <button
               key={chapter.id}
               type="button"
               aria-current={scene.id === chapter.id ? "step" : undefined}
-              onClick={() => seek(index * sceneLength + chapter.preview)}
+              onClick={() => seek(chapter.cue.startMs + chapter.preview)}
             >
               {chapter.label}
             </button>
           ))}
         </div>
+        <a className={`text-link ${styles.exerciseLink}`} href="#try-report" onClick={pausePlayback}>
+          Try the source check
+        </a>
       </div>
+      <ReportWalkthrough onSourceOpen={pausePlayback} />
     </div>
   );
 }

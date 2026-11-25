@@ -1,7 +1,7 @@
 .home {
   --home-columns: repeat(2, minmax(0, 1fr));
   --home-inset: clamp(22px, 3.45vw, 50px);
-  --home-space: clamp(48px, 7vw, 106px);
+  --home-space: clamp(40px, 5vw, 72px);
 }
 
 .hero {
@@ -21,8 +21,7 @@
   display: grid;
   grid-template-columns: var(--home-columns);
   align-items: center;
-  min-height: clamp(440px, calc(69svh - var(--header-offset)), 620px);
-  padding-block: clamp(42px, 5vw, 72px);
+  padding-block: clamp(34px, 4.2vw, 60px);
 }
 
 .heroCopy { padding-inline-end: var(--home-inset); }
@@ -41,9 +40,6 @@
 }
 
 .greeting em { color: var(--accent); }
-
-.maxName,
-.ramiName { display: inline-block; }
 
 .heroLead {
   max-width: 43ch;
@@ -71,7 +67,7 @@
 
 .portraitFrame {
   overflow: hidden;
-  aspect-ratio: 4 / 4.8;
+  aspect-ratio: 1;
   background: var(--linen);
 }
 
@@ -88,8 +84,8 @@
 
 .ramiPortrait {
   filter: grayscale(.62) sepia(.14) contrast(.94) brightness(.96);
-  transform: scale(3.45);
-  transform-origin: 57% 42.5%;
+  transform: scale(4.65);
+  transform-origin: 57.6% 40.2%;
 }
 
 .heroPortraits figcaption {
@@ -120,8 +116,8 @@
 
 .examples {
   display: grid;
-  grid-template-columns: var(--home-columns);
-  margin-top: clamp(26px, 3.4vw, 48px);
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  margin-top: clamp(24px, 2.6vw, 36px);
 }
 
 .examples section {
@@ -133,7 +129,7 @@
   background: var(--white);
 }
 
-.examples .demo {
+.examples section + section {
   border-inline-start: 1px solid var(--line);
   background: var(--paper);
 }
@@ -163,8 +159,7 @@
 .reportExcerpt {
   align-self: stretch;
   margin-block: 10px 12px;
-  border-inline-start: 2px solid var(--accent);
-  background: var(--accent-tint);
+  background: var(--paper);
   font-size: .9375rem;
   line-height: 1.4;
 }
@@ -177,6 +172,11 @@
 }
 
 .reportExcerpt > div + div { border-top: 1px solid var(--line); }
+
+.reportExcerpt .ownerCheck {
+  background: var(--accent-tint);
+  box-shadow: inset 3px 0 var(--accent);
+}
 
 .reportExcerpt dt {
   color: var(--accent);
@@ -191,71 +191,50 @@
   outline-offset: -4px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .hero { background: var(--paper); }
 
   .heroInner {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    gap: clamp(18px, 3vw, 22px);
-    padding-block: clamp(25px, 3.8vw, 28px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 26px);
+    padding-block: clamp(25px, 3.8vw, 36px);
   }
 
   .heroCopy,
   .heroPortraits { padding-inline: 0; }
 
-  .hero h1 {
-    max-width: 35rem;
-    font-size: clamp(2.25rem, 6.4vw, 3rem);
+  .hero h1 { max-width: 23ch; }
+  .heroLead { max-width: 54ch; }
+
+  .heroPortraits { max-width: 640px; }
+
+  .heroPortraits figure {
+    display: grid;
+    grid-template-columns: minmax(72px, 32%) 1fr;
+    align-items: center;
+    gap: 12px;
   }
 
-  .heroLead { max-width: 50ch; }
+  .heroPortraits figcaption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+}
 
-  .heroPortraits { width: min(100%, 334px); }
-
+@media (max-width: 760px) {
+  .hero h1 { font-size: clamp(2.25rem, 6.4vw, 3rem); }
   .examples { grid-template-columns: 1fr; }
-  .examples .demo {
+  .examples section + section {
     border-block-start: 0;
     border-inline-start: 0;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 540px) {
+  .heroPortraits { max-width: 350px; }
+
+  .heroPortraits figure { display: block; }
+  .heroPortraits figcaption { margin-top: 8px; }
   .heroActions { column-gap: 14px; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .greeting,
-  .maxName,
-  .ramiName,
-  .heroPortraits figure {
-    animation: hello 440ms cubic-bezier(.16, 1, .3, 1) backwards;
-  }
-
-  .maxName { animation-delay: 90ms; }
-  .heroPortraits figure { animation-name: open-portrait; animation-delay: 160ms; }
-  .ramiName { animation-delay: 220ms; }
-  .heroPortraits figure + figure { animation-delay: 290ms; }
-
-  .hero::after {
-    animation: open-rule 850ms cubic-bezier(.16, 1, .3, 1) 140ms backwards;
-  }
-
-  .hero:focus-within *,
-  .home:has(:target) .hero * { animation: none; }
-}
-
-@keyframes hello {
-  from { opacity: 0; transform: translateY(17px) scale(.975); }
-  to { opacity: 1; transform: none; }
-}
-
-@keyframes open-portrait {
-  from { opacity: 0; clip-path: inset(12% 17%); transform: translateY(18px) scale(.94); }
-  to { opacity: 1; clip-path: inset(0); transform: none; }
-}
-
-@keyframes open-rule {
-  from { opacity: 0; transform: scaleX(.18); }
-  to { opacity: 1; transform: scaleX(1); }
 }

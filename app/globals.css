@@ -226,7 +226,7 @@ p + p { margin-top: 12px; }
 .work-examples-title { margin-bottom: 20px; }
 .service-list p { color: var(--ink-soft); }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   :root { --header-offset: 61px; }
 
   .header-inner { min-height: 60px; gap: 12px; }
@@ -286,6 +286,9 @@ p + p { margin-top: 12px; }
     box-shadow: 0 12px 24px rgb(32 34 30 / 12%);
   }
 
+}
+
+@media (max-width: 760px) {
   .contact-strip { display: grid; justify-items: start; gap: 12px; }
 }
 

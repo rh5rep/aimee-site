@@ -1,3 +1,6 @@
+export const firstFriday = { closed: 18, open: 2, request: 42 };
+export const nextFriday = { closed: 21, open: 3 };
+
 export const reportStatus = {
   label: "Weekly totals",
   line: "18 of 20 requests closed this week. Two remain open.",

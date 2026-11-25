@@ -103,6 +103,12 @@
   cursor: pointer;
 }
 
+.inputNote {
+  margin-bottom: 14px;
+  color: var(--ink-soft);
+  font-size: .875rem;
+}
+
 .uploaded {
   color: var(--accent);
   font-size: .8125rem;

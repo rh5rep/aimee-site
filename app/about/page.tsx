@@ -14,9 +14,13 @@ export default function AboutPage() {
         <header className="page-intro">
           <h1>Meet <em>Max and Rami.</em></h1>
           <p className="lede">You’ll work directly with us. Max teaches AI on real tasks, and Rami designs workflows your team can run and check.</p>
+          <nav className={`actions ${styles.founderLinks}`} aria-label="Founder profiles">
+            <a className="text-link" href="#max">Max Horton</a>
+            <a className="text-link" href="#rami">Rami Hanna</a>
+          </nav>
         </header>
         <div className={styles.founders}>
-          <article className={styles.profile} id="max" aria-labelledby="max-name">
+          <article className={styles.profile} id="max" tabIndex={-1} aria-labelledby="max-name">
             <div className={styles.portrait}>
               <Image src="/images/max-portrait.webp" alt="Portrait of Max Horton" width={540} height={540} />
             </div>
@@ -32,7 +36,7 @@ export default function AboutPage() {
               </div>
             </div>
           </article>
-          <article className={styles.profile} id="rami" aria-labelledby="rami-name">
+          <article className={styles.profile} id="rami" tabIndex={-1} aria-labelledby="rami-name">
             <div className={styles.portrait}>
               <Image className={styles.ramiPortrait} src="/images/rami-portfolio.jpg" alt="Portrait of Rami Hanna" width={768} height={1150} />
             </div>

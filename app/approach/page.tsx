@@ -8,8 +8,8 @@ export const metadata: Metadata = { title: "Approach | Max + Rami" };
 const steps = [
   { title: "Start with one task", detail: "Walk us through how you do it today and where it gets stuck. Together we agree on what a useful result would look like and which inputs we can use." },
   { title: "Make a first pass", detail: "We try it together with your files, examples, and instructions. We note the choices that affect the result." },
-  { title: "Check it together", detail: "We compare the result with the sources and agree on what needs a person’s judgment. We try a fresh example to see where the approach breaks." },
-  { title: "Make it repeatable", detail: "We write down the instructions and checks you’ll need next time. When we build a workflow, we document how your team can run and maintain it." },
+  { title: "Check it together", detail: "Compare the first pass with its sources. For a weekly update, that might mean checking a total against the tracker and asking a teammate to confirm who owns an open request." },
+  { title: "Try it on fresh work", detail: "You run the next example using the instructions and checks we wrote down. We look at what you could do on your own, where you needed help, and what to simplify." },
 ];
 
 export default function ApproachPage() {

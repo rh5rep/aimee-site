@@ -1,16 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { draftLimits, paragraphs, quickReview, reviewPath, sampleInput, sampleReview, type DraftReview, type ReviewInput } from "../../lib/draft-review";
 import styles from "./review.module.css";
 
 type Result = { mode: "sample" | "quick" | "live"; input: ReviewInput; review: DraftReview };
 const emptyInput: ReviewInput = { draft: "", goal: "", sources: "" };
-const resultLabel = { sample: "Sample review", quick: "Quick checks", live: "AI review" };
+const resultLabel = { sample: "Fictional sample review", quick: "Quick checks", live: "AI review" };
 
-export function DraftReviewer() {
-  const [input, setInput] = useState<ReviewInput>(emptyInput);
-  const [result, setResult] = useState<Result | null>(null);
+export function DraftReviewerEntry() {
+  const showSample = useSearchParams().get("sample") === "writing";
+  return <DraftReviewer key={showSample ? "writing" : "own-draft"} showSample={showSample} />;
+}
+
+export function DraftReviewer({ showSample = false }: { showSample?: boolean }) {
+  const [input, setInput] = useState<ReviewInput>(showSample ? sampleInput : emptyInput);
+  const [result, setResult] = useState<Result | null>(showSample ? { mode: "sample", input: sampleInput, review: sampleReview } : null);
   const [selected, setSelected] = useState(0);
   const [liveAvailable, setLiveAvailable] = useState(false);
   const [fileName, setFileName] = useState("");
@@ -126,6 +132,11 @@ export function DraftReviewer() {
             <h2>Your draft</h2>
             <button className="text-link" type="button" onClick={loadSample}>Try the sample</button>
           </div>
+          <p className={styles.inputNote} id="review-mode-note">
+            {liveAvailable
+              ? "Quick checks stay in your browser. Choosing Run AI review sends your draft, goal, and source notes to Claude. Use material you’re allowed to share."
+              : "Quick checks run in your browser and flag wordiness and claims to verify. Live AI review is unavailable here."}
+          </p>
           <label htmlFor="review-draft">Draft text</label>
           <textarea
             id="review-draft"
@@ -134,7 +145,7 @@ export function DraftReviewer() {
             required
             maxLength={draftLimits.draft}
             placeholder="Paste a passage, proposal, or update."
-            aria-describedby="review-draft-hint"
+            aria-describedby="review-mode-note review-draft-hint"
             onChange={(event) => update("draft", event.target.value)}
           />
           <div className={styles.fileBar}>
@@ -176,11 +187,6 @@ export function DraftReviewer() {
               </button>
             )}
           </div>
-          <p className={styles.note}>
-            {liveAvailable
-              ? "AI review sends your draft, goal, and notes to Claude. Use material you’re allowed to share. Quick checks stay in your browser."
-              : "Quick checks stay in your browser. They flag wordiness and claims worth checking. Live AI review is unavailable here."}
-          </p>
         </fieldset>
         {error && <p className={styles.error} role="alert">{error}</p>}
       </form>

@@ -40,7 +40,7 @@ export default function WorkshopPage() {
         <header className={styles.intro}>
           <div>
             <h1>Practical AI <em>for Research</em></h1>
-            <p className={`lede ${styles.description}`}>Join Max and Rami at Einstein for two hands-on workshops. Bring an experiment idea or a draft and practice using AI to think it through.</p>
+            <p className={`lede ${styles.description}`}>Two hands-on workshops at Einstein. Bring an experiment idea or a draft and practice using AI to think it through.</p>
             <a className="text-link" href="#sessions">Find your session</a>
           </div>
           <aside className={styles.visit} id="details" aria-labelledby="details-title">
@@ -49,7 +49,7 @@ export default function WorkshopPage() {
               <div><dt>Dates</dt><dd>December 7–8, 2026</dd></div>
               <div><dt>Time</dt><dd>{workshopTime} each day</dd></div>
               <div><dt>Location</dt><dd>Einstein campus <small>Room details to come</small></dd></div>
-              <div><dt>Registration</dt><dd>{registrationUrl ? "Open" : "Link coming soon"}</dd></div>
+              <div><dt>Registration</dt><dd>{registrationUrl ? "Open" : "Link pending"}</dd></div>
             </dl>
             {registrationUrl && <a className="button" href={registrationUrl}>Register for a workshop</a>}
           </aside>
@@ -79,7 +79,7 @@ export default function WorkshopPage() {
             <p>We’ll walk through an example together. Then you’ll give AI context for your own task, check what comes back, and save the instructions you’d use again.</p>
             <p>No prior AI experience is required. Bring something you’re able to share, or use an example we provide.</p>
             <div className="actions">
-              <Link className="text-link" href="/about">Meet the instructors</Link>
+              <Link className="text-link" href="/about">About Max and Rami</Link>
               <Link className="text-link" href="/work#workshops">Explore team workshops</Link>
             </div>
           </div>
