@@ -59,7 +59,7 @@ export default function AboutPage() {
         <section className="contact-strip" aria-labelledby="about-next">
           <div>
             <h2 id="about-next">What would working together look like?</h2>
-            <Link className="text-link" href="/approach">See how we work</Link>
+            <a className="text-link" href="/work#how-we-start">See how we’d start</a>
           </div>
           <Link className="button" href="/contact">Tell us about a task</Link>
         </section>

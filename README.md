@@ -1,6 +1,6 @@
 # Max + Rami website
 
-Public-facing site for Max and Rami’s AI training, workflow design, and implementation. The site has separate pages for services, approach, founders, contact, and the Einstein workshops. The unlinked milestone page remains a public founder corner. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
+Public-facing site for Max and Rami’s AI training, workflow design, and implementation. The main navigation covers Services, Examples, About, and Contact. The former Approach URL leads to “How we’d start” on Services. Examples keeps its existing `/demos` URL and the Einstein event stays at `/workshop`. The unlinked milestone page remains a public founder corner. This is a separate project from the private `MaxAndRami` workspace. Do not copy workshop files, prospect notes, raw research, participant data, or other private material into this repository.
 
 ## Local development
 

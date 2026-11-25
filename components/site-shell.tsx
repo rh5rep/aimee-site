@@ -11,10 +11,8 @@ export function taskEmail(serviceTitle?: string) {
 
 const navigation = [
   { href: "/work", label: "Services" },
-  { href: "/approach", label: "Approach" },
-  { href: "/demos", label: "Demos" },
+  { href: "/demos", label: "Examples" },
   { href: "/about", label: "About" },
-  { href: "/workshop", label: "Einstein workshops" },
 ];
 
 function NavigationLinks({ activePath }: { activePath?: string }) {

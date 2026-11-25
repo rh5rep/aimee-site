@@ -6,8 +6,8 @@ import { sampleInput } from "../../lib/draft-review";
 import styles from "./demos.module.css";
 
 export const metadata: Metadata = {
-  title: "Demos | Max + Rami",
-  description: "See how we’d help a team turn its Friday tracker and handoff notes into a weekly update. Try the final check yourself.",
+  title: "Examples | Max + Rami",
+  description: "Follow the Friday Report from tracker to handoff, try the source check, or open a marked-up writing sample.",
 };
 
 export default function DemosPage() {
@@ -35,7 +35,7 @@ export default function DemosPage() {
 
         <section className={styles.draftReview} id="draft-review" aria-labelledby="draft-review-title">
           <header>
-            <p className="meta">Writing demo · Fictional numbers</p>
+            <p className="meta">Writing example · Fictional numbers</p>
             <h2 id="draft-review-title">Make a claim you can back up</h2>
           </header>
           <div className={styles.reviewComparison}>

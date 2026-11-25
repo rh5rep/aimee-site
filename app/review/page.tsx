@@ -26,7 +26,7 @@ export default function ReviewPage() {
         </Suspense>
         <div className="contact-strip">
           <Link className="button" href="/contact?service=one-on-one">Talk with us about a draft</Link>
-          <Link className="text-link" href="/demos#draft-review">Back to the writing demo</Link>
+          <Link className="text-link" href="/demos#draft-review">Back to the writing example</Link>
         </div>
       </main>
       <SiteFooter />

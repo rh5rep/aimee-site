@@ -48,6 +48,9 @@ export default function WorkPage() {
                 <h2 id={`${service.id}-title`}>{service.title}</h2>
                 <div>
                   <p>{service.description}</p>
+                  {service.id === "workshops" && (
+                    <p>Attending at Einstein? See the <Link className={styles.inlineLink} href="/workshop">Einstein workshop details</Link>.</p>
+                  )}
                   {service.id === "workflow-design" && (
                     <p>If that step holds up, we can <a className={styles.inlineLink} href="#implementation">scope an implementation</a>.</p>
                   )}
@@ -56,10 +59,13 @@ export default function WorkPage() {
               </section>
             ))}
           </div>
-          <div className={styles.scope}>
-            <p>The task, your tools, and the people doing the work shape the format and timing. We’ll agree on what your team should have at the end.</p>
-            <Link className="text-link" href="/approach">See how we work</Link>
-          </div>
+          <section className={styles.scope} aria-labelledby="how-we-start">
+            <h2 className="section-title" id="how-we-start" tabIndex={-1}>How we’d start</h2>
+            <div>
+              <p>Show us one task the way you do it today, including where it gets stuck. We’ll agree on what a useful result would look like, what you can share, and who should take part.</p>
+              <p>We make a first pass together and check it against the source. Then you try the same checks on a fresh example. That tells us what your team can reuse and where it still needs help.</p>
+            </div>
+          </section>
         </div>
 
         <section className="container" id="examples" aria-labelledby="examples-title">
