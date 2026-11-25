@@ -28,7 +28,7 @@ export default function DemosPage() {
         <div className={styles.film}>
           <WorkflowStory />
           <section className="contact-strip" aria-labelledby="demo-contact">
-            <h2 id="demo-contact">Have a report your team writes every week?</h2>
+            <h2 id="demo-contact">What recurring task would you bring us?</h2>
             <Link className="button" href="/contact?service=workflow-design">Tell us about a task</Link>
           </section>
         </div>
