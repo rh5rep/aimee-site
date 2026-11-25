@@ -27,6 +27,10 @@ export default function DemosPage() {
         </header>
         <div className={styles.film}>
           <WorkflowStory />
+          <section className="contact-strip" aria-labelledby="demo-contact">
+            <h2 id="demo-contact">Have a report your team writes every week?</h2>
+            <Link className="button" href="/contact?service=workflow-design">Tell us about a task</Link>
+          </section>
         </div>
 
         <section className={styles.draftReview} id="draft-review" aria-labelledby="draft-review-title">
@@ -57,10 +61,6 @@ export default function DemosPage() {
             </div>
           </div>
           <Link className="text-link" href="/review?sample=writing#review-result-title">Open the marked-up sample</Link>
-        </section>
-        <section className="contact-strip" aria-labelledby="demo-contact">
-          <h2 id="demo-contact">Have a report your team writes every week?</h2>
-          <Link className="button" href="/contact?service=workflow-design">Tell us about a task</Link>
         </section>
       </main>
       <SiteFooter />

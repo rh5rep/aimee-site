@@ -1,43 +1,41 @@
 .section { margin-block: clamp(28px, 4vw, 56px); }
 
 .heading {
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 1.6vw, 22px);
   font: 400 clamp(2rem, 3.25vw, 2.875rem)/1.12 var(--font-display);
   letter-spacing: -.035em;
 }
 
-.heading span { display: inline-block; }
 .heading:focus-visible, .section:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .pair {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+  align-items: baseline;
+  gap: 10px clamp(24px, 5vw, 60px);
+  padding-block: clamp(16px, 2vw, 26px);
   border-top: 1px solid var(--line);
 }
+
 .pair:last-of-type { border-bottom: 1px solid var(--line); }
-.pair > div { padding: clamp(15px, 2vw, 25px) var(--home-inset); background: var(--linen); }
-.pair > div + div { background: var(--accent-tint); }
-.label { font-size: .8125rem; font-weight: 680; color: var(--accent); margin-bottom: 4px; }
-.pair h3 { font: 400 clamp(1.3rem, 2.1vw, 1.75rem)/1.15 var(--font-display); letter-spacing: -.025em; }
-.details { margin-top: 8px; }
+.pair h3 {
+  font: 400 clamp(1.3rem, 2.1vw, 1.75rem)/1.15 var(--font-display);
+  letter-spacing: -.025em;
+  text-wrap: initial;
+}
+.pair p { max-width: 54ch; color: var(--ink-soft); }
+.details { margin-top: 6px; }
 
 @media (max-width: 700px) {
-  .pair { grid-template-columns: 1fr; }
-  .pair > div { padding: 12px 17px; }
+  .pair { grid-template-columns: 1fr; gap: 5px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .pair[data-home-start-state="waiting"] .turn { opacity: 0; }
-  .heading[data-home-start-state="playing"] span,
-  .pair[data-home-start-state="playing"] .turn,
-  .pair[data-home-reveal-state="arriving"] .turn {
-    animation: exchange-arrival 400ms ease-out backwards;
-  }
-  .pair[data-home-start-state="playing"] [data-home-reveal-finish],
-  .pair[data-home-reveal-state="arriving"] [data-home-reveal-finish] { animation-delay: 420ms; }
+  .pair[data-arrived] h3 { animation: reply-in 300ms ease-out backwards; }
+  .pair[data-arrived] p { animation: reply-in 380ms ease-out 150ms backwards; }
 }
 
-@keyframes exchange-arrival {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
+@keyframes reply-in {
+  from { transform: translateY(6px); opacity: .78; }
+  to { transform: none; opacity: 1; }
 }

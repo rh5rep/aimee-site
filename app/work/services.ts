@@ -5,8 +5,8 @@ export const services = [
     indexLabel: "Workshops",
     contactLabel: "Ask about a team workshop",
     description: "Pick a task several people do. We design a live exercise around it. For a customer email, your team might draft a reply, check it against the original request, and save instructions to try on the next one.",
-    homeTask: "A tricky customer reply",
-    homeReply: "In a workshop, we draft the reply with your team, then check it against what the customer asked.",
+    homeTask: "How should we answer this customer?",
+    homeReply: "In a workshop, your team drafts a reply and checks it against the customer’s request.",
   },
   {
     id: "one-on-one",
@@ -14,8 +14,8 @@ export const services = [
     indexLabel: "Coaching",
     contactLabel: "Ask about coaching",
     description: "Work through a task with one of us. We help you choose the relevant inputs, make a first pass, and write down the checks you’ll want next time.",
-    homeTask: "A draft you’re stuck on",
-    homeReply: "In a one-on-one session, we work through one passage with you and write down what to check next time.",
+    homeTask: "Can you help me untangle this draft?",
+    homeReply: "One-on-one, we work through a passage with you and write down the checks you can use on the next one.",
   },
   {
     id: "workflow-design",
@@ -23,8 +23,8 @@ export const services = [
     indexLabel: "Workflow design",
     contactLabel: "Talk through a workflow",
     description: "Show us a handoff that regularly gets stuck. We map the inputs and who checks the result, then prototype one step. Someone on your team tries it on a fresh example so we can compare the result and review effort with your current process.",
-    homeTask: "A weekly report with a messy handoff",
-    homeReply: "We design a first draft with your team. You try it on next week’s notes before we decide together what to build.",
+    homeTask: "Do we have to rebuild this report every Friday?",
+    homeReply: "We build a draft from your tracker and handoff notes. Your team checks it, then tries it again the following week.",
   },
   {
     id: "implementation",

@@ -20,11 +20,11 @@ export default function Home() {
                 <em><span className={styles.maxName}>Max</span>{" "}<span className={styles.ramiName}>and Rami.</span></em>
               </h1>
               <p className={styles.heroLead}>
-                Bring us one task your team repeats. We teach hands-on AI workshops, coach one-on-one,
-                and build workflows your team can run and check.
+                <strong>Bring us one task your team repeats.</strong>
+                We teach hands-on AI workshops, coach one-on-one, and build workflows your team can run and check.
               </p>
               <div className={`actions ${styles.heroActions}`}>
-                <a className="button" href="#services-title" data-home-service-start aria-describedby="start-instructions">See what we can do</a>
+                <a className="button" href="#services-title">See what we can do</a>
               </div>
             </div>
 
@@ -55,8 +55,9 @@ export default function Home() {
 
         <div className={`container ${styles.examples}`} id="examples-title">
           <section className={styles.demo} id="workflow-example" aria-labelledby="example-title" tabIndex={-1}>
-            <p className={styles.exampleLabel}>Fictional exercise</p>
+            <p className={styles.exampleLabel}>Fictional workflow example</p>
             <h2 id="example-title">The Friday Report</h2>
+            <p>It’s Friday afternoon. The totals are in. Who’s taking request 42 on Monday?</p>
             <dl className={styles.reportExcerpt}>
               <div><dt>AI draft</dt><dd>{reportStatus.line}</dd></div>
               <div><dt>Tracker</dt><dd>{reportStatus.excerpt}</dd></div>
