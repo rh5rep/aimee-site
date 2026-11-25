@@ -14,10 +14,14 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-radius: 4px 4px 0 0;
   aspect-ratio: 12 / 5;
   min-height: 184px;
   background: var(--accent-hover);
+}
+
+.stage:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .photo { object-fit: cover; }

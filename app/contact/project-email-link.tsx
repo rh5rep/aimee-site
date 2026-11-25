@@ -14,7 +14,9 @@ export function ProjectEmailLink() {
     <>
       {service && <p className={styles.topic}>{service.title}</p>}
       <a className="button" href={href}>Write an email</a>
-      <a className="text-link" href={service ? href : `mailto:${email}`}>{email}</a>
+      {service
+        ? <p className={styles.address}>{email}</p>
+        : <a className={`text-link ${styles.address}`} href={`mailto:${email}`}>{email}</a>}
     </>
   );
 }

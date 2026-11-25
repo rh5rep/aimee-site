@@ -39,8 +39,8 @@ export default function AboutPage() {
             <div className={styles.bio}>
               <h2 id="rami-name">Rami Hanna</h2>
               <p className={styles.role}>Robotics and applied AI</p>
-              <p>I studied autonomous systems at the Technical University of Denmark. My work spans computer vision, machine learning, and transformer-based language models. At PerPlant, I built tools to sort thermal crop images and select examples for model evaluation.</p>
-              <p>When we build a workflow together, I want your team to know what goes in, where it can go wrong, and what to check before trusting the output.</p>
+              <p>I studied autonomous systems at the Technical University of Denmark. At Harvard’s Microrobotics Lab, I built interfaces for operating underwater robots. In medical-device R&amp;D, I built tools to capture test data and trace it back to individual runs. I’ve also worked on computer vision for agriculture.</p>
+              <p>I build with language models, too. For my own job search, I built a tool that helps draft résumés from a record of my past work, so I can check where each claim came from. I bring that same care to workflows we build with your team.</p>
               <div className="actions">
                 <a className="text-link" href="https://www.rami-hanna.com/work">Rami’s projects</a>
                 <a className="text-link" href="https://www.linkedin.com/in/ramiihanna/">LinkedIn</a>

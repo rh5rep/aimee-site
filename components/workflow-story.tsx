@@ -149,10 +149,15 @@ export function WorkflowStory() {
   }
 
   return (
-    <div className={styles.story} id="friday-report" role="group" aria-label="The Friday report">
+    <div className={styles.story} role="group" aria-label="The Friday Report exercise and film">
+      <ReportWalkthrough onSourceOpen={pausePlayback} />
       <div
         ref={stage}
         className={styles.stage}
+        id="friday-report"
+        tabIndex={-1}
+        role="group"
+        aria-label="The Friday Report film"
         data-scene={scene.id}
         data-replied={replied}
         data-sent={checking && reportSent}
@@ -291,8 +296,6 @@ export function WorkflowStory() {
           ))}
         </div>
       </div>
-
-      <ReportWalkthrough onSourceOpen={pausePlayback} />
     </div>
   );
 }

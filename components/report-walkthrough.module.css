@@ -1,7 +1,7 @@
 .exercise {
   --inset: clamp(16px, 4cqw, 32px);
   padding: var(--inset);
-  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   background: var(--linen);
 }
 

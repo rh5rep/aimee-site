@@ -17,12 +17,12 @@ export default function ContactPage() {
           <p className="lede">Is there a task you’d like to make easier for yourself or your team? A few lines are enough to start.</p>
         </header>
         <div className={styles.exchange}>
-          <section className={styles.email} aria-labelledby="email-title">
+          <section aria-labelledby="email-title">
             <h2 id="email-title">Start with an email</h2>
             <Suspense fallback={
               <>
                 <a className="button" href={taskEmail()}>Write an email</a>
-                <a className="text-link" href={`mailto:${email}`}>{email}</a>
+                <a className={`text-link ${styles.address}`} href={`mailto:${email}`}>{email}</a>
               </>
             }>
               <ProjectEmailLink />

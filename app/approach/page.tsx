@@ -32,7 +32,7 @@ export default function ApproachPage() {
         <section className="contact-strip" aria-labelledby="approach-next">
           <div>
             <h2 id="approach-next">What does a source check look like?</h2>
-            <Link className="text-link" href="/demos">See the Friday Report example</Link>
+            <Link className="text-link" href="/demos#try-report">Try the Friday Report source check</Link>
           </div>
           <Link className="button" href="/contact">Tell us about a task</Link>
         </section>

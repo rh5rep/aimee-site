@@ -11,8 +11,6 @@
 .filmLabel { margin-bottom: 8px; }
 .film { max-width: 1000px; margin-inline: auto; }
 
-.reportingLink { margin-top: 8px; }
-
 .draftReview {
   margin-top: clamp(24px, 4vw, 56px);
   padding-top: clamp(24px, 4vw, 52px);

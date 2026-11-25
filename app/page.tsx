@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { reportFollowUp, reportStatus } from "../components/report-example";
 import { SiteFooter, SiteHeader } from "../components/site-shell";
 import { FirstProject } from "./first-project";
-import { HomeMotion } from "./home-motion";
 import styles from "./home.module.css";
 
 export default function Home() {
@@ -10,18 +10,24 @@ export default function Home() {
     <>
       <SiteHeader />
       <main className={styles.home} id="main" tabIndex={-1}>
-        <HomeMotion />
         <section className={styles.hero} aria-labelledby="hero-title">
           <div className={`container ${styles.heroInner}`}>
-            <h1 id="hero-title">
-              <span className={styles.greeting}>Hi, we’re</span>{" "}
-              <em><span className={styles.maxName}>Max</span>{" "}<span className={styles.ramiName}>and Rami.</span></em>
-            </h1>
+            <div className={styles.heroCopy}>
+              <p className={styles.greeting}>
+                Hi, we’re <em><span className={styles.maxName}>Max</span>{" "}<span className={styles.ramiName}>and Rami.</span></em>
+              </p>
+              <h1 id="hero-title">We teach AI and build workflows you can check.</h1>
 
-            <p className={styles.heroLead}>
-              We run hands-on AI workshops and build workflows your team can run and check.
-              We also coach one-on-one.
-            </p>
+              <p className={styles.heroLead}>
+                Hands-on workshops for teams and one-on-one coaching.
+                Bring a draft you’re stuck on or a report you write every week.
+              </p>
+
+              <div className={`actions ${styles.heroActions}`}>
+                <a className="button" href="#services-title">See how we help</a>
+                <Link className="text-link" href="/contact">Tell us about a task</Link>
+              </div>
+            </div>
 
             <div className={styles.heroPortraits}>
               <figure>
@@ -43,42 +49,33 @@ export default function Home() {
                 </figcaption>
               </figure>
             </div>
-
-            <div className={`actions ${styles.heroActions}`}>
-              <a className="button" href="#services-title" data-home-service-start aria-describedby="start-instructions">See how we help</a>
-              <Link className="text-link" href="/contact">Tell us about a task</Link>
-            </div>
           </div>
         </section>
+
+        <div className={`container ${styles.examples}`} id="examples-title">
+          <section id="work-in-practice" aria-labelledby="work-in-practice-title">
+            <p className={styles.exampleLabel}>From a one-on-one session</p>
+            <h2 id="work-in-practice-title">Revising an annual report</h2>
+            <p>
+              Max and a researcher reviewed edits to one section of an annual grant report, caught links
+              that couldn’t go in, and used last year’s files to draft a checklist for the next cycle.
+            </p>
+            <Link className="text-link" href="/work#examples">More examples from our work</Link>
+          </section>
+
+          <section className={styles.demo} id="workflow-example" aria-labelledby="example-title" tabIndex={-1}>
+            <p className={styles.exampleLabel}>Fictional exercise</p>
+            <h2 id="example-title">The Friday Report</h2>
+            <dl className={styles.reportExcerpt}>
+              <div><dt>AI draft</dt><dd>{reportStatus.line}</dd></div>
+              <div><dt>Tracker</dt><dd>{reportStatus.excerpt}</dd></div>
+              <div><dt>Handoff</dt><dd>{reportFollowUp.excerpt}</dd></div>
+            </dl>
+            <Link className="text-link" href="/demos#try-report">Check it against the source</Link>
+          </section>
+        </div>
 
         <FirstProject />
-
-        <section className={`container ${styles.examples}`} aria-labelledby="examples-title" data-home-reveal>
-          <h2 id="examples-title">A look at the work</h2>
-          <div className={styles.examplePair}>
-            <section id="work-in-practice" aria-labelledby="work-in-practice-title">
-              <p className={styles.exampleLabel}>From a one-on-one session</p>
-              <h3 id="work-in-practice-title">Revising an annual report</h3>
-              <p>
-                Max and a researcher reviewed edits to one section of an annual grant report, caught links
-                that couldn’t go in, and used last year’s files to draft a checklist for the next cycle.
-              </p>
-              <Link className="text-link" href="/work#examples">More examples from our work</Link>
-            </section>
-
-            <section className={styles.demo} id="workflow-example" aria-labelledby="example-title" tabIndex={-1}>
-              <p className={styles.exampleLabel}>Fictional example · 20-second film</p>
-              <h3 id="example-title">The Friday Report</h3>
-              <p>See what a team checks before sending an AI-drafted update based on a tracker and handoff notes.</p>
-              <Link className="text-link" href="/demos">Watch the film and try the exercise</Link>
-            </section>
-          </div>
-        </section>
-
-        <section className={`container ${styles.contact}`} aria-labelledby="home-contact-title" data-home-reveal>
-          <h2 id="home-contact-title">Have a task in mind?</h2>
-          <Link className="button" href="/contact">Talk with Max and Rami</Link>
-        </section>
       </main>
       <SiteFooter />
     </>

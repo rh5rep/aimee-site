@@ -95,16 +95,25 @@ export function MobileMenu({ children }: { children: ReactNode }) {
     };
   }, [pathname]);
 
+  function closeAndRestoreFocus(element: HTMLDetailsElement) {
+    element.open = false;
+    element.querySelector("summary")?.focus();
+  }
+
   return (
     <details
       className="mobile-menu"
       ref={menu}
+      onClick={(event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (event.target instanceof Element && event.target.closest('a[aria-current="page"]')) {
+          closeAndRestoreFocus(event.currentTarget);
+        }
+      }}
       onKeyDown={(event) => {
-        const element = event.currentTarget;
-        if (event.key !== "Escape" || !element.open) return;
+        if (event.key !== "Escape" || !event.currentTarget.open) return;
         event.preventDefault();
-        element.open = false;
-        element.querySelector("summary")?.focus();
+        closeAndRestoreFocus(event.currentTarget);
       }}
     >
       <summary>Menu</summary>

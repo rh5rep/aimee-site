@@ -6,7 +6,7 @@ export const services = [
     description: "We design a live exercise around your group’s work and experience. Participants try it, check what AI produces, and leave with instructions they can use again.",
     firstProject: {
       bring: "A team building AI skills",
-      example: "For example, a tricky customer reply.",
+      example: "A tricky customer reply.",
       jumpLabel: "Workshops",
       format: "Hands-on AI workshops",
       help: "Your team practices on a familiar task and leaves with instructions and checks to use again.",
@@ -20,7 +20,7 @@ export const services = [
     description: "Work through a task with one of us. We help you choose the relevant inputs, make a first pass, and write down the checks you’ll want next time.",
     firstProject: {
       bring: "A draft you’re stuck on",
-      example: "Rough notes are enough to start.",
+      example: "A draft or a few rough notes.",
       jumpLabel: "Coaching",
       format: "One-on-one coaching",
       help: "Make a first pass with us, check it together, and leave with a checklist.",
@@ -31,20 +31,20 @@ export const services = [
     id: "workflow-design",
     title: "Team workflow design",
     contactLabel: "Talk through a workflow",
-    description: "We map the process with your team, prototype one step, and document what goes in, who reviews the output, and how it moves to the next person.",
+    description: "We map how your team does the work today and prototype one step. We write down what goes in, who checks the output, and where it goes next.",
     firstProject: {
       bring: "A process your team repeats",
       example: "A weekly report with a messy handoff.",
       jumpLabel: "Workflows",
       format: "Team workflows",
       help: "We design or build a workflow with your team, test it on real work, and agree on what to check.",
-      linkLabel: "Workflow design",
+      linkLabel: "Explore team workflows",
     },
   },
   {
     id: "implementation",
     title: "Workflow implementation",
     contactLabel: "Discuss an implementation",
-    description: "We agree on the scope and acceptance criteria, then build and test the workflow on representative examples. Depending on the project, that can include connecting tools, adding a review step, and documenting how to run and maintain it.",
+    description: "We build the workflow in the tools we agree on and test it on examples of your team’s work. We document how to run it, what a person should check, and how to maintain it.",
   },
 ];

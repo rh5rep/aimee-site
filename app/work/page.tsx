@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { reportFollowUp, reportStatus } from "../../components/report-example";
-import { ReportSample } from "../../components/report-sample";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 import { services } from "./services";
 import styles from "./work.module.css";
@@ -46,7 +44,7 @@ export default function WorkPage() {
                 <div>
                   <p>{service.description}</p>
                   {service.id === "workflow-design" && (
-                    <p>To turn the prototype into a workflow your team can use, we can <a className={styles.inlineLink} href="#implementation">scope the implementation</a> with you.</p>
+                    <p>Ready to put it to work? <a className={styles.inlineLink} href="#implementation">See how we build and test it.</a></p>
                   )}
                   <Link className="text-link" href={`/contact?service=${service.id}`}>{service.contactLabel}</Link>
                 </div>
@@ -71,33 +69,14 @@ export default function WorkPage() {
           </div>
         </section>
 
-        <section className="example-band" id="example" aria-labelledby="example-title">
-          <div className="container">
-            <p className="meta">Fictional workflow example</p>
-            <h2 className="section-title" id="example-title">The Friday Report</h2>
-            <div className="example-grid">
-              <div>
-                <h3>Before</h3>
-                <p>Every Friday, someone starts a new report using a spreadsheet and notes from the team.</p>
-                <dl className="example-inputs">
-                  <div><dt>Request tracker</dt><dd>{reportStatus.excerpt}</dd></div>
-                  <div><dt>Team notes</dt><dd>{reportFollowUp.excerpt}</dd></div>
-                </dl>
-              </div>
-              <div>
-                <h3>After</h3>
-                <p>AI turns the two sources into a draft in the team’s format and flags the open question.</p>
-                <ReportSample />
-              </div>
+        <section className={styles.demoTeaser} id="example" aria-labelledby="example-title" tabIndex={-1}>
+          <div className="container contact-strip">
+            <div>
+              <p className="meta">Fictional workflow example</p>
+              <h2 id="example-title">The Friday Report</h2>
+              <p>See how a team checks the totals and confirms who owns an open request before sending an AI-drafted report.</p>
             </div>
-            <p className="example-note">
-              Before sending, someone checks the totals against the tracker and confirms the owner.
-              The team keeps the format and checklist for next week.
-            </p>
-            <div className={styles.demoLinks}>
-              <Link className="text-link" href="/demos#friday-report">Watch the film</Link>
-              <Link className="text-link" href="/demos#try-report">Try the source check</Link>
-            </div>
+            <Link className="text-link" href="/demos#try-report">Try the source check</Link>
           </div>
         </section>
 
