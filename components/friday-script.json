@@ -1,11 +1,12 @@
 {
-  "durationMs": 24000,
+  "durationMs": 41000,
   "cues": {
-    "today": { "startMs": 0, "text": "How do you make Friday’s report? “We copy totals and chase owners.”" },
-    "draft": { "startMs": 6000, "text": "AI drafts the update from two notes. The totals are in, but one owner is missing." },
-    "review": { "startMs": 12000, "text": "The totals match. Who owns request 42?" },
-    "confirmed": { "startMs": 15000, "text": "Maya confirms." },
-    "sent": { "startMs": 16600, "text": "The team sends it." },
-    "reuse": { "startMs": 18000, "text": "Next Friday, check the new totals and confirm the owners again." }
+    "today": {"startMs": 0, "text": "It’s quarter to five on Friday. You close the tracker. Then you remember you still owe the team an update."},
+    "rule": {"startMs": 7600, "text": "We’d start with one question. When the handoff doesn’t name an owner, what do you do? Flag it and ask the team."},
+    "draft": {"startMs": 16200, "text": "We’d build that into the draft. It pulls the counts from the tracker and flags the missing name in the handoff."},
+    "review": {"startMs": 24200, "text": "Eighteen closed, two open. That checks out. Who’s taking request 42 on Monday?"},
+    "confirmed": {"startMs": 29900, "text": "Maya replies, “I’ll take it.”"},
+    "sent": {"startMs": 32100, "text": "You add her name and hit send."},
+    "reuse": {"startMs": 35000, "text": "Next Friday, drop in the new notes. Your team can run the same check."}
   }
 }

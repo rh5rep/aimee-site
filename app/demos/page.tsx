@@ -3,11 +3,12 @@ import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-shell";
 import { WorkflowStory } from "../../components/workflow-story";
 import { sampleInput } from "../../lib/draft-review";
+import script from "../../components/friday-script.json";
 import styles from "./demos.module.css";
 
 export const metadata: Metadata = {
   title: "Demos | Max + Rami",
-  description: "Check an AI-drafted Friday update against its sources, then watch the team work through the report.",
+  description: "See how we’d help a team turn its Friday tracker and handoff notes into a weekly update. Try the final check yourself.",
 };
 
 export default function DemosPage() {
@@ -21,9 +22,10 @@ export default function DemosPage() {
             <h1>The <em>Friday Report</em></h1>
           </div>
           <div>
-            <p className="lede">Each Friday, someone copies the totals from a tracker and chases missing names in the handoff notes. Watch the team check one draft, then try the next report yourself.</p>
+            <p className="lede">It’s 4:45 on Friday. You’re ready to close your laptop. One thing left: tell the team what got done and who’s picking up the rest on Monday.</p>
+            <p className={styles.setup}>Here’s how we’d turn a tracker and a week of handoff notes into a first draft you can check and send.</p>
             <div className="actions">
-              <a className="text-link" href="#friday-report">Watch the 24-second film</a>
+              <a className="text-link" href="#friday-report">Watch the {script.durationMs / 1000}-second film</a>
               <a className="text-link" href="#try-report">Try the source check</a>
             </div>
           </div>

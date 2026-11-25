@@ -15,6 +15,7 @@ const sourceDelay = 500;
 const refreshDelay = 1_500;
 const scenes = [
   { id: "today", label: "Today", preview: 0, title: "Where Friday gets stuck", cue: cues.today },
+  { id: "rule", label: "Ask", preview: 600, title: "The question we’d ask first", cue: cues.rule },
   { id: "draft", label: "Build", preview: 800, title: "A draft with one gap", cue: cues.draft },
   { id: "review", label: "Check", preview: 1_300, title: "One question before sending", cue: cues.review },
   { id: "reuse", label: "Reuse", preview: refreshDelay + 500, title: "Next Friday, run it again", cue: cues.reuse },
@@ -152,9 +153,10 @@ export function WorkflowStory() {
           sizes="(max-width: 1080px) 90vw, 970px"
         />
         <div className={styles.art}>
-          {position < cues.draft.startMs + openingBlend && (
+          {position < cues.rule.startMs + openingBlend && (
             <div className={styles.opening} aria-hidden={scene.id !== "today"}>
-              <p className={styles.stageHeadline}>How do you make <em>Friday’s report?</em></p>
+              <p className={styles.stageLabel}>Friday, 4:45 p.m.</p>
+              <p className={styles.stageHeadline}>One last <em>thing.</em></p>
               <div className={`${styles.note} ${styles.tracker}`}>
                 <p>Friday tracker</p>
                 <p>{reportStatus.excerpt}</p>
@@ -166,12 +168,19 @@ export function WorkflowStory() {
             </div>
           )}
 
-          {scene.id !== "today" && (
+          {scene.id === "rule" && (
+            <dl className={styles.conversation}>
+              <div><dt>Max + Rami</dt><dd>“What do you do when a name is missing?”</dd></div>
+              <div><dt>Team lead</dt><dd>“Flag it for me. I’ll ask who’s taking it.”</dd></div>
+            </dl>
+          )}
+
+          {(scene.id === "draft" || checking || reusing) && (
             <div className={styles.workflowStage}>
               <div className={styles.workflowIntro} key={scene.id}>
                 {reusing && <p className={styles.stageLabel}>Next Friday</p>}
                 <p className={styles.workflowHeadline}>
-                  {scene.id === "draft" && <>Two sources. <em>One draft.</em></>}
+                  {scene.id === "draft" && <>Pull the totals. <em>Flag the gap.</em></>}
                   {checking && !replied && <>Who’s taking <em>request #42?</em></>}
                   {checking && replied && (reportSent ? <>Update <em>sent.</em></> : <>Maya’s <em>got it.</em></>)}
                   {reusing && <>Fresh notes. <em>Same workflow.</em></>}

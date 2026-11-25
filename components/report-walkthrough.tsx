@@ -15,7 +15,7 @@ export function ReportWalkthrough({ onSourceOpen }: { onSourceOpen: () => void }
     <section className={styles.exercise} id="try-report" aria-labelledby="try-report-title" tabIndex={-1}>
       <header className={styles.intro}>
         <h2 id="try-report-title">Would you send this update?</h2>
-        <p>Open a line from the AI draft to see its source and what you’d check before sending.</p>
+        <p>Your turn to send the Friday note. Open each line of the AI draft. Can you back up the numbers? Do you have a name for Monday?</p>
       </header>
       <div className={styles.lines}>
         {reportLines.map((item) => (

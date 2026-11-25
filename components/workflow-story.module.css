@@ -91,6 +91,31 @@
   line-height: 1.14;
 }
 
+.conversation {
+  display: grid;
+  position: relative;
+  gap: clamp(8px, 2cqw, 20px);
+  width: min(88%, 680px);
+  margin: 0;
+}
+
+.conversation > div {
+  width: min(90%, 460px);
+  padding: clamp(8px, 2cqw, 19px) clamp(12px, 3cqw, 26px);
+  border-radius: 5px;
+  background: var(--white);
+  color: var(--ink);
+}
+
+.conversation > div + div { justify-self: end; background: var(--accent-tint); }
+.conversation dt { color: var(--accent-hover); font-size: .8125rem; font-weight: 700; }
+.conversation dd {
+  margin: 3px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3.4cqw, 1.625rem);
+  line-height: 1.15;
+}
+
 .workflowStage {
   display: grid;
   gap: clamp(10px, 3cqw, 26px);
@@ -433,14 +458,15 @@
   .tracker { --opening-delay: var(--scene-delay); --settle-x: -8%; --settle-y: -45%; }
   .handoff { --opening-delay: calc(var(--scene-delay) + .12s); --settle-x: -125%; --settle-y: -15%; }
 
-  .stage[data-scene="draft"] .opening {
+  .stage[data-scene="rule"] .opening {
     animation: dissolve-out var(--opening-blend) ease-out var(--scene-delay) both paused;
   }
 
-  .stage[data-scene="draft"] .opening .note {
+  .stage[data-scene="rule"] .opening .note {
     animation: line-up-notes var(--opening-blend) ease-in-out var(--scene-delay) both paused;
   }
 
+  .stage[data-scene="rule"] .conversation,
   .stage[data-scene="draft"] .workflowStage {
     animation: reveal-workflow .38s ease-out calc(var(--scene-delay) + .12s) both paused;
   }

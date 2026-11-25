@@ -8,6 +8,7 @@
 }
 
 .intro h1 { margin-bottom: 0; }
+.setup { max-width: 50ch; margin-top: 10px; color: var(--ink-soft); }
 .filmLabel { margin-bottom: 8px; }
 .film { max-width: 1000px; margin-inline: auto; }
 
