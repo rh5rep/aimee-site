@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { email, SiteHeader, SiteFooter } from "../../components/site-shell";
+import { WorkshopSetup } from "./workshop-setup";
 import styles from "./workshop.module.css";
 
 const registrationUrl = process.env.NEXT_PUBLIC_WORKSHOP_REGISTRATION_URL?.trim();
@@ -41,7 +42,10 @@ export default function WorkshopPage() {
           <div>
             <h1>Practical AI <em>for Research</em></h1>
             <p className={`lede ${styles.description}`}>Two hands-on workshops at Einstein. Bring an experiment idea or a draft and practice using AI to think it through.</p>
-            <a className="text-link" href="#sessions">Find your session</a>
+            <div className={`actions ${styles.introActions}`}>
+              <a className="text-link" href="#setup">Get ready for the workshop</a>
+              <a className="text-link" href="#sessions">Find your session</a>
+            </div>
           </div>
           <aside className={styles.visit} id="details" aria-labelledby="details-title">
             <h2 id="details-title">Event details</h2>
@@ -77,13 +81,15 @@ export default function WorkshopPage() {
           <h2 className="section-title" id="prepare-title">What to expect</h2>
           <div>
             <p>We’ll walk through an example together. Then you’ll give AI context for your own task, check what comes back, and save the instructions you’d use again.</p>
-            <p>No prior AI experience is required. Bring something you’re able to share, or use an example we provide.</p>
+            <p>No prior AI experience is required. Bring something you’re able to share.</p>
             <div className="actions">
               <Link className="text-link" href="/about">About Max and Rami</Link>
               <Link className="text-link" href="/work#workshops">Explore team workshops</Link>
             </div>
           </div>
         </section>
+
+        <WorkshopSetup />
 
         <section className="contact-strip" aria-labelledby="contact-title">
           <h2 id="contact-title">Questions about the workshops?</h2>

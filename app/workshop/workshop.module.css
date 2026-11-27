@@ -20,7 +20,7 @@
 }
 
 .description { max-width: 42ch; }
-.intro :global(.text-link) { margin-top: 6px; }
+.introActions { margin-top: 6px; }
 
 .visit {
   padding: clamp(22px, 3vw, 36px);
@@ -123,10 +123,324 @@
   border-block: 1px solid var(--line);
 }
 
+.setup {
+  padding-block: clamp(32px, 5vw, 64px);
+  border-bottom: 1px solid var(--line);
+}
+
+.setupLead,
+.platforms,
+.signIn,
+.screenshotPair,
+.promptGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 3vw, 36px);
+}
+
+.setupLead {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-areas: "intro checklist" "actions checklist";
+  grid-template-rows: 1fr auto;
+  align-items: start;
+  gap: 18px clamp(20px, 5vw, 68px);
+}
+
+.setupIntro { grid-area: intro; align-self: end; }
+
+.setupLead h2 {
+  max-width: 16ch;
+  font: 400 clamp(2.4rem, 5.2vw, 4.5rem)/1 var(--font-display);
+}
+
+.setupLead h2 + p {
+  max-width: 43ch;
+  margin-top: 16px;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.setupActions { grid-area: actions; margin-top: 0; }
+
+.checklist {
+  grid-area: checklist;
+  padding: clamp(18px, 3.3vw, 36px);
+  background: var(--accent-tint);
+}
+
+.checklist h3 { margin-bottom: 12px; }
+.checklist ul { margin-bottom: 10px; }
+
+.checklist label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 44px;
+  padding-block: 7px;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.checklist input {
+  flex: 0 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--accent);
+}
+
+.checklist p,
+.setup figcaption,
+.screenshotCredit {
+  color: var(--ink-soft);
+  font-size: .875rem;
+}
+
+.appTabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  width: min(100%, 34rem);
+  margin-top: clamp(26px, 5vw, 48px);
+  padding: 4px;
+  background: var(--linen);
+  border: 1px solid var(--line);
+}
+
+.appTabs button {
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: .9375rem;
+  line-height: 1.25;
+  font-weight: 650;
+}
+
+.appTabs button:hover { text-decoration: underline; }
+
+.appTabs button[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.appTabs button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.appTabs + [role="tabpanel"] > .setupStep:first-child,
+.appTabs + [role="tabpanel"] + [role="tabpanel"] > .setupStep:first-child {
+  margin-top: clamp(12px, 2vw, 22px);
+}
+
+.accessNote { margin-bottom: 14px; }
+
+.setupStep,
+.setupHelp {
+  margin-top: clamp(29px, 5vw, 60px);
+  padding-top: clamp(20px, 3.3vw, 38px);
+  border-top: 1px solid var(--line);
+}
+
+.setupStep h3 {
+  margin-bottom: clamp(13px, 2vw, 22px);
+  font: 400 clamp(1.9rem, 3.4vw, 2.85rem)/1.08 var(--font-display);
+}
+
+.setupStep h4 {
+  margin: 0 0 6px;
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.platforms > div {
+  padding: clamp(14px, 2.6vw, 26px);
+  border: 1px solid var(--line);
+}
+
+.platforms p,
+.signIn p,
+.walkthrough > li > p {
+  max-width: 65ch;
+}
+
+.signIn {
+  margin-top: 12px;
+  gap: 8px clamp(14px, 3vw, 36px);
+}
+
+.signIn p + p { margin-top: 0; }
+
+.installShot {
+  display: grid;
+  justify-items: start;
+  margin-top: 4px;
+}
+
+.installShot img {
+  width: min(100%, 328px);
+  height: 84px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.setup figcaption {
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.readiness {
+  padding: clamp(16px, 3.8vw, 42px);
+  border: 0;
+  background: var(--accent-tint);
+}
+
+.walkthrough {
+  list-style: decimal;
+  padding-inline-start: clamp(19px, 2.8vw, 34px);
+}
+
+.walkthrough > li::marker {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.walkthrough > li + li {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.walkthrough :global(.button) { margin-top: 12px; }
+
+.manualFile {
+  max-width: 62ch;
+  margin-top: 6px;
+}
+
+.setup summary {
+  min-height: 44px;
+  padding-block: 10px;
+  cursor: pointer;
+  font-weight: 620;
+}
+
+.screenshotPair,
+.promptGrid {
+  margin-top: 12px;
+  align-items: start;
+}
+
+.screenshotPair img,
+.composerShot img {
+  width: 100%;
+  height: auto;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.screenshotPair img {
+  aspect-ratio: 680 / 355;
+  object-fit: contain;
+}
+
+.composerShot img {
+  aspect-ratio: 619 / 150;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.screenshotCredit { margin-top: 8px; }
+
+.readiness pre {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--linen);
+  border: 1px solid var(--line);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.success {
+  margin-top: 12px;
+  padding-inline-start: 12px;
+  border-inline-start: 3px solid var(--accent);
+}
+
+.setupHelp {
+  padding-top: 4px;
+  max-width: 70ch;
+}
+
+.setupHelp ul {
+  list-style: disc;
+  padding-inline-start: 1.4em;
+}
+
+.setupHelp li + li { margin-top: 8px; }
+
+.screenshotCredit a,
+.setupHelp a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.claudeInstallShot img {
+  width: 165px;
+  max-width: 100%;
+  height: auto;
+}
+
+.claudeFolderGuide {
+  max-width: 48rem;
+  margin-top: 12px;
+}
+
+.claudeControls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.claudeControls > div {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.claudeControls span {
+  color: var(--ink-soft);
+  font-size: .875rem;
+}
+
+.claudeFolderGuide a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 720px) {
   .intro,
   .sessionGrid,
-  .preparation {
+  .preparation,
+  .setupLead,
+  .platforms,
+  .signIn,
+  .screenshotPair,
+  .promptGrid {
     grid-template-columns: 1fr;
   }
+
+  .setupLead {
+    grid-template-areas: "intro" "checklist" "actions";
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .claudeControls { grid-template-columns: 1fr; }
 }
